@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls ="clr-namespace:NextInpact;assembly=NextInpact"
+             x:Class="NextInpact.Views.CommentsPage"
+              Title="{Binding Title}"
+             x:Name="BrowseItemsPage">    
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ItemsListView"
+				ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"              
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" BackgroundColor="#E7ECEF" Padding="5">
+                                <Label Text="{Binding AuthorWithPostDate}"                                    
+                                       LineBreakMode="CharacterWrap"
+                                       Style="{DynamicResource ListItemTextStyle}"
+                                       TextColor="#8A979D"
+                                       FontSize="Micro"/>
+                                <Label Text="{Binding Id}"                                    
+                                       LineBreakMode="CharacterWrap"
+                                       HorizontalOptions="EndAndExpand"
+                                       Style="{DynamicResource ListItemTextStyle}"                                       
+                                       TextColor="#177DAD"
+                                       FontSize="Micro"
+                                       FontAttributes="Italic"/>
+                                </StackLayout>
+                                <StackLayout Padding="10">
+                                    <controls:HtmlLabel Text="{Binding Content}"
+                                                LineBreakMode="CharacterWrap"
+                                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                                FontSize="Small" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

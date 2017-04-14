@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:local="clr-namespace:NextInpact;assembly=NextInpact"
+             x:Class="NextInpact.Views.ArticlesPage"
+              Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_menu_refresh.png" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+      
+    <StackLayout>
+            <Label Text="{Binding LastRefreshDate}"                        
+                               LineBreakMode="CharacterWrap"
+                               Style="{DynamicResource ListItemTextStyle}"            
+                               BackgroundColor="#064358"
+                               TextColor="White"
+                               FontSize="Micro"
+                               FontAttributes="Bold"
+                                HorizontalOptions="Fill"
+                             HorizontalTextAlignment="Center"/>
+            <ListView x:Name="ItemsListView"
+				ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+				ItemSelected="OnItemSelected">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>              
+                <StackLayout>
+                    <StackLayout BackgroundColor="#E7ECEE" IsVisible="{Binding ShowDateSection}">
+                      
+                      <Label Text="{Binding PublicationDate}"                             
+                               LineBreakMode="CharacterWrap"
+                               Style="{DynamicResource ListItemTextStyle}"            
+                               TextColor="#EA8211"
+                               FontSize="Medium"
+                               FontAttributes="Bold"
+                                HorizontalOptions="Fill"
+                             HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout Padding="5" Orientation="Horizontal" >
+                       <Image Source="{Binding ImageSource}" Aspect="AspectFill" />
+                      <StackLayout HorizontalOptions="FillAndExpand">                  
+                        
+                        <Label Text="{Binding Title}"
+                               LineBreakMode="CharacterWrap"
+                               Style="{DynamicResource ListItemTextStyle}"
+                               TextColor="#01232F"
+                               FontSize="Small"
+                               FontAttributes="Bold"/>
+                       <StackLayout Orientation="Horizontal">             
+                            <Label Text="{Binding PublicationTime}"
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                   TextColor="#EA8211"
+                                    FontSize="Small"/>
+                            <Label Text="{Binding SubTitle}"
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                   TextColor="#A8979D"
+                                    FontSize="Small"/>
+                         </StackLayout>
+                       <StackLayout Orientation="Horizontal"  HorizontalOptions="EndAndExpand">
+                            <Image Source="{local:ImageResource small_comms.png}" Aspect="AspectFill"  />                                      
+                            <Label Text="{Binding TotalCommentsCount}"                           
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    TextColor="#8AA4C0"
+                                    FontSize="Micro"/>               
+                      </StackLayout>
+                     </StackLayout>
+                     </StackLayout>
+                        <ProgressBar   Progress="{Binding SyncPercentage}"                                        
+                                 WidthRequest="300" 
+                                 HeightRequest="10" 
+                                 HorizontalOptions="Fill"
+                                 VerticalOptions="Center"  />  
+             </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout> 
+  </ContentPage.Content>
+</ContentPage>
