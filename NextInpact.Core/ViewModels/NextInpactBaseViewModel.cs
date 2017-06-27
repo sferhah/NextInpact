@@ -1,24 +1,25 @@
-﻿using NextInpact.Core.Helpers;
+﻿using GalaSoft.MvvmLight;
+using NextInpact.Core.Helpers;
 using NextInpact.Core.Models;
 using NextInpact.Core.Parsing;
 using Xamarin.Forms;
 
 namespace NextInpact.Core.ViewModels
 {
-    public class BaseViewModel : ObservableObject
+    public class NextInpactBaseViewModel : ViewModelBase
     {
         bool isBusy = false;
         public bool IsBusy
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            get;
+            set; 
         }
 
         string title = string.Empty;
         public string Title
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get;
+            set;
         }
     }
 }

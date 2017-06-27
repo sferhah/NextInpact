@@ -1,39 +1,35 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using NextInpact.Core.Helpers;
 using NextInpact.Core.Models;
-
-
 using Xamarin.Forms;
-using NextInpact.Core.Parsing;
-using System.IO;
 using System.Collections.Generic;
 using NextInpact.Core.Data;
 using System.Linq;
 using NextInpact.Core.Networking;
+using GalaSoft.MvvmLight.Command;
 
 namespace NextInpact.Core.ViewModels
 {
-    public class ArticlesViewModel : BaseViewModel
+    public class ArticlesViewModel : NextInpactBaseViewModel
     {
         public ObservableRangeCollection<Article> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
+        public RelayCommand LoadItemsCommand { get; set; }
 
 
         public string _LastRefreshDate = Preferences.LastRefreshDateText;
         public string LastRefreshDate
         {
-            get { return _LastRefreshDate; }
-            set { SetProperty(ref _LastRefreshDate, value); }
+            get;
+            set;
         }
 
         public ArticlesViewModel()
         {
             Title = "NextINpact (Unofficial)";
             Items = new ObservableRangeCollection<Article>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new RelayCommand(async () => await ExecuteLoadItemsCommand());
         }
 
         bool firstAppear = true;

@@ -3,7 +3,7 @@ using NextInpact.Core.Parsing;
 
 namespace NextInpact.Core.ViewModels
 {
-    public class ArticleDetailViewModel : BaseViewModel
+    public class ArticleDetailViewModel : NextInpactBaseViewModel
     {
         public Article Item { get; set; }
         public ArticleDetailViewModel(Article item = null)
