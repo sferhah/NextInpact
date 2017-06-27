@@ -1,5 +1,4 @@
-﻿using ModernHttpClient;
-using NextInpact.Parsing;
+﻿using NextInpact.Parsing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +13,14 @@ namespace NextInpact.Networking
     {
         public static async Task<String> GetAsync(String uneURL)
         {
-            var httpClient = new HttpClient(new NativeMessageHandler());
+            var httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync(ConvertToUri(uneURL));
             return await response.Content.ReadAsStringAsync();
         }
 
         public static async Task<byte[]> GetAsBytesAsync(String uneURL)
         {
-            var httpClient = new HttpClient(new NativeMessageHandler());
+            var httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync(ConvertToUri(uneURL));
             return await response.Content.ReadAsByteArrayAsync();
         }
