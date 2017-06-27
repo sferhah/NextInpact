@@ -1,6 +1,6 @@
-﻿using NextInpact.Data;
-using NextInpact.Models;
-using NextInpact.Parsing;
+﻿using NextInpact.Core.Data;
+using NextInpact.Core.Models;
+using NextInpact.Core.Parsing;
 using NextInpact.Views;
 using RestSharp.Portable;
 using RestSharp.Portable.HttpClient;

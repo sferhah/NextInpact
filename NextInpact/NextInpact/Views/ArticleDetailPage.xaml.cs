@@ -1,5 +1,5 @@
 ﻿
-using NextInpact.ViewModels;
+using NextInpact.Core.ViewModels;
 
 using Xamarin.Forms;
 

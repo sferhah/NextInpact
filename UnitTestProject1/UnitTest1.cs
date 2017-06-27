@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
-using NextInpact.Parsing;
+using NextInpact.Core.Parsing;
 using System.Net;
 using System.Reflection;
-using NextInpact.Networking;
+using NextInpact.Core.Networking;
 
 namespace UnitTestProject1
 {

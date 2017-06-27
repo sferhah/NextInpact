@@ -38,32 +38,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Constantes.cs" />
-    <Compile Include="Data\IStringConnectionProvider.cs" />
-    <Compile Include="Data\SQLiteExtensions.cs" />
-    <Compile Include="Helpers\MessengingCenterAlert.cs" />
-    <Compile Include="Helpers\ObservableObject.cs" />
-    <Compile Include="Helpers\ObservableRangeCollection.cs" />
     <Compile Include="HtmlLabel.cs" />
     <Compile Include="ImageResourceExtension.cs" />
-    <Compile Include="IO\ImageFolder.cs" />
-    <Compile Include="IO\ISaveAndLoad.cs" />
-    <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Article.cs" />
-    <Compile Include="JavaExtensions.cs" />
-    <Compile Include="Networking\Downloader.cs" />
-    <Compile Include="Networking\NextInpactClient.cs" />
-    <Compile Include="Parsing\HtmlParserExtensions.cs" />
-    <Compile Include="Preferences.cs" />
-    <Compile Include="Data\ThreadSafeSqlite.cs" />
-    <Compile Include="Data\Store.cs" />
-    <Compile Include="IO\SaveAndLoad.cs" />
-    <Compile Include="Parsing\HtmlParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\ArticleDetailViewModel.cs" />
-    <Compile Include="ViewModels\CommentsViewModel.cs" />
-    <Compile Include="ViewModels\ArticlesViewModel.cs" />
     <Compile Include="Views\CommentsPage.xaml.cs">
       <DependentUpon>CommentsPage.xaml</DependentUpon>
     </Compile>
@@ -173,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\small_comms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NextInpact.Core\NextInpact.Core.csproj">
+      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
+      <Name>NextInpact.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

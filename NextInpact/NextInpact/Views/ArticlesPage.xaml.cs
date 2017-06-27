@@ -1,10 +1,10 @@
 ﻿using System;
 
-using NextInpact.Models;
-using NextInpact.ViewModels;
+using NextInpact.Core.Models;
+using NextInpact.Core.ViewModels;
 
 using Xamarin.Forms;
-using NextInpact.Parsing;
+using NextInpact.Core.Parsing;
 
 namespace NextInpact.Views
 {

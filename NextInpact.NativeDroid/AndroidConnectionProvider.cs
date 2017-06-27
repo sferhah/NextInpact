@@ -1,10 +1,10 @@
 using System;
 using System.IO;
-using NextInpact.Droid;
+using NextInpact.NativeDroid;
 using NextInpact.Core.Data;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidConnectionProvider))]
-namespace NextInpact.Droid
+namespace NextInpact.NativeDroid
 {
     public class AndroidConnectionProvider : IStringConnectionProvider
     {
