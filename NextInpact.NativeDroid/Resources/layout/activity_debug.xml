@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+/*
+ * Copyright 2015, 2016 Anael Mobilia
+ * 
+ * This file is part of NextINpact-Unofficial.
+ * 
+ * NextINpact-Unofficial is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * NextINpact-Unofficial is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with NextINpact-Unofficial. If not, see <http://www.gnu.org/licenses/>
+ */
+-->
+<LinearLayout style="?attr/themeArticleFond"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        style="?attr/themeArticleTexte"
+        android:id="@+id/debugTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="?android:attr/scrollbarSize"
+        android:text="@string/debugTitre"/>
+
+    <TextView
+        style="?attr/themeArticleTexte"
+        android:id="@+id/textViewBetaTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="?android:attr/scrollbarSize"
+        android:text="@string/debugPubBeta"/>
+
+    <Button
+        android:id="@+id/buttonListerCache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/debugListeFichiers"/>
+
+    <Button
+        android:id="@+id/buttonDeleteCacheSmiley"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/debugEffacerCacheSmiley"/>
+
+    <Button
+        android:id="@+id/buttonDeleteCache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/debugEffacerCache"/>
+
+    <Button
+        android:id="@+id/buttonTesterConnexion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/debugTesterConnexion"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/refreshOrange"/>
+
+    <Button
+        android:id="@+id/debugGenererArrayListArticleItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/debugGenererArrayList"/>
+</LinearLayout>

@@ -1,5 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+/*
+ * Copyright 2013, 2014, 2015, 2016 Sami Ferhah, Anael Mobilia
+ * 
+ * This file is part of NextINpact-Unofficial.
+ * 
+ * NextINpact-Unofficial is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * NextINpact-Unofficial is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with NextINpact-Unofficial. If not, see <http://www.gnu.org/licenses/>
+ */
+-->
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">NextInpact.NativeDroid</string>
+    <!-- Action Bar -->
+    <string name="action_refresh">Synchroniser</string>
+    <string name="action_overflow">Plus...</string>
+    <string name="action_settings">Options</string>
+    <string name="action_about">A propos</string>
+    <string name="action_support">Support</string>
+    <string name="action_debug">Debug</string>
+    <string name="action_comments">Commentaires</string>
+    <string name="action_share">Partager</string>
+
+    <!-- Ecran d'accueil -->
+    <string name="app_name">NextINpact (Unofficial)</string>
+    <string name="lastUpdate">"Dernière synchronisation : "</string>
+    <string name="lastUpdateNever">Jamais synchronisé</string>
+    <string name="contentDescriptionImageArticle">"Illustration de l'article"</string>
+
+    <!-- Disclaimer -->
+    <string name="disclaimerContent">"Cette application est développée par un lecteur (passionné) de Next INpact.
+			\nLes contenus affichés dans l'application sont issus du site www.nextinpact.com (INpact Mediagroup) et sont la pleine propriété de leurs auteurs.
+			\nSi vous appréciez Next INpact, abonnez-vous pour soutenir leur indépendance !
+			\nBonne lecture !"</string>
+
+    <!-- A propos -->
+    <string name="aboutContent">"NextINpact (Unofficial) est une application développée bénévolement par un lecteur passionné de NextINpact.
+
+Si vous souhaitez rapporter un dysfonctionnement, proposer une idée ou contribuer au projet, vous êtes bienvenu(e) !
+https://github.com/AnaelMobilia/NextINpact-Unofficial/issues
+contrib@anael.eu
+
+L'application est développée dans le cadre d'une licence libre GNU GPLv3 : toute personne peut accéder au code source !
+
+
+Crédits :
+ - Anael Mobilia (mainteneur depuis la v1.7.2)
+ - Guillaume Bour (contributeur v1.7.2)
+ - Sami Ferhah (mainteneur de la v1 à la v1.7.1)
+
+ - L'équipe de Jsoup pour leur librairie (http://jsoup.org/)
+
+
+Propriété des contenus :
+L'ensemble des contenus affichés dans l'application (textes, images et logos) sont issus du site www.nextinpact.com
+Les contenus sont la pleine propriété de leurs auteurs respectifs.
+
+Si vous appréciez Next INpact, abonnez-vous pour soutenir leur indépendance !
+http://www.nextinpact.com/abonnement"</string>
+
+    <!-- Message d'erreur / information en Toast -->
+    <string name="chargementPasInternet">"Téléchargement impossible !\nÊtes-vous bien connecté à Internet ?"</string>
+    <string name="articleVideErreurHTML">"Oups ... ! Le contenu de cet article n'a pas été synchronisé. Il le sera lorsque vous lancerez la prochaine synchronisation."</string>
+    <string name="erreurAuthentification">"Erreur lors de l'authentification sur nextinpact.com. Vérifiez l'utilisateur et le mot de passe définis dans les options."</string>
+    <string name="infoOptionAbonne">"Pour lire les articles abonnés, configurez votre compte abonné NXI dans les options !"</string>
+    <string name="erreurEnvoiMail">"Aucune application n'est configurée pour envoyer un mail sur votre appareil."</string>
+
+    <!-- Vue "Options" -->
+    <!-- Options : Générales -->
+    <string name="optionsGenerales">Options générales</string>
+    <string name="optionTailleTexte">Taille des textes</string>
+    <string name="optionAbonne">Compte abonné</string>
+    <string name="optionAbonneDetail">Configurez votre compte abonné</string>
+    <string name="optionThemeSombre">Thème sombre</string>
+    <!-- Options : PreferenceScreen Abonné -->
+    <string name="optionsAbonne">Configurer mon compte abonné</string>
+    <string name="optionAbonneDisclaimer">"J'accepte que les identifiants de mon compte soient stockés sur cet appareil afin de me permettre de lire les contenus abonnés du site."</string>
+    <string name="optionLogin">Identifiant</string>
+    <string name="optionLoginDetail">Votre pseudonyme Next INpact</string>
+    <string name="optionPassword">Mot de passe</string>
+    <string name="optionPasswordDetail">Le mot de passe associé à votre compte</string>
+    <!-- Options liste des articles -->
+    <string name="optionsListeArticle">Liste des articles</string>
+    <string name="optionNbArticles">"Nombre d'articles"</string>
+    <string name="optionAfficherNbNouveauComm">Commentaires non lus</string>
+    <string name="optionAfficherNbNouveauCommDetail">Affichage sous la forme (+12)</string>
+    <!-- Options : Articles -->
+    <string name="optionsArticles">Articles</string>
+    <string name="optionActiverLiensArticle">Liens hypertextes</string>
+    <string name="optionCacherBoutonPartage">Désactiver le bouton de partage</string>
+    <string name="optionTelechargerImage">Chargement des images</string>
+    <string name="optionTelechargerImageDetail">Télécharger les images lors de la lecture</string>
+    <!-- Options : Commentaires -->
+    <string name="optionsCommentaires">Commentaires</string>
+    <string name="optionActiverLiensCommentaire">Liens hypertextes</string>
+    <string name="optionPositionCommentaire">Mémoriser la position</string>
+    <string name="optionPositionCommentaireDetail">Rouvrir au dernier commentaire lu</string>
+    <!-- <string name="optionTelechargerCommentaires">Télécharger</string> -->
+    <!-- <string name="optionTelechargerCommentairesDetail">Télécharger les 10 premiers commentaires</string> -->
+    <string name="optionCommentairesTelechargementContinu">Chargement en continu</string>
+    <string name="optionCommentairesTelechargementContinuDetail">Télécharger les commentaires suivants au fil de la lecture</string>
+    <!-- Options : Debug -->
+    <string name="optionsDeveloppement">Paramètrages avancés</string>
+    <string name="optionDebug">Activer le débuggage</string>
+
+    <!-- Options - ID des clefs -->
+    <string name="idOptionLiensDansArticles">1</string>
+    <string name="idOptionLiensDansCommentaires">2</string>
+    <string name="idOptionZoomTexte">3</string>
+    <string name="idOptionTelechargerCommentaires">4</string>
+    <string name="idOptionDebug">6</string>
+    <string name="idOptionCommentairesTelechargementContinu">7</string>
+    <string name="idOptionNbArticles">8</string>
+    <string name="idOptionInstallationApplication">9</string>
+    <string name="idOptionAbonne">10</string>
+    <string name="idOptionLogin">11</string>
+    <string name="idOptionPassword">12</string>
+    <string name="idOptionInfoCompteAbonne">13</string>
+    <!-- Option sans GUI, sert à notifier l'effacement uniquement -->
+    <string name="idOptionDebugEffacerCache">14</string>
+    <!-- Pour mémoire -->
+    <!-- <string name="idOptionImagesEnHTTP">15</string> -->
+    <string name="idOptionPositionCommentaire">16</string>
+    <string name="idOptionCacherBoutonPartage">17</string>
+    <string name="idOptionAfficherNbNouveauComm">18</string>
+    <string name="idOptionThemeSombre">19</string>
+    <!-- Pour mémoire (actif car migration de valeur)-->
+    <string name="idOptionTelechargerImages">20</string>
+    <string name="idOptionTelechargerImagesv2">21</string>
+
+    <!-- Liste des articles -->
+    <string name="accueilBadgeAbonne">"  Abonné  "</string>
+    <string name="accueilImageArticleAlt">Image article</string>
+
+    <!-- Commentaires -->
+    <string name="commentairesPlusDeCommentaires">Télécharger les commentaires suivants</string>
+    <string name="commentairesChargement">Chargement...</string>
+
+    <!-- Debug -->
+    <string name="debugTitre">"Configuration avancée de l'application"</string>
+    <string name="debugPubBeta">"Activez les versions beta ! Cf description de l'app sur le Play Store !"</string>
+    <string name="debugEffacerCache">"Effacer TOUT le cache de l'application"</string>
+    <string name="debugEffacerCacheToast">"Effacement du cache de l'application !"</string>
+    <string name="debugEffacerCacheSmiley">"Effacer les smileys du cache de l'application"</string>
+    <string name="debugEffacerCacheSmileyToast">"Effacement des smileys du cache de l'application !"</string>
+    <string name="debugGenererArrayList">"Développement - Log.e(ArrayList[ArticleItem])"</string>
+    <string name="debugListeFichiers">Lister les fichiers</string>
+    <string name="debugTesterConnexion">Tester la connexion compte abonné</string>
+
+    <!-- Support -->
+    <string name="supportMessage">Vos demandes, vos commentaires, vos envies, ...</string>
 </resources>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+/*
+ * Copyright 2014, 2015, 2016 Anael Mobilia
+ * 
+ * This file is part of NextINpact-Unofficial.
+ * 
+ * NextINpact-Unofficial is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * NextINpact-Unofficial is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with NextINpact-Unofficial. If not, see <http://www.gnu.org/licenses/>
+ */
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Options génériques -->
+    <PreferenceCategory android:title="@string/optionsGenerales">
+
+        <!-- Compte abonné -->
+        <PreferenceScreen
+            android:title="@string/optionAbonne">
+            <PreferenceCategory android:title="Configurer mon compte abonné">
+                <CheckBoxPreference
+                    android:defaultValue="@bool/defautOptionAbonne"
+                    android:key="@string/idOptionAbonne"
+                    android:summary="@string/optionAbonneDisclaimer"
+                    android:widgetLayout="@layout/options_switchpreferencecompat"/>
+                <EditTextPreference
+                    android:defaultValue="@string/defautOptionLogin"
+                    android:dependency="@string/idOptionAbonne"
+                    android:key="@string/idOptionLogin"
+                    android:summary="@string/optionLoginDetail"
+                    android:title="@string/optionLogin"/>
+                <EditTextPreference
+                    android:defaultValue="@string/defautOptionPassword"
+                    android:dependency="@string/idOptionAbonne"
+                    android:inputType="textPassword"
+                    android:key="@string/idOptionPassword"
+                    android:summary="@string/optionPasswordDetail"
+                    android:title="@string/optionPassword"/>
+            </PreferenceCategory>
+        </PreferenceScreen>
+
+        <ListPreference
+            android:defaultValue="@string/defautOptionZoomTexte"
+            android:entries="@array/tailleTexteLiteral"
+            android:entryValues="@array/tailleTexteValeur"
+            android:key="@string/idOptionZoomTexte"
+            android:title="@string/optionTailleTexte"/>
+
+        <CheckBoxPreference
+            android:defaultValue="@bool/defautOptionThemeSombre"
+            android:key="@string/idOptionThemeSombre"
+            android:title="@string/optionThemeSombre"
+            android:widgetLayout="@layout/options_switchpreferencecompat"/>
+    </PreferenceCategory>
+
+    <!-- Options spécifiques aux articles -->
+    <PreferenceCategory android:title="@string/optionsListeArticle">
+        <ListPreference
+            android:defaultValue="@string/defautOptionNbArticles"
+            android:entries="@array/nbArticles"
+            android:entryValues="@array/nbArticles"
+            android:key="@string/idOptionNbArticles"
+            android:title="@string/optionNbArticles"/>
+
+        <CheckBoxPreference
+            android:defaultValue="@bool/defautOptionAfficherNbNouveauComm"
+            android:key="@string/idOptionAfficherNbNouveauComm"
+            android:summary="@string/optionAfficherNbNouveauCommDetail"
+            android:title="@string/optionAfficherNbNouveauComm"
+            android:widgetLayout="@layout/options_switchpreferencecompat"/>
+    </PreferenceCategory>
+
+    <!-- Options spécifiques aux articles -->
+    <PreferenceCategory android:title="@string/optionsArticles">
+        <ListPreference
+            android:defaultValue="@string/defautOptionTelechargerImagesv2"
+            android:key="@string/idOptionTelechargerImagesv2"
+            android:summary="@string/optionTelechargerImageDetail"
+            android:title="@string/optionTelechargerImage"
+            android:entries="@array/affichageImagesLitteral"
+            android:entryValues="@array/affichageImagesValeur"/>
+        <CheckBoxPreference
+            android:defaultValue="@bool/defautOptionLiensDansArticles"
+            android:key="@string/idOptionLiensDansArticles"
+            android:title="@string/optionActiverLiensArticle"
+            android:widgetLayout="@layout/options_switchpreferencecompat"/>
+        <CheckBoxPreference
+            android:defaultValue="@bool/defautOptionCacherBoutonPartage"
+            android:key="@string/idOptionCacherBoutonPartage"
+            android:title="@string/optionCacherBoutonPartage"
+            android:widgetLayout="@layout/options_switchpreferencecompat"/>
+    </PreferenceCategory>
+    <!-- Options spécifiques aux commentaires -->
+    <PreferenceCategory android:title="@string/optionsCommentaires">
+
+        <CheckBoxPreference
+            android:defaultValue="@bool/defautOptionPositionCommentaire"
+            android:key="@string/idOptionPositionCommentaire"
+            android:summary="@string/optionPositionCommentaireDetail"
+            android:title="@string/optionPositionCommentaire"
+            android:widgetLayout="@layout/options_switchpreferencecompat"/>
+        <!-- <CheckBoxPreference -->
+        <!-- android:defaultValue="@bool/defautOptionTelechargerCommentaires" -->
+        <!-- android:key="@string/idOptionTelechargerCommentaires" -->
+        <!-- android:summary="@string/optionTelechargerCommentairesDetail" -->
+        <!-- android:title="@string/optionTelechargerCommentaires" -->
+        <!-- android:widgetLayout="@layout/options_switchpreferencecompat" /> -->
+        <CheckBoxPreference
+            android:defaultValue="@bool/defautOptionLiensDansCommentaires"
+            android:key="@string/idOptionLiensDansCommentaires"
+            android:title="@string/optionActiverLiensCommentaire"
+            android:widgetLayout="@layout/options_switchpreferencecompat"/>
+        <CheckBoxPreference
+            android:defaultValue="@bool/defautOptionCommentairesTelechargementContinu"
+            android:key="@string/idOptionCommentairesTelechargementContinu"
+            android:summary="@string/optionCommentairesTelechargementContinuDetail"
+            android:title="@string/optionCommentairesTelechargementContinu"
+            android:widgetLayout="@layout/options_switchpreferencecompat"/>
+    </PreferenceCategory>
+    <!-- Développement -->
+    <PreferenceCategory android:title="@string/optionsDeveloppement">
+        <CheckBoxPreference
+            android:defaultValue="@bool/defautOptionDebug"
+            android:key="@string/idOptionDebug"
+            android:title="@string/optionDebug"
+            android:widgetLayout="@layout/options_switchpreferencecompat"/>
+    </PreferenceCategory>
+</PreferenceScreen>

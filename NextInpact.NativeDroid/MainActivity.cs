@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace NextInpact.NativeDroid
 {
-    [Activity(Label = "NextInpact.NativeDroid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "NextInpact.NativeDroid", MainLauncher = true, Icon = "@drawable/logo_nextinpact")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
@@ -12,7 +12,7 @@ namespace NextInpact.NativeDroid
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
-            // SetContentView (Resource.Layout.Main);
+             SetContentView (Resource.Layout.activity_liste_articles);
         }
     }
 }

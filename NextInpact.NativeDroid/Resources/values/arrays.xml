@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+/*
+ * Copyright 2014, 2015 Anael Mobilia
+ * 
+ * This file is part of NextINpact-Unofficial.
+ * 
+ * NextINpact-Unofficial is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * NextINpact-Unofficial is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with NextINpact-Unofficial. If not, see <http://www.gnu.org/licenses/>
+ */
+-->
+<resources>
+    <!-- Menu options -> taille du texte -->
+    <string-array name="tailleTexteLiteral">
+        <item>50 %</item>
+        <item>75 %</item>
+        <item>100 %</item>
+        <item>125 %</item>
+        <item>150 %</item>
+    </string-array>
+    <string-array name="tailleTexteValeur">
+        <item>8</item>
+        <item>12</item>
+        <item>16</item>
+        <item>20</item>
+        <item>24</item>
+    </string-array>
+    <!-- Menu options -> nombre d'articles à conserver -->
+    <string-array name="nbArticles">
+        <item>30</item>
+        <item>60</item>
+        <item>90</item>
+    </string-array>
+    <!-- Menu options -> affichage des images -->
+    <string-array name="affichageImagesLitteral">
+        <item>Toujours</item>
+        <item>Seulement en WiFi</item>
+        <item>Jamais</item>
+    </string-array>
+    <string-array name="affichageImagesValeur">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+</resources>
