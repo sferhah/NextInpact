@@ -14,7 +14,8 @@ namespace NextInpact.Core
         {
             get
             {
-                if (Application.Current.Properties.ContainsKey(nameof(LastRefreshDate)))
+                if (Application.Current!=null  //TEMP
+                    && Application.Current.Properties.ContainsKey(nameof(LastRefreshDate)))
                 {
                     var refreshDate = (Application.Current.Properties[nameof(LastRefreshDate)] as Nullable<long>);
 
@@ -30,7 +31,10 @@ namespace NextInpact.Core
             }
             set
             {
-                Application.Current.Properties[nameof(LastRefreshDate)] = value;
+                if (Application.Current != null) //TEMP
+                {
+                    Application.Current.Properties[nameof(LastRefreshDate)] = value;
+                }
             }
         }
 

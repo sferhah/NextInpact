@@ -5,6 +5,7 @@ using NextInpact.Core.ViewModels;
 using NextInpact.Core.Models;
 using Android.Views;
 using GalaSoft.MvvmLight.Helpers;
+using NextInpact.Core.Data;
 
 namespace NextInpact.NativeDroid
 {
@@ -36,6 +37,8 @@ namespace NextInpact.NativeDroid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            
+            ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
 
             SetContentView(Resource.Layout.activity_liste_articles);
             List.Adapter = Vm.Items.GetAdapter(GetTaskAdapter);
