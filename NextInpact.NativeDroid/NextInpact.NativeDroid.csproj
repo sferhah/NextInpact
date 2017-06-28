@@ -129,7 +129,7 @@
   <ItemGroup>
     <Compile Include="AndroidConnectionProvider.cs" />
     <Compile Include="AndroidSaveAndLoad.cs" />
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="ListeArticlesActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
