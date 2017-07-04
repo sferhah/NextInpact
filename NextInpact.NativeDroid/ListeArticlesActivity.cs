@@ -57,15 +57,14 @@ namespace NextInpact.NativeDroid
         private View GetTaskAdapter(int position, Article model, View convertView)
         {
             // Not reusing views here
-            convertView = LayoutInflater.Inflate(Resource.Layout.liste_articles_item_article, null);
+            convertView = LayoutInflater.Inflate(Resource.Layout.liste_articles_item_article, null);            
+            
+          
 
 
-            //articleVH.imageArticle = (ImageView)maView.findViewById(R.id.imageArticle);
-            //articleVH.labelAbonne = (TextView)maView.findViewById(R.id.labelAbonne);
-            //articleVH.titreArticle = (TextView)maView.findViewById(R.id.titreArticle);
-            //articleVH.heureArticle = (TextView)maView.findViewById(R.id.heureArticle);
-            //articleVH.sousTitreArticle = (TextView)maView.findViewById(R.id.sousTitreArticle);
-            //articleVH.commentairesArticle = (TextView)maView.findViewById(R.id.commentairesArticle);
+            var SectionArticle = convertView.FindViewById<TextView>(Resource.Id.titreSection);
+            SectionArticle.Text = model.PublicationDate;
+            SectionArticle.Visibility = model.ShowDateSection? ViewStates.Visible :  ViewStates.Gone;            
 
             var imgViewer = convertView.FindViewById<ImageView>(Resource.Id.imageArticle);
 
@@ -86,6 +85,12 @@ namespace NextInpact.NativeDroid
 
             var sousTitreArticle = convertView.FindViewById<TextView>(Resource.Id.sousTitreArticle);
             sousTitreArticle.Text = model.SubTitle;
+
+            var heureArticle = convertView.FindViewById<TextView>(Resource.Id.heureArticle);
+            heureArticle.Text = model.PublicationTime;
+
+            var commentairesArticle = convertView.FindViewById<TextView>(Resource.Id.commentairesArticle);
+            commentairesArticle.Text = model.TotalCommentsCount.ToString();
 
             return convertView;
         }

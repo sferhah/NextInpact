@@ -2559,8 +2559,8 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f080080
 			public const int commentaire = 2131230848;
 			
-			// aapt resource value: 0x7f08008c
-			public const int commentairesArticle = 2131230860;
+			// aapt resource value: 0x7f08008d
+			public const int commentairesArticle = 2131230861;
 			
 			// aapt resource value: 0x7f08004a
 			public const int contentPanel = 2131230794;
@@ -2643,8 +2643,8 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f080073
 			public const int header_text = 2131230835;
 			
-			// aapt resource value: 0x7f08008a
-			public const int heureArticle = 2131230858;
+			// aapt resource value: 0x7f08008b
+			public const int heureArticle = 2131230859;
 			
 			// aapt resource value: 0x7f080005
 			public const int home = 2131230725;
@@ -2670,8 +2670,8 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
 			
-			// aapt resource value: 0x7f08008b
-			public const int labelAbonne = 2131230859;
+			// aapt resource value: 0x7f08008c
+			public const int labelAbonne = 2131230860;
 			
 			// aapt resource value: 0x7f08002f
 			public const int left = 2131230767;
@@ -2952,8 +2952,8 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f08007a
 			public const int titreArticle = 2131230842;
 			
-			// aapt resource value: 0x7f08008d
-			public const int titreSection = 2131230861;
+			// aapt resource value: 0x7f08008a
+			public const int titreSection = 2131230858;
 			
 			// aapt resource value: 0x7f080032
 			public const int top = 2131230770;
