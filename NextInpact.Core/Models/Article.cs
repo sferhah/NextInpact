@@ -48,6 +48,10 @@ namespace NextInpact.Core.Models
 
         private ImageSource _ImageSource = ImageSource.FromResource("NextInpact.Resources.default_miniature.png");
 
+
+        [Ignore]
+        public byte[] ImageData { get; set; }
+
         [Ignore]
         public ImageSource ImageSource
         {

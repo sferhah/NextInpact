@@ -39,6 +39,8 @@ namespace NextInpact.Core.Networking
 
             await SaveAndLoad.SaveAsync(ImageFolder.MINIATURES, article.Id.ToString(), data);
 
+            article.ImageData = data;
+
             await Task.Run(() =>
             {
                 article.ImageSource = ImageSource.FromStream(() => new MemoryStream(data));

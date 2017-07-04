@@ -6,6 +6,8 @@ using NextInpact.Core.Models;
 using Android.Views;
 using GalaSoft.MvvmLight.Helpers;
 using NextInpact.Core.Data;
+using Android.Graphics;
+using Android.Util;
 
 namespace NextInpact.NativeDroid
 {
@@ -65,8 +67,19 @@ namespace NextInpact.NativeDroid
             //articleVH.sousTitreArticle = (TextView)maView.findViewById(R.id.sousTitreArticle);
             //articleVH.commentairesArticle = (TextView)maView.findViewById(R.id.commentairesArticle);
 
-            //var imageArticle = convertView.FindViewById<ImageView>(Resource.Id.imageArticle);
+            var imgViewer = convertView.FindViewById<ImageView>(Resource.Id.imageArticle);
+
             
+            if(model.ImageData != null)
+            {
+                Bitmap bm = BitmapFactory.DecodeByteArray(model.ImageData, 0, model.ImageData.Length);
+                DisplayMetrics dm = new DisplayMetrics();
+                WindowManager.DefaultDisplay.GetMetrics(dm);
+
+                imgViewer.SetMinimumHeight(dm.HeightPixels);
+                imgViewer.SetMinimumWidth(dm.WidthPixels);
+                imgViewer.SetImageBitmap(bm);
+            }
 
             var titreArticle = convertView.FindViewById<TextView>(Resource.Id.titreArticle);
             titreArticle.Text = model.Title;

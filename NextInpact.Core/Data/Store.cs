@@ -37,6 +37,8 @@ namespace NextInpact.Core.Data
                     continue;
                 }
 
+                item.ImageData = datas;
+
                 await Task.Run(() =>
                 {
                     item.ImageSource = ImageSource.FromStream(() => new MemoryStream(datas));
