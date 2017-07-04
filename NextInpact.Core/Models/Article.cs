@@ -2,8 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using Xamarin.Forms;
+
 
 namespace NextInpact.Core.Models
 {
@@ -46,23 +45,21 @@ namespace NextInpact.Core.Models
 
         public bool ImageSourceIsDefault = true;
 
-        private ImageSource _ImageSource = ImageSource.FromResource("NextInpact.Resources.default_miniature.png");
+        private byte[] _ImageData = null;
 
 
         [Ignore]
-        public byte[] ImageData { get; set; }
-
-        [Ignore]
-        public ImageSource ImageSource
+        public byte[] ImageData
         {
-            get { return _ImageSource; }
+            get { return _ImageData; }
             set
             {
                 ImageSourceIsDefault = false;
                 SyncPercentage += 0.33;
-                SetProperty(ref _ImageSource, value);
+                SetProperty(ref _ImageData, value);
             }
         }
+      
 
         private double _SyncPercentage;
 

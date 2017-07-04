@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace NextInpact.Core.Data
 {
@@ -38,11 +37,7 @@ namespace NextInpact.Core.Data
                 }
 
                 item.ImageData = datas;
-
-                await Task.Run(() =>
-                {
-                    item.ImageSource = ImageSource.FromStream(() => new MemoryStream(datas));
-                });
+                
             }
         }
 

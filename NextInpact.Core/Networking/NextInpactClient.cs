@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NextInpact.Core.Parsing;
-using Xamarin.Forms;
 using NextInpact.Core.Models;
 using System.IO;
 using NextInpact.Core.IO;
@@ -40,12 +39,6 @@ namespace NextInpact.Core.Networking
             await SaveAndLoad.SaveAsync(ImageFolder.MINIATURES, article.Id.ToString(), data);
 
             article.ImageData = data;
-
-            await Task.Run(() =>
-            {
-                article.ImageSource = ImageSource.FromStream(() => new MemoryStream(data));
-            });
-
         }
 
         public static async Task DownloadArticlesContent(IEnumerable<Article> items)

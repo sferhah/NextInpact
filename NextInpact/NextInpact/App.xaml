@@ -2,9 +2,12 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls ="clr-namespace:NextInpact;assembly=NextInpact"
-             x:Class="NextInpact.App">
+             x:Class="NextInpact.App"
+             xmlns:nconverters="clr-namespace:NextInpact.Converters;assembly=NextInpact">
   <Application.Resources>
         <ResourceDictionary>
+            <nconverters:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"></nconverters:ByteArrayToImageConverter>
+
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="PrimaryDark">#1976D2</Color>
             <Color x:Key="Accent">#96d1ff</Color>

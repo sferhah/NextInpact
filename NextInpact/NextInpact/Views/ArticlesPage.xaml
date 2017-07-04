@@ -45,7 +45,7 @@
                              HorizontalTextAlignment="Center"/>
                         </StackLayout>
                         <StackLayout Padding="5" Orientation="Horizontal" >
-                       <Image Source="{Binding ImageSource}" Aspect="AspectFill" />
+                       <Image Source="{Binding ImageData , Converter={StaticResource ByteArrayToImageConverter}}" Aspect="AspectFill" />
                       <StackLayout HorizontalOptions="FillAndExpand">                  
                         
                         <Label Text="{Binding Title}"
