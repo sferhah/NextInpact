@@ -114,8 +114,7 @@ namespace NextInpact.Core.ViewModels
 
             Preferences.LastRefreshDate = DateTime.Now.Ticks;
 
-            RaisePropertyChanged(LastRefreshDate);
-            //LastRefreshDate = Preferences.LastRefreshDateText;
+            RaisePropertyChanged(()=> LastRefreshDate);            
         }
 
 
