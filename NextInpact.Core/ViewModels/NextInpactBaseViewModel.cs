@@ -8,7 +8,7 @@ namespace NextInpact.Core.ViewModels
 {
     public class NextInpactBaseViewModel : ViewModelBase
     {
-        bool isBusy = false;
+        
         public bool IsBusy
         {
             get;

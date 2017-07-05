@@ -18,16 +18,14 @@
  * along with NextINpact-Unofficial. If not, see <http://www.gnu.org/licenses/>
  */
 -->
-<android.support.v4.widget.SwipeRefreshLayout android:id="@+id/swipe_container"
-                                              xmlns:android="http://schemas.android.com/apk/res/android"
-                                              android:layout_width="match_parent"
-                                              android:layout_height="match_parent">
+
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:orientation="vertical">
 
+      
         <TextView
             android:id="@+id/header_text"
             style="?attr/themeBanniereFond"
@@ -37,7 +35,10 @@
             android:maxLines="1"
             android:text="@string/lastUpdate"
             android:textColor="@android:color/white"/>
-
+      <android.support.v4.widget.SwipeRefreshLayout android:id="@+id/swipe_container"
+                                                    xmlns:android="http://schemas.android.com/apk/res/android"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
         <ListView
             android:id="@+id/listeArticles"
             style="?attr/themeListeArticleFond"
@@ -45,5 +46,5 @@
             android:layout_height="match_parent"
             android:dividerHeight="1px"
             android:scrollbarThumbVertical="@drawable/scrollbar"/>
+      </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
-</android.support.v4.widget.SwipeRefreshLayout>

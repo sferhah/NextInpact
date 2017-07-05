@@ -9,6 +9,7 @@ using NextInpact.Core.Data;
 using Android.Graphics;
 using Android.Util;
 using System.Collections.Generic;
+using Android.Support.V4.Widget;
 
 namespace NextInpact.NativeDroid
 {
@@ -24,6 +25,16 @@ namespace NextInpact.NativeDroid
                 return list ?? (list = FindViewById<ListView>(Resource.Id.listeArticles));
             }
         }
+
+        private SwipeRefreshLayout _SwipeRefresh;
+        public SwipeRefreshLayout SwipeRefresh
+        {
+            get
+            {
+                return _SwipeRefresh ?? (_SwipeRefresh = FindViewById<SwipeRefreshLayout>(Resource.Id.swipe_container));
+            }
+        }         
+
 
         private TextView _LastRefreshDate;
         public TextView LastRefreshDate
@@ -43,6 +54,9 @@ namespace NextInpact.NativeDroid
             }
         }
 
+
+       
+
         private readonly List<Binding> bindings = new List<Binding>();
 
         protected override void OnCreate(Bundle bundle)
@@ -55,10 +69,17 @@ namespace NextInpact.NativeDroid
 
             SetContentView(Resource.Layout.activity_liste_articles);
 
-            bindings.Add(this.SetBinding(() => Vm.LastRefreshDate, () => LastRefreshDate.Text, BindingMode.TwoWay));
+            bindings.Add(this.SetBinding(() => Vm.LastRefreshDate, () => LastRefreshDate.Text, BindingMode.OneWay));
+
+            SwipeRefresh.Refresh += (sender, e) => { Vm.LoadItemsCommand.Execute(null); };
+
+            bindings.Add(this.SetBinding(() => Vm.IsBusy, () => SwipeRefresh.Refreshing, BindingMode.OneWay));
+
 
             List.Adapter = Vm.Items.GetAdapter(GetTaskAdapter);
         }
+
+   
 
         protected override void OnResume()
         {

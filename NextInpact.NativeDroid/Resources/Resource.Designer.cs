@@ -2640,8 +2640,8 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f080038
 			public const int @fixed = 2131230776;
 			
-			// aapt resource value: 0x7f080073
-			public const int header_text = 2131230835;
+			// aapt resource value: 0x7f080072
+			public const int header_text = 2131230834;
 			
 			// aapt resource value: 0x7f08008b
 			public const int heureArticle = 2131230859;
@@ -2919,8 +2919,8 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f080065
 			public const int submit_area = 2131230821;
 			
-			// aapt resource value: 0x7f080072
-			public const int swipe_container = 2131230834;
+			// aapt resource value: 0x7f080073
+			public const int swipe_container = 2131230835;
 			
 			// aapt resource value: 0x7f08000d
 			public const int tabMode = 2131230733;
