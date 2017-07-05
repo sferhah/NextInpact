@@ -39,8 +39,7 @@ namespace NextInpact.Core.ViewModels
                 return;
             }
 
-            IsBusy = true;
-            RaisePropertyChanged(nameof(IsBusy));
+            IsBusy = true;            
 
             try
             {
@@ -72,8 +71,7 @@ namespace NextInpact.Core.ViewModels
             }
             finally
             {
-                IsBusy = false;
-                RaisePropertyChanged(nameof(IsBusy));
+                IsBusy = false;               
             }
         }
 

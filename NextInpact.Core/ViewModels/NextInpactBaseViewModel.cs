@@ -7,12 +7,16 @@ using Xamarin.Forms;
 namespace NextInpact.Core.ViewModels
 {
     public class NextInpactBaseViewModel : ViewModelBase
-    {
-        
+    {   
+        private bool _IsBusy;
         public bool IsBusy
         {
-            get;
-            set; 
+            get => _IsBusy;
+            set
+            {
+                _IsBusy = value;
+                RaisePropertyChanged(() => IsBusy);
+            }
         }
 
         string title = string.Empty;

@@ -75,7 +75,6 @@ namespace NextInpact.NativeDroid
 
             bindings.Add(this.SetBinding(() => Vm.IsBusy, () => SwipeRefresh.Refreshing, BindingMode.OneWay));
 
-
             List.Adapter = Vm.Items.GetAdapter(GetTaskAdapter);
         }
 
