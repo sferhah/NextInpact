@@ -8,6 +8,7 @@ using GalaSoft.MvvmLight.Helpers;
 using NextInpact.Core.Data;
 using Android.Graphics;
 using Android.Util;
+using System.Collections.Generic;
 
 namespace NextInpact.NativeDroid
 {
@@ -22,7 +23,16 @@ namespace NextInpact.NativeDroid
             {
                 return list ?? (list = FindViewById<ListView>(Resource.Id.listeArticles));
             }
-        }        
+        }
+
+        private TextView _LastRefreshDate;
+        public TextView LastRefreshDate
+        {
+            get
+            {
+                return _LastRefreshDate ?? (_LastRefreshDate = FindViewById<TextView>(Resource.Id.header_text));
+            }
+        }
 
         ArticlesViewModel vm;
         private ArticlesViewModel Vm
@@ -33,6 +43,7 @@ namespace NextInpact.NativeDroid
             }
         }
 
+        private readonly List<Binding> bindings = new List<Binding>();
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -43,6 +54,9 @@ namespace NextInpact.NativeDroid
             ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
 
             SetContentView(Resource.Layout.activity_liste_articles);
+
+            bindings.Add(this.SetBinding(() => Vm.LastRefreshDate, () => LastRefreshDate.Text, BindingMode.TwoWay));
+
             List.Adapter = Vm.Items.GetAdapter(GetTaskAdapter);
         }
 

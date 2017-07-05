@@ -17,12 +17,10 @@ namespace NextInpact.Core.ViewModels
         public ObservableRangeCollection<Article> Items { get; set; }
         public RelayCommand LoadItemsCommand { get; set; }
 
-
-        public string _LastRefreshDate = Preferences.LastRefreshDateText;
+        
         public string LastRefreshDate
         {
-            get;
-            set;
+            get => Preferences.LastRefreshDateText;            
         }
 
         public ArticlesViewModel()
@@ -115,7 +113,9 @@ namespace NextInpact.Core.ViewModels
             await Store.SaveComments(items);
 
             Preferences.LastRefreshDate = DateTime.Now.Ticks;
-            LastRefreshDate = Preferences.LastRefreshDateText;
+
+            RaisePropertyChanged(LastRefreshDate);
+            //LastRefreshDate = Preferences.LastRefreshDateText;
         }
 
 

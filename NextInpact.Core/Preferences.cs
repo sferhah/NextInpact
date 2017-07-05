@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Plugin.Settings;
+using Plugin.Settings.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,32 +12,12 @@ namespace NextInpact.Core
 
     public class Preferences
     {
-        public static long LastRefreshDate
+        private static ISettings AppSettings => CrossSettings.Current;
+
+        public static System.Int64 LastRefreshDate
         {
-            get
-            {
-                if (Application.Current!=null  //TEMP
-                    && Application.Current.Properties.ContainsKey(nameof(LastRefreshDate)))
-                {
-                    var refreshDate = (Application.Current.Properties[nameof(LastRefreshDate)] as Nullable<long>);
-
-                    if (refreshDate == null)
-                    {
-                        refreshDate = 0;
-                    }
-
-                    return refreshDate.Value;
-                }
-
-                return 0;
-            }
-            set
-            {
-                if (Application.Current != null) //TEMP
-                {
-                    Application.Current.Properties[nameof(LastRefreshDate)] = value;
-                }
-            }
+            get => AppSettings.GetValueOrDefault(nameof(LastRefreshDate), default(System.Int64));
+            set => AppSettings.AddOrUpdateValue(nameof(LastRefreshDate), value);
         }
 
         private const string lastRefreshDateText = "Dernière synchronisation : ";
