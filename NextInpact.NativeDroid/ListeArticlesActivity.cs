@@ -10,6 +10,7 @@ using Android.Graphics;
 using Android.Util;
 using System.Collections.Generic;
 using Android.Support.V4.Widget;
+using Android.Content;
 
 namespace NextInpact.NativeDroid
 {
@@ -33,7 +34,7 @@ namespace NextInpact.NativeDroid
             {
                 return _SwipeRefresh ?? (_SwipeRefresh = FindViewById<SwipeRefreshLayout>(Resource.Id.swipe_container));
             }
-        }         
+        }
 
 
         private TextView _LastRefreshDate;
@@ -55,7 +56,7 @@ namespace NextInpact.NativeDroid
         }
 
 
-       
+
 
         private readonly List<Binding> bindings = new List<Binding>();
 
@@ -64,7 +65,7 @@ namespace NextInpact.NativeDroid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            
+
             ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
 
             SetContentView(Resource.Layout.activity_liste_articles);
@@ -76,9 +77,20 @@ namespace NextInpact.NativeDroid
             bindings.Add(this.SetBinding(() => Vm.IsBusy, () => SwipeRefresh.Refreshing, BindingMode.OneWay));
 
             List.Adapter = Vm.Items.GetAdapter(GetTaskAdapter);
+
+
+            List.ItemClick += List_ItemClick;
         }
 
-   
+        private void List_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var article = Vm.Items[e.Position];
+
+            Toast.MakeText(this, article.Title, ToastLength.Long).Show();
+
+//            Intent intent = new Intent(this, null);
+
+        }
 
         protected override void OnResume()
         {
@@ -86,6 +98,7 @@ namespace NextInpact.NativeDroid
 
             if (Vm.Items.Count == 0)
                 Vm.LoadItemsCommand.Execute(null);
+
         }
 
         private View GetTaskAdapter(int position, Article model, View convertView)
