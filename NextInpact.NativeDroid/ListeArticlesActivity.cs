@@ -11,11 +11,13 @@ using Android.Util;
 using System.Collections.Generic;
 using Android.Support.V4.Widget;
 using Android.Content;
+using Android.Support.V7.App;
+using static Android.Support.V7.Widget.ActionMenuView;
 
 namespace NextInpact.NativeDroid
 {
     [Activity(Label = "NextInpact.NativeDroid", MainLauncher = true, Icon = "@drawable/logo_nextinpact")]
-    public class ListeArticlesActivity : Activity
+    public class ListeArticlesActivity : AppCompatActivity, IOnMenuItemClickListener
     {
 
         private ListView list;
@@ -64,7 +66,7 @@ namespace NextInpact.NativeDroid
         {
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.Forms.Forms.Init(this, bundle);
 
             ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
 
@@ -80,6 +82,39 @@ namespace NextInpact.NativeDroid
 
 
             List.ItemClick += List_ItemClick;
+
+
+        }
+
+
+        private IMenuItem refreshCommand;
+        public IMenuItem RefreshCommand
+        {
+            get
+            {
+                return refreshCommand ?? (refreshCommand = this.monMenu.FindItem(Resource.Id.action_refresh));
+            }
+        }
+
+
+        private IMenu monMenu;
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {   
+            monMenu = menu;
+            base.OnCreateOptionsMenu(monMenu);
+            MenuInflater.Inflate(Resource.Menu.activity_liste_articles_actions, monMenu);
+            return true;
+        }
+
+        public bool OnMenuItemClick(IMenuItem item)
+        {
+            if (item == RefreshCommand)
+            {
+                Vm.LoadItemsCommand.Execute(null);
+                return true;
+            }
+
+            return false;
         }
 
         private void List_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
