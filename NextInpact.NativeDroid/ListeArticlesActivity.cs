@@ -92,9 +92,12 @@ namespace NextInpact.NativeDroid
             //List.Adapter = Vm.Items.GetAdapter(GetTaskAdapter);
             //List.ItemClick += List_ItemClick;
 
-            UpdateRecyclerAdapter(this, List);
+            UpdateRecyclerAdapter(this, List);            
 
-            List.SetAdapter(Vm.Items.GetRecyclerAdapter(BindViewHolder, Resource.Layout.liste_articles_item_article));
+            var adapter = Vm.Items.GetRecyclerAdapter(BindViewHolder, Resource.Layout.liste_articles_item_article, List_ItemClick);
+            
+
+            List.SetAdapter(adapter);
 
         }
 
@@ -151,9 +154,9 @@ namespace NextInpact.NativeDroid
         }
  
 
-        private void List_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void List_ItemClick(int x, View y, int z, View w)
         {
-            var article = Vm.Items[e.Position];
+            var article = Vm.Items[z];
 
             Toast.MakeText(this, article.Title, ToastLength.Long).Show();
 
@@ -207,7 +210,7 @@ namespace NextInpact.NativeDroid
 
         private void BindViewHolder(CachingViewHolder holder, Article model, int position)
         {
-
+           
 
             var section = holder.FindCachedViewById<TextView>(Resource.Id.titreSection);
 
@@ -276,12 +279,6 @@ namespace NextInpact.NativeDroid
                                      illustration,
                                      () => illustration.ImageData,
                                      BindingMode.OneWay));            
-
-            holder.SaveBinding("6", new Binding<byte[], byte[]>(model,
-                                  () => model.ImageData,
-                                  illustration,
-                                  () => illustration.ImageData,
-                                  BindingMode.OneWay));
 
         }
 
