@@ -17,7 +17,7 @@ using static Android.Support.V7.Widget.ActionMenuView;
 namespace NextInpact.NativeDroid
 {
     [Activity(Label = "NextInpact.NativeDroid", MainLauncher = true, Icon = "@drawable/logo_nextinpact")]
-    public class ListeArticlesActivity : AppCompatActivity, IOnMenuItemClickListener
+    public class ListeArticlesActivity : AppCompatActivity
     {
 
         private ListView list;
@@ -106,7 +106,8 @@ namespace NextInpact.NativeDroid
             return true;
         }
 
-        public bool OnMenuItemClick(IMenuItem item)
+        
+        public override bool OnOptionsItemSelected(IMenuItem item)
         {
             if (item == RefreshCommand)
             {
@@ -116,6 +117,7 @@ namespace NextInpact.NativeDroid
 
             return false;
         }
+ 
 
         private void List_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
