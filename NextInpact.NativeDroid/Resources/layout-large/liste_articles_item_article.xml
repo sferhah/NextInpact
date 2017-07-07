@@ -43,7 +43,7 @@
                 android:paddingRight="?android:attr/scrollbarSize"
                 android:paddingTop="5dp">
 
-    <ImageView
+    <com.nextInpact.ui.widgets.CustomImageView
         android:id="@+id/imageArticle"
         android:layout_width="70dp"
         android:layout_height="53dp"

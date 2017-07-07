@@ -19,6 +19,7 @@ namespace NextInpact.Core.Parsing
         {
             List<Article> mesArticlesItem = new List<Article>();
 
+            //Won't find some encodings : just press F5 several times...
             var pageNXI = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
 
             var lesArticles = pageNXI.QuerySelectorAll("article[data-acturowid][data-datepubli]");

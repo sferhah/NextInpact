@@ -13,6 +13,8 @@ using Android.Support.V4.Widget;
 using Android.Content;
 using Android.Support.V7.App;
 using static Android.Support.V7.Widget.ActionMenuView;
+using Android.Support.V7.Widget;
+using NextInpact.NativeDroid.Converters;
 
 namespace NextInpact.NativeDroid
 {
@@ -20,12 +22,21 @@ namespace NextInpact.NativeDroid
     public class ListeArticlesActivity : AppCompatActivity
     {
 
-        private ListView list;
-        public ListView List
+        //private ListView list;
+        //public ListView List
+        //{
+        //    get
+        //    {
+        //        return list ?? (list = FindViewById<ListView>(Resource.Id.listeArticles));
+        //    }
+        //}
+
+        private RecyclerView list;
+        public RecyclerView List
         {
             get
             {
-                return list ?? (list = FindViewById<ListView>(Resource.Id.listeArticles));
+                return list ?? (list = FindViewById<RecyclerView>(Resource.Id.listeArticles));
             }
         }
 
@@ -78,12 +89,33 @@ namespace NextInpact.NativeDroid
 
             bindings.Add(this.SetBinding(() => Vm.IsBusy, () => SwipeRefresh.Refreshing, BindingMode.OneWay));
 
-            List.Adapter = Vm.Items.GetAdapter(GetTaskAdapter);
+            //List.Adapter = Vm.Items.GetAdapter(GetTaskAdapter);
+            //List.ItemClick += List_ItemClick;
 
+            UpdateRecyclerAdapter(this, List);
 
-            List.ItemClick += List_ItemClick;
+            List.SetAdapter(Vm.Items.GetRecyclerAdapter(BindViewHolder, Resource.Layout.liste_articles_item_article));
 
+        }
 
+        private static void UpdateRecyclerAdapter(Context activity, RecyclerView view)
+        {   
+            int columns = 1;
+
+            RecyclerView.LayoutManager manager = view.GetLayoutManager();
+
+            if ((manager != null)
+                && (manager is GridLayoutManager))
+            {
+                if (((GridLayoutManager)manager).SpanCount != columns)
+                {
+                    ((GridLayoutManager)manager).SpanCount = columns;
+                }
+            }
+            else
+            {
+                view.SetLayoutManager(new GridLayoutManager(activity, columns));
+            }
         }
 
 
@@ -141,10 +173,8 @@ namespace NextInpact.NativeDroid
         private View GetTaskAdapter(int position, Article model, View convertView)
         {
             // Not reusing views here
-            convertView = LayoutInflater.Inflate(Resource.Layout.liste_articles_item_article, null);            
+            convertView = LayoutInflater.Inflate(Resource.Layout.liste_articles_item_article, null);
             
-          
-
 
             var SectionArticle = convertView.FindViewById<TextView>(Resource.Id.titreSection);
             SectionArticle.Text = model.PublicationDate;
@@ -156,12 +186,7 @@ namespace NextInpact.NativeDroid
             if(model.ImageData != null)
             {
                 Bitmap bm = BitmapFactory.DecodeByteArray(model.ImageData, 0, model.ImageData.Length);
-                DisplayMetrics dm = new DisplayMetrics();
-                WindowManager.DefaultDisplay.GetMetrics(dm);
-
-                imgViewer.SetMinimumHeight(dm.HeightPixels);
-                imgViewer.SetMinimumWidth(dm.WidthPixels);
-                imgViewer.SetImageBitmap(bm);
+                imgViewer.SetImageBitmap(bm);                
             }
 
             var titreArticle = convertView.FindViewById<TextView>(Resource.Id.titreArticle);
@@ -178,6 +203,88 @@ namespace NextInpact.NativeDroid
 
             return convertView;
         }
+
+
+        private void BindViewHolder(CachingViewHolder holder, Article model, int position)
+        {
+
+
+            var section = holder.FindCachedViewById<TextView>(Resource.Id.titreSection);
+
+            holder.DeleteBinding("1");
+
+            holder.SaveBinding("1", new Binding<string, string>(model,
+                                                 () => model.PublicationDate,
+                                                 section,
+                                                 () => section.Text,
+                                                 BindingMode.OneWay));
+
+            holder.DeleteBinding("1.1");
+            holder.SaveBinding("1.1", new Binding<bool, ViewStates>(model,
+                                                 () => model.ShowDateSection,
+                                                 section,
+                                                 () => section.Visibility,
+                                                 BindingMode.OneWay).ConvertSourceToTarget(BoolToVisibileConverter.Convert));
+
+
+
+            var title = holder.FindCachedViewById<TextView>(Resource.Id.titreArticle);
+            holder.DeleteBinding("2");
+
+
+            holder.SaveBinding("2", new Binding<string, string>(model,
+                                           () => model.Title,
+                                           title,
+                                           () => title.Text,
+                                           BindingMode.OneWay));
+
+            var subtitle = holder.FindCachedViewById<TextView>(Resource.Id.sousTitreArticle);
+
+            holder.DeleteBinding("3");
+            holder.SaveBinding("3", new Binding<string, string>(model,
+                                        () => model.SubTitle,
+                                        subtitle,
+                                        () => subtitle.Text,
+                                        BindingMode.OneWay));
+
+
+
+            var publicationTime = holder.FindCachedViewById<TextView>(Resource.Id.heureArticle);
+
+            holder.DeleteBinding("4");
+            holder.SaveBinding("4", new Binding<string, string>(model,
+                                        () => model.PublicationTime,
+                                        publicationTime,
+                                        () => publicationTime.Text,
+                                        BindingMode.OneWay));
+
+
+            var commentsCount = holder.FindCachedViewById<TextView>(Resource.Id.commentairesArticle);
+
+            holder.DeleteBinding("5");
+            holder.SaveBinding("5", new Binding<int, string>(model,
+                                        () => model.TotalCommentsCount,
+                                        commentsCount,
+                                        () => commentsCount.Text,
+                                        BindingMode.OneWay));
+
+            var illustration = holder.FindCachedViewById<CustomImageView>(Resource.Id.imageArticle);
+            holder.DeleteBinding("6");
+
+            holder.SaveBinding("6", new Binding<byte[], byte[]>(model,
+                                     () => model.ImageData,
+                                     illustration,
+                                     () => illustration.ImageData,
+                                     BindingMode.OneWay));            
+
+            holder.SaveBinding("6", new Binding<byte[], byte[]>(model,
+                                  () => model.ImageData,
+                                  illustration,
+                                  () => illustration.ImageData,
+                                  BindingMode.OneWay));
+
+        }
+
     }
 }
 
