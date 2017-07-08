@@ -5,37 +5,18 @@ using NextInpact.Core.ViewModels;
 using NextInpact.Core.Models;
 using Android.Views;
 using NextInpact.Core.Data;
-using Android.Graphics;
-using Android.Util;
-using System.Collections.Generic;
-using Android.Support.V4.Widget;
-using Android.Content;
-using Android.Support.V7.App;
-using static Android.Support.V7.Widget.ActionMenuView;
-using Android.Support.V7.Widget;
-using NextInpact.NativeDroid.Converters;
 using MvvmCross.Droid.Views;
-using MvvmCross.Droid.Support.V4;
+
 
 namespace NextInpact.NativeDroid
 {
     [Activity(Label = "NextInpact.NativeDroid", MainLauncher = true, Icon = "@drawable/logo_nextinpact")]
-    public class ListeArticlesActivity : MvxActivity
+    public class ListeArticlesActivity : MvxActivity<ArticlesViewModel>
     {
-        ArticlesViewModel vm;
-        private ArticlesViewModel Vm
-        {
-            get
-            {
-                return vm ?? (vm = new ArticlesViewModel());
-            }
-        }     
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            base.ViewModel = Vm;
 
             Xamarin.Forms.Forms.Init(this, bundle);
 
@@ -68,7 +49,7 @@ namespace NextInpact.NativeDroid
         {
             if (item == RefreshCommand)
             {
-                Vm.LoadItemsCommand.Execute(null);
+                base.ViewModel.LoadItemsCommand.Execute(null);
                 return true;
             }
 
@@ -78,7 +59,7 @@ namespace NextInpact.NativeDroid
 
         private void List_ItemClick(int x, View y, int z, View w)
         {
-            var article = Vm.Items[z];
+            var article = base.ViewModel.Items[z];
 
             Toast.MakeText(this, article.Title, ToastLength.Long).Show();
 
@@ -90,8 +71,8 @@ namespace NextInpact.NativeDroid
         {
             base.OnResume();
 
-            if (Vm.Items.Count == 0)
-                Vm.LoadItemsCommand.Execute(null);
+            if (base.ViewModel.Items.Count == 0)
+                base.ViewModel.LoadItemsCommand.Execute(null);
 
         }
 
