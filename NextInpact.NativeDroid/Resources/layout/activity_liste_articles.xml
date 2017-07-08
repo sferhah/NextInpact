@@ -1,26 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-/*
- * Copyright 2013, 2014, 2015, 2016 Sami Ferhah, Anael Mobilia
- * 
- * This file is part of NextINpact-Unofficial.
- * 
- * NextINpact-Unofficial is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * NextINpact-Unofficial is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with NextINpact-Unofficial. If not, see <http://www.gnu.org/licenses/>
- */
--->
-
+<?xml version="1.0" encoding="utf-8"?>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:local="http://schemas.android.com/apk/res-auto"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:orientation="vertical">
@@ -32,28 +13,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:maxLines="1"
-            android:text="@string/lastUpdate"
-            android:textColor="@android:color/white"/>
+            android:maxLines="1"            
+            android:textColor="@android:color/white"
+            local:MvxBind="Text LastRefreshDate"/>
+      
       <android.support.v4.widget.SwipeRefreshLayout android:id="@+id/swipe_container"
                                                     xmlns:android="http://schemas.android.com/apk/res/android"
                                                     android:layout_width="match_parent"
-                                                    android:layout_height="match_parent">
-        <!--<ListView
+                                                    android:layout_height="match_parent"
+                                                    local:MvxBind="Refreshing IsBusy; Refresh LoadItemsCommand">
+        <Mvx.MvxListView
             android:id="@+id/listeArticles"
             style="?attr/themeListeArticleFond"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:dividerHeight="1px"
-            android:scrollbarThumbVertical="@drawable/scrollbar"/>-->
-
-        <android.support.v7.widget.RecyclerView
-         android:id="@+id/listeArticles"     
-         style="?attr/themeListeArticleFond"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"         
-         android:dividerHeight="1px"         
-         android:scrollbars="vertical"
-         android:scrollbarThumbVertical="@drawable/scrollbar"/>
+            android:scrollbarThumbVertical="@drawable/scrollbar"
+            local:MvxItemTemplate="@layout/liste_articles_item_article"
+            local:MvxBind="ItemsSource Items;ItemClick ItemSelectedCommand"/>
+     
       </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>

@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using NextInpact.Core.Data;
 using System.Linq;
 using NextInpact.Core.Networking;
-using GalaSoft.MvvmLight.Command;
+using MvvmCross.Core.ViewModels;
 
 namespace NextInpact.Core.ViewModels
 {
     public class ArticlesViewModel : NextInpactBaseViewModel
     {
         public ObservableRangeCollection<Article> Items { get; set; }
-        public RelayCommand LoadItemsCommand { get; set; }
+        public MvxCommand LoadItemsCommand { get; set; }
 
         
         public string LastRefreshDate
@@ -27,7 +27,7 @@ namespace NextInpact.Core.ViewModels
         {
             Title = "NextINpact (Unofficial)";
             Items = new ObservableRangeCollection<Article>();
-            LoadItemsCommand = new RelayCommand(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new MvxCommand(async () => await ExecuteLoadItemsCommand());
         }
 
         bool firstAppear = true;

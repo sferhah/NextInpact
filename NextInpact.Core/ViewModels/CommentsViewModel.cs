@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 using NextInpact.Core.Helpers;
 using NextInpact.Core.Models;
 using Xamarin.Forms;
-using GalaSoft.MvvmLight.Command;
+using MvvmCross.Core.ViewModels;
 
 namespace NextInpact.Core.ViewModels
 {
     public class CommentsViewModel : NextInpactBaseViewModel
     {
         public ObservableRangeCollection<Comment> Items { get; set; }
-        public RelayCommand LoadItemsCommand { get; set; }
+        public MvxCommand LoadItemsCommand { get; set; }
 
         public Article article { get; set; }
 
@@ -20,7 +20,7 @@ namespace NextInpact.Core.ViewModels
             this.article = article;
             Title = "NextINpact (Unofficial)";
             Items = new ObservableRangeCollection<Comment>();
-            LoadItemsCommand = new RelayCommand(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new MvxCommand(async () => await ExecuteLoadItemsCommand());
         }
 
         async Task ExecuteLoadItemsCommand()

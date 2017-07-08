@@ -1,12 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using NextInpact.Core.Helpers;
-using NextInpact.Core.Models;
-using NextInpact.Core.Parsing;
-using Xamarin.Forms;
+﻿using MvvmCross.Core.ViewModels;
 
 namespace NextInpact.Core.ViewModels
 {
-    public class NextInpactBaseViewModel : ViewModelBase
+    public class NextInpactBaseViewModel : MvxViewModel
     {   
         private bool _IsBusy;
         public bool IsBusy

@@ -1,27 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
+using System.Globalization;
+using MvvmCross.Platform.Converters;
 
 namespace NextInpact.NativeDroid.Converters
 {
-    public static class BoolToVisibileConverter
+    public class BoolToVisibileValueConverter : MvxValueConverter<bool, ViewStates>
     {
-        public static bool ConvertBack(ViewStates viewState)
+        protected override ViewStates Convert(bool value, Type targetType, object parameter, CultureInfo cultureInfo)
         {
-            return viewState == ViewStates.Visible;
-        }
-
-        public static ViewStates Convert(bool visible)
-        {
-            return visible ? ViewStates.Visible : ViewStates.Gone;
+            return value ? ViewStates.Visible : ViewStates.Gone;
         }
     }
 }

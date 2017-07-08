@@ -20,6 +20,8 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:local="http://schemas.android.com/apk/res-auto"
+
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical">
@@ -32,7 +34,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center_horizontal"
-      android:textAppearance="?android:attr/textAppearanceMedium"/>
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      local:MvxBind="Visibility BoolToVisibile(ShowDateSection); Text PublicationDate"/>
 
 
   <RelativeLayout android:id="@+id/relativeLayoutArticle"               
@@ -45,14 +48,15 @@
                   android:paddingTop="5dp">
 
 
-    <com.nextInpact.ui.widgets.CustomImageView
+    <com.nextinpact.ui.widgets.CustomImageView
         android:id="@+id/imageArticle"
         android:layout_width="70dp"
         android:layout_height="53dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="5dp"
-        android:contentDescription="@string/contentDescriptionImageArticle"/>
+        android:contentDescription="@string/contentDescriptionImageArticle"
+        local:MvxBind="ImageData ImageData"/>
 
     <TextView
         android:id="@+id/titreArticle"
@@ -61,7 +65,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageArticle"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        local:MvxBind="Text Title"/>
 
     <TextView
         android:id="@+id/heureArticle"
@@ -72,7 +77,8 @@
         android:layout_marginRight="2dp"
         android:layout_toRightOf="@id/imageArticle"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="12sp"/>
+        android:textSize="12sp"
+        local:MvxBind="Text PublicationTime"/>
 
     <TextView
         android:id="@+id/labelAbonne"
@@ -95,7 +101,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/titreArticle"
         android:drawableLeft="@drawable/small_comms"
-        android:textAppearance="@style/textAppearanceMicro"/>
+        android:textAppearance="@style/textAppearanceMicro"
+        local:MvxBind="Text TotalCommentsCount"/>
 
     <TextView
         android:id="@+id/sousTitreArticle"
@@ -106,6 +113,7 @@
         android:layout_marginRight="2dp"
         android:layout_toRightOf="@id/heureArticle"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        local:MvxBind="Text SubTitle"/>
   </RelativeLayout>
 </LinearLayout>
