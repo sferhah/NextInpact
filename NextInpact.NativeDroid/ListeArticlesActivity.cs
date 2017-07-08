@@ -23,6 +23,7 @@ namespace NextInpact.NativeDroid
             ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
 
             SetContentView(Resource.Layout.activity_liste_articles);
+           
         }
 
         private IMenuItem refreshCommand;

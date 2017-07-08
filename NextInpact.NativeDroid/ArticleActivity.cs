@@ -1,25 +1,14 @@
 ﻿using Android.App;
 using Android.OS;
+using MvvmCross.Droid.Views;
 using NextInpact.Core.ViewModels;
 
 
 namespace NextInpact.NativeDroid
 {
     [Activity(Label = "NextInpact.NativeDroid", MainLauncher = false, Icon = "@drawable/logo_nextinpact")]
-    public class ArticleActivity : Activity
+    public class ArticleActivity : MvxActivity<ArticleDetailViewModel>
     {
-
-      
-
-        ArticleDetailViewModel vm;
-        private ArticleDetailViewModel Vm
-        {
-            get
-            {
-                return vm ?? (vm = new ArticleDetailViewModel());
-            }
-        }
-      
 
         protected override void OnCreate(Bundle bundle)
         {

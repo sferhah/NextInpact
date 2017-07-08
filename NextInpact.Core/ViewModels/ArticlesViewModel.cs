@@ -9,6 +9,7 @@ using NextInpact.Core.Data;
 using System.Linq;
 using NextInpact.Core.Networking;
 using MvvmCross.Core.ViewModels;
+using System.Windows.Input;
 
 namespace NextInpact.Core.ViewModels
 {
@@ -28,6 +29,22 @@ namespace NextInpact.Core.ViewModels
             Title = "NextINpact (Unofficial)";
             Items = new ObservableRangeCollection<Article>();
             LoadItemsCommand = new MvxCommand(async () => await ExecuteLoadItemsCommand());
+        }
+
+        private MvxCommand<Article> _itemSelectedCommand;
+
+        public ICommand ItemSelectedCommand
+        {
+            get
+            {
+                _itemSelectedCommand = _itemSelectedCommand ?? new MvxCommand<Article>(DoSelectItem);
+                return _itemSelectedCommand;
+            }
+        }
+
+        private void DoSelectItem(Article item)
+        {
+            ShowViewModel<ArticleDetailViewModel>(item);
         }
 
         bool firstAppear = true;
