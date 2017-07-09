@@ -6,12 +6,12 @@ using NextInpact.Core.Models;
 using Android.Views;
 using NextInpact.Core.Data;
 using MvvmCross.Droid.Views;
-
+using MvvmCross.Droid.Support.V7.AppCompat;
 
 namespace NextInpact.NativeDroid
 {
     [Activity(Label = "NextInpact.NativeDroid", MainLauncher = true, Icon = "@drawable/logo_nextinpact")]
-    public class ListeArticlesActivity : MvxActivity<ArticlesViewModel>
+    public class ListeArticlesActivity : MvxAppCompatActivity<ArticlesViewModel>
     {
 
         protected override void OnCreate(Bundle bundle)
@@ -22,8 +22,8 @@ namespace NextInpact.NativeDroid
 
             ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
 
-            SetContentView(Resource.Layout.activity_liste_articles);
-           
+            SetContentView(Resource.Layout.activity_liste_articles);            
+
         }
 
         private IMenuItem refreshCommand;
@@ -31,17 +31,17 @@ namespace NextInpact.NativeDroid
         {
             get
             {
-                return refreshCommand ?? (refreshCommand = this.monMenu.FindItem(Resource.Id.action_refresh));
+                return refreshCommand ?? (refreshCommand = this.myMenu.FindItem(Resource.Id.action_refresh));
             }
         }
 
 
-        private IMenu monMenu;
+        private IMenu myMenu;
         public override bool OnCreateOptionsMenu(IMenu menu)
         {   
-            monMenu = menu;
-            base.OnCreateOptionsMenu(monMenu);
-            MenuInflater.Inflate(Resource.Menu.activity_liste_articles_actions, monMenu);
+            myMenu = menu;
+            base.OnCreateOptionsMenu(myMenu);
+            MenuInflater.Inflate(Resource.Menu.activity_liste_articles_actions, myMenu);
             return true;
         }
 
