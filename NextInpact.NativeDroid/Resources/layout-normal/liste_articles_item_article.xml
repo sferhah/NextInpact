@@ -115,5 +115,14 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:visibility="gone"
         local:MvxBind="Text SubTitle"/>
+
+    <ProgressBar
+     android:id="@+id/determinateBar"
+     style="@android:style/Widget.ProgressBar.Horizontal"
+       android:layout_below="@id/commentairesArticle"
+     android:layout_width="fill_parent"
+     android:layout_height="2dp"
+     local:MvxBind="Progress SyncPercentage"/>      
+      
   </RelativeLayout>
 </LinearLayout>
