@@ -19,6 +19,7 @@
  */
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:local="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal">
@@ -40,7 +41,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:paddingLeft="5dp"
-            android:textAppearance="@style/textAppearanceMicro"/>
+            android:textAppearance="@style/textAppearanceMicro"
+            local:MvxBind="Text AuthorWithPostDate"/>
 
         <TextView
             android:id="@+id/numeroCommentaire"
@@ -50,7 +52,8 @@
             android:layout_alignParentRight="true"
             android:paddingRight="?android:attr/scrollbarSize"
             android:textAppearance="@style/textAppearanceMicro"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            local:MvxBind="Text Id"/>
 
         <TextView
             android:id="@+id/uuidCommentaire"
@@ -68,5 +71,6 @@
         android:paddingLeft="5dp"
         android:paddingRight="?android:attr/scrollbarSize"
         android:paddingTop="5dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        local:MvxBind="Text StringToHtml(Content)"/>
 </RelativeLayout>
