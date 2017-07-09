@@ -44,6 +44,7 @@ namespace NextInpact.Core.ViewModels
 
         private void DoSelectItem(Article item)
         {
+            ArticleDetailViewModel.StaticItem = item;
             ShowViewModel<ArticleDetailViewModel>(item);
         }
 

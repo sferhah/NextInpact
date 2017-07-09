@@ -15,26 +15,25 @@ namespace NextInpact.Views
 {   
     public partial class CommentsPage : ContentPage
     {
-        CommentsViewModel viewModel;
+        CommentsViewModel Vm
+        {
+            get
+            {
+                return ((CommentsViewModel)this.BindingContext);
+            }
+        }
         
         public CommentsPage()
         {
             InitializeComponent();
         }
 
-        public CommentsPage(CommentsViewModel viewModel)
-        {
-            InitializeComponent();
-
-            BindingContext = this.viewModel = viewModel;
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (Vm.Items.Count == 0)
+                Vm.LoadItemsCommand.Execute(null);
         }
     }
    

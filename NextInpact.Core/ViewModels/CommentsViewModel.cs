@@ -14,10 +14,11 @@ namespace NextInpact.Core.ViewModels
         public MvxCommand LoadItemsCommand { get; set; }
 
         public Article article { get; set; }
+        public static Article StaticItem; // temp solution
 
-        public CommentsViewModel(Article article)
+        public CommentsViewModel(Article article = null)
         {
-            this.article = article;
+            this.article = article ?? StaticItem;
             Title = "NextINpact (Unofficial)";
             Items = new ObservableRangeCollection<Comment>();
             LoadItemsCommand = new MvxCommand(async () => await ExecuteLoadItemsCommand());

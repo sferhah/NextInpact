@@ -23,14 +23,17 @@ namespace NextInpact.Views
         {
             viewModel.LoadItemsCommand.Execute(null);
         }
-
+        
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             var item = args.SelectedItem as Article;
-            if (item == null)
-                return;
 
-            await Navigation.PushAsync(new ArticleDetailPage(new ArticleDetailViewModel(item)));
+            if (item == null)
+            {
+                return;
+            }
+
+            viewModel.ItemSelectedCommand.Execute(item);
 
             // Manually deselect item
             ItemsListView.SelectedItem = null;
