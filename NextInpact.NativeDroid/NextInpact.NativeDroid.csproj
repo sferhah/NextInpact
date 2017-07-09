@@ -198,8 +198,9 @@
     <Compile Include="AndroidSaveAndLoad.cs" />
     <Compile Include="CommentsActivity.cs" />
     <Compile Include="ArticleActivity.cs" />
-    <Compile Include="Converters\StringToHtmlConverter.cs" />
-    <Compile Include="Converters\BoolToVisibileConverter.cs" />
+    <Compile Include="Converters\DecimalToPercentageValueConverter.cs" />
+    <Compile Include="Converters\StringToHtmlValueConverter.cs" />
+    <Compile Include="Converters\BoolToVisibileValueConverter.cs" />
     <Compile Include="CustomImageView.cs" />
     <Compile Include="ListeArticlesActivity.cs" />
     <Compile Include="MainApplication.cs" />

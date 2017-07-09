@@ -6,7 +6,7 @@ using Android.Text;
 
 namespace NextInpact.NativeDroid.Converters
 {
-    public class StringToHtmlConverter : MvxValueConverter<String, ISpanned>
+    public class StringToHtmlValueConverter : MvxValueConverter<String, ISpanned>
     {
         protected override ISpanned Convert(String strHtml, Type targetType, object parameter, CultureInfo cultureInfo)
         {
