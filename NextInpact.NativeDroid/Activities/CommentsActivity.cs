@@ -1,18 +1,19 @@
 ﻿using Android.App;
 using Android.OS;
-using MvvmCross.Droid.Support.V7.AppCompat;
+using V7 = MvvmCross.Droid.Support.V7.AppCompat;
 using NextInpact.Core.ViewModels;
+using NextInpact.NativeDroid;
 
-namespace NextInpact.NativeDroid
+namespace NextInpact.Activities.NativeDroid
 {
     [Activity(Label = "NextInpact.NativeDroid", MainLauncher = false, Icon = "@drawable/logo_nextinpact")]
-    public class CommentsActivity : MvxAppCompatActivity<CommentsViewModel>
+    public class CommentsActivity : V7.MvxAppCompatActivity<CommentsViewModel>
     {
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView(Resource.Layout.activity_liste_commentaires);            
+            SetContentView(Resource.Layout.activity_liste_commentaires);
         }
 
         protected override void OnResume()

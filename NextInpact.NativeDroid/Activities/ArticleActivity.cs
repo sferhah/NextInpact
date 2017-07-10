@@ -2,15 +2,15 @@
 using Android.OS;
 using Android.Views;
 using Android.Webkit;
-using MvvmCross.Droid.Support.V7.AppCompat;
-using MvvmCross.Droid.Views;
+using V7 = MvvmCross.Droid.Support.V7.AppCompat;
 using NextInpact.Core.ViewModels;
 using static Android.Webkit.WebSettings;
+using NextInpact.NativeDroid;
 
-namespace NextInpact.NativeDroid
+namespace NextInpact.Activities.NativeDroid
 {
     [Activity(Label = "NextInpact.NativeDroid", MainLauncher = false, Icon = "@drawable/logo_nextinpact")]
-    public class ArticleActivity : MvxAppCompatActivity<ArticleDetailViewModel>
+    public class ArticleActivity : V7.MvxAppCompatActivity<ArticleDetailViewModel>
     {
 
         protected override void OnCreate(Bundle bundle)

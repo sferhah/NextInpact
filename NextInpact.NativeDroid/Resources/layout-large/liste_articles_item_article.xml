@@ -109,5 +109,16 @@
         android:drawableLeft="@drawable/small_comms"
         android:textAppearance="@style/textAppearanceMicro"
         local:MvxBind="Text TotalCommentsCount"/>
+
+    
   </RelativeLayout>
+
+
+  <ProgressBar
+   android:id="@+id/determinateBar"
+   style="@android:style/Widget.ProgressBar.Horizontal"   
+   android:layout_width="fill_parent"
+   android:layout_height="2dp"
+   local:MvxBind="Progress DoubleToPercentage(SyncPercentage)"/>
+  
 </LinearLayout>
