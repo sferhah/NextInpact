@@ -1,7 +1,5 @@
-﻿
-using MvvmCross.Core.ViewModels;
+﻿using MvvmCross.Core.ViewModels;
 using NextInpact.Core.Models;
-using NextInpact.Core.Parsing;
 using System.Windows.Input;
 
 namespace NextInpact.Core.ViewModels

@@ -1,12 +1,10 @@
-﻿using SQLite;
+﻿using MvvmCross.Platform;
+using SQLite;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
+
 
 namespace NextInpact.Core.Data
 {
@@ -34,8 +32,8 @@ namespace NextInpact.Core.Data
         private ThreadSafeSqlite()
         {
             var sqliteFilename = String.Format("{0}.db3", "NextInpact");
-            String connetcionString = DependencyService.Get<IStringConnectionProvider>().GetConnectionString(sqliteFilename);
-            this.database = new SQLiteConnection(connetcionString);
+            String connectionString = Mvx.Resolve<IStringConnectionProvider>().GetConnectionString(sqliteFilename);
+            this.database = new SQLiteConnection(connectionString);
         }
 
 

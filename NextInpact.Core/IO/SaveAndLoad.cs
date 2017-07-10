@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using MvvmCross.Platform;
+using System;
 using System.Threading.Tasks;
-using Xamarin.Forms;
+
 
 namespace NextInpact.Core.IO
 {
@@ -17,7 +14,7 @@ namespace NextInpact.Core.IO
 
         public static void Save(String folder, string filename, byte[] data)
         {
-            DependencyService.Get<ISaveAndLoad>().Save(folder, filename, data);
+            Mvx.Resolve<ISaveAndLoad>().Save(folder, filename, data);            
         }
 
         public static async Task<byte[]> LoadAsync(ImageFolder folder, string filename)
@@ -27,7 +24,7 @@ namespace NextInpact.Core.IO
 
         public static byte[] Load(String folder, string filename)
         {
-            return DependencyService.Get<ISaveAndLoad>().Load(folder, filename);
+            return Mvx.Resolve<ISaveAndLoad>().Load(folder, filename);            
         }
     }
 

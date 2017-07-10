@@ -18,7 +18,7 @@ namespace NextInpact.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<ArticlesViewModel>();
+            RegisterAppStart<ArticlesViewModel>();            
         }
     }
 }

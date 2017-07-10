@@ -4,6 +4,11 @@ using Android.App;
 using Android.OS;
 using Android.Runtime;
 using Plugin.CurrentActivity;
+using MvvmCross.Platform;
+using NextInpact.PlatformSpecific.NativeDroid;
+using NextInpact.Core.Data;
+using NextInpact.Core.IO;
+using MvvmCross.Platform.IoC;
 
 namespace NextInpact.NativeDroid
 {
@@ -20,7 +25,12 @@ namespace NextInpact.NativeDroid
         {
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
-            //A great place to initialize Xamarin.Insights and Dependency Services!
+            //A great place to initialize Xamarin.Insights and Dependency Services!            
+
+            MvxSimpleIoCContainer.Initialize();
+            Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());
+            Mvx.RegisterSingleton<ISaveAndLoad>(new AndroidSaveAndLoad());
+
         }
 
         public override void OnTerminate()

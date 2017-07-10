@@ -1,20 +1,14 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.Views;
-using MvvmCross.Forms.Core;
 using MvvmCross.Forms.Droid;
 using MvvmCross.Forms.Droid.Presenters;
 using MvvmCross.Platform;
 using NextInpact.Core.Data;
-using NextInpact.Core.Models;
-using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+using NextInpact.Core.IO;
+using NextInpact.PlatformSpecific.Droid;
 using Xamarin.Forms;
-using static Android.Resource;
 
 namespace NextInpact.Droid
 {
@@ -30,6 +24,9 @@ namespace NextInpact.Droid
 
             Forms.Init(this, bundle);
 
+            Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());
+            Mvx.RegisterSingleton<ISaveAndLoad>(new AndroidSaveAndLoad());
+
             var app = new App();
 
             LoadApplication(app);
@@ -40,21 +37,6 @@ namespace NextInpact.Droid
             var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsDroidPagePresenter;
             presenter.MvxFormsApp = app;
 
-
-            //base.OnCreate(bundle);
-
-            //Forms.Init(this, bundle);
-
-            //ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
-
-            ////var mvxFormsApp = new MvxFormsApplication();
-            ////LoadApplication(mvxFormsApp);
-
-            //var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsDroidPagePresenter;
-            //presenter.MvxFormsApp = mvxFormsApp;
-
-            //IMvxAppStart resolved = Mvx.Resolve<IMvxAppStart>();
-            //resolved.Start();
 
         }
 

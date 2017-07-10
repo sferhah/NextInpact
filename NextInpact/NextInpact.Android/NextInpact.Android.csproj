@@ -200,8 +200,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidHtmlLabelRenderer.cs" />
-    <Compile Include="AndroidSaveAndLoad.cs" />
-    <Compile Include="AndroidConnectionProvider.cs" />
+    <Compile Include="PlatformSpecific\AndroidSaveAndLoad.cs" />
+    <Compile Include="PlatformSpecific\AndroidConnectionProvider.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="MainActivity.cs" />

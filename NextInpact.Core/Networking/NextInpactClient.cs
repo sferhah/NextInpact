@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using NextInpact.Core.Parsing;
 using NextInpact.Core.Models;
-using System.IO;
 using NextInpact.Core.IO;
 
 namespace NextInpact.Core.Networking

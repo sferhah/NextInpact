@@ -1,9 +1,7 @@
 ﻿using System;
 using System.IO;
-using NextInpact.PlatformSpecific.NativeDroid;
 using NextInpact.Core.IO;
 
-[assembly: Xamarin.Forms.Dependency(typeof(AndroidSaveAndLoad))]
 namespace NextInpact.PlatformSpecific.NativeDroid
 {
     public class AndroidSaveAndLoad : ISaveAndLoad
