@@ -8,7 +8,7 @@
     </ContentPage.ToolbarItems>
     <WebView VerticalOptions="FillAndExpand">
         <WebView.Source>
-            <HtmlWebViewSource Html="{Binding Item.Content}"/>
+            <HtmlWebViewSource Html="{Binding ArticleContent}"/>
         </WebView.Source>
     </WebView>
 </ContentPage>

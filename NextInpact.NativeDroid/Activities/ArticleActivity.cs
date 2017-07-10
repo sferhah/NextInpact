@@ -1,10 +1,8 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Views;
-using Android.Webkit;
 using V7 = MvvmCross.Droid.Support.V7.AppCompat;
 using NextInpact.Core.ViewModels;
-using static Android.Webkit.WebSettings;
 using NextInpact.NativeDroid;
 
 namespace NextInpact.Activities.NativeDroid
@@ -17,13 +15,7 @@ namespace NextInpact.Activities.NativeDroid
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.activity_article);
-
-            var webview = FindViewById<WebView>(Resource.Id.webview);
-            webview.Settings.SetLayoutAlgorithm(LayoutAlgorithm.SingleColumn);
-            webview.LoadDataWithBaseURL(null, base.ViewModel.Item.Content, "text/html", "utf-8", null);
-
         }
-
 
         private IMenuItem _ShowCommentsButton;
         public IMenuItem ShowCommentsButton

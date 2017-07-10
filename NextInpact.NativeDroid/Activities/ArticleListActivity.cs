@@ -12,7 +12,7 @@ using NextInpact.NativeDroid;
 namespace NextInpact.Activities.NativeDroid
 {
     [Activity(Label = "NextInpact.NativeDroid", MainLauncher = true, Icon = "@drawable/logo_nextinpact")]
-    public class ListeArticlesActivity : V7.MvxAppCompatActivity<ArticlesViewModel>
+    public class ArticleListActivity : V7.MvxAppCompatActivity<ArticlesViewModel>
     {
 
         protected override void OnCreate(Bundle bundle)
@@ -55,27 +55,6 @@ namespace NextInpact.Activities.NativeDroid
 
             return false;
         }
-
-
-        private void List_ItemClick(int x, View y, int z, View w)
-        {
-            var article = base.ViewModel.Items[z];
-
-            Toast.MakeText(this, article.Title, ToastLength.Long).Show();
-
-            //            Intent intent = new Intent(this, null);
-
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            if (base.ViewModel.Items.Count == 0)
-                base.ViewModel.LoadItemsCommand.Execute(null);
-
-        }
-
     }
 }
 

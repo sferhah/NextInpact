@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using NextInpact.Core.Helpers;
 using NextInpact.Core.Models;
 using MvvmCross.Core.ViewModels;
+using NextInpact.Core.Data;
 
 namespace NextInpact.Core.ViewModels
 {
@@ -12,15 +13,21 @@ namespace NextInpact.Core.ViewModels
         public ObservableRangeCollection<Comment> Items { get; set; }
         public MvxCommand LoadItemsCommand { get; set; }
 
-        public Article article { get; set; }
-        public static Article StaticItem; // temp solution
+        private Article article;
 
-        public CommentsViewModel(Article article = null)
+        public async void Init(int itemId)
         {
-            this.article = article ?? StaticItem;
+            this.article = await Store.GetArticle(itemId);
+            IsBusy = false;
+            await ExecuteLoadItemsCommand();
+        }
+
+        public CommentsViewModel()
+        {   
             Title = "NextINpact (Unofficial)";
             Items = new ObservableRangeCollection<Comment>();
             LoadItemsCommand = new MvxCommand(async () => await ExecuteLoadItemsCommand());
+            IsBusy = true;
         }
 
         async Task ExecuteLoadItemsCommand()

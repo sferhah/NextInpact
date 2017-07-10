@@ -15,14 +15,6 @@ namespace NextInpact.Activities.NativeDroid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.activity_liste_commentaires);
         }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            if (base.ViewModel.Items.Count == 0)
-                base.ViewModel.LoadItemsCommand.Execute(null);
-        }
     }
 }
 

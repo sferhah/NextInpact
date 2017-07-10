@@ -179,6 +179,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomViews\CustomWebView.cs" />
     <Compile Include="PlatformSpecific\AndroidConnectionProvider.cs" />
     <Compile Include="PlatformSpecific\AndroidSaveAndLoad.cs" />
     <Compile Include="Activities\CommentsActivity.cs" />
@@ -187,7 +188,7 @@
     <Compile Include="Converters\StringToHtmlValueConverter.cs" />
     <Compile Include="Converters\BoolToVisibileValueConverter.cs" />
     <Compile Include="CustomViews\CustomImageView.cs" />
-    <Compile Include="Activities\ListeArticlesActivity.cs" />
+    <Compile Include="Activities\ArticleListActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,10 +1,8 @@
 ﻿using System;
-
 using NextInpact.Core.Models;
 using NextInpact.Core.ViewModels;
-
 using Xamarin.Forms;
-using NextInpact.Core.Parsing;
+
 
 namespace NextInpact.Views
 {
@@ -19,7 +17,7 @@ namespace NextInpact.Views
             BindingContext = viewModel = new ArticlesViewModel();
         }
 
-        private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             viewModel.LoadItemsCommand.Execute(null);
         }
@@ -38,14 +36,6 @@ namespace NextInpact.Views
             // Manually deselect item
             ItemsListView.SelectedItem = null;
         }
-        
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
-        }
     }
 }

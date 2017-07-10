@@ -28,6 +28,7 @@ namespace NextInpact.Core.ViewModels
             Title = "NextINpact (Unofficial)";
             Items = new ObservableRangeCollection<Article>();
             LoadItemsCommand = new MvxCommand(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand.Execute(null);
         }
 
         private MvxCommand<Article> _itemSelectedCommand;
@@ -42,9 +43,8 @@ namespace NextInpact.Core.ViewModels
         }
 
         private void DoSelectItem(Article item)
-        {
-            ArticleDetailViewModel.StaticItem = item;
-            ShowViewModel<ArticleDetailViewModel>(item);
+        {   
+            ShowViewModel<ArticleDetailViewModel>(new { itemId = item.Id } );
         }
 
         bool firstAppear = true;

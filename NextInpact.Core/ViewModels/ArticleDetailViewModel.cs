@@ -1,19 +1,33 @@
 ﻿using MvvmCross.Core.ViewModels;
 using NextInpact.Core.Models;
 using System.Windows.Input;
+using System;
+using System.Threading.Tasks;
+using NextInpact.Core.Data;
 
 namespace NextInpact.Core.ViewModels
 {
     public class ArticleDetailViewModel : NextInpactBaseViewModel
-    {
-        public static Article StaticItem; // temp solution
+    {   
         public Article Item { get; set; }
 
-        public ArticleDetailViewModel(Article item = null)
+        
+        public String ArticleContent
         {
-            //Title = item.Titre;
+            get => Item?.Content;
+            
+        }
+
+        public async void Init(int itemId)
+        {   
+            this.Item = await Store.GetArticle(itemId);
+            RaisePropertyChanged(() => ArticleContent);
+        }
+
+        public ArticleDetailViewModel()
+        {
+            //Title = item.Title;
             Title = "NextINpact (Unofficial)";
-            Item = item ?? StaticItem;
         }
 
         private MvxCommand _ShowCommentsCommand;
@@ -28,9 +42,8 @@ namespace NextInpact.Core.ViewModels
         }
 
         private void ShowComments()
-        {
-            CommentsViewModel.StaticItem = this.Item;
-            ShowViewModel<CommentsViewModel>(this.Item);
+        {   
+            ShowViewModel<CommentsViewModel>(new { itemId = this.Item.Id });
         }
 
     }

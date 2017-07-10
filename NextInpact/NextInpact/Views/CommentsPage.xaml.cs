@@ -27,14 +27,7 @@ namespace NextInpact.Views
         {
             InitializeComponent();
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (Vm.Items.Count == 0)
-                Vm.LoadItemsCommand.Execute(null);
-        }
+    
     }
    
 }

@@ -25,6 +25,15 @@ namespace NextInpact.Core.Data
             return items_in_db;
         }
 
+        public static async Task<Article> GetArticle(int id)
+        {
+            var item = await ThreadSafeSqlite.Instance.GetAsync<Article>(id);
+
+            item.Comments = (await ThreadSafeSqlite.Instance.GetAllAsync<Comment>()).Where(x => x.ArticleId == item.Id).OrderBy(x => x.TimeStampPublication).ToList();
+
+            return item;
+        }
+
         public static async Task SetMiniaturesFromCache(IEnumerable<Article> items)
         {
             foreach (var item in items)
