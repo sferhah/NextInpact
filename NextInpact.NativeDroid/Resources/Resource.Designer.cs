@@ -1530,7 +1530,6 @@ namespace NextInpact.NativeDroid
 			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_reverseLayout = global::NextInpact.NativeDroid.Resource.Styleable.RecyclerView_reverseLayout;
 			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_spanCount = global::NextInpact.NativeDroid.Resource.Styleable.RecyclerView_spanCount;
 			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_stackFromEnd = global::NextInpact.NativeDroid.Resource.Styleable.RecyclerView_stackFromEnd;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::NextInpact.NativeDroid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

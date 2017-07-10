@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using NextInpact.Core.Helpers;
 using NextInpact.Core.Models;
-using Xamarin.Forms;
 using System.Collections.Generic;
 using NextInpact.Core.Data;
 using System.Linq;
@@ -80,12 +79,12 @@ namespace NextInpact.Core.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                MessagingCenter.Send(new MessagingCenterAlert
-                {
-                    Title = "Error",
-                    Message = "Unable to load items.",
-                    Cancel = "OK"
-                }, "message");
+                //MessagingCenter.Send(new MessagingCenterAlert
+                //{
+                //    Title = "Error",
+                //    Message = "Unable to load items.",
+                //    Cancel = "OK"
+                //}, "message");
             }
             finally
             {
