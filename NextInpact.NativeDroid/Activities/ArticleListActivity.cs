@@ -17,9 +17,7 @@ namespace NextInpact.Activities.NativeDroid
 
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);            
-
-            ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
+            base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.activity_liste_articles);
 

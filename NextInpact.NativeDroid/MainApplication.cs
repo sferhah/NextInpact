@@ -9,6 +9,7 @@ using NextInpact.PlatformSpecific.NativeDroid;
 using NextInpact.Core.Data;
 using NextInpact.Core.IO;
 using MvvmCross.Platform.IoC;
+using NextInpact.Core.Models;
 
 namespace NextInpact.NativeDroid
 {
@@ -30,7 +31,7 @@ namespace NextInpact.NativeDroid
             MvxSimpleIoCContainer.Initialize();
             Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());
             Mvx.RegisterSingleton<ISaveAndLoad>(new AndroidSaveAndLoad());
-
+            ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
         }
 
         public override void OnTerminate()
