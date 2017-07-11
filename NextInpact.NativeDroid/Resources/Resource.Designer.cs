@@ -3840,8 +3840,26 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
+			// aapt resource value: 0x7f020127
+			public const int avd_hide_password_1 = 2130837799;
+			
+			// aapt resource value: 0x7f020128
+			public const int avd_hide_password_2 = 2130837800;
+			
+			// aapt resource value: 0x7f020129
+			public const int avd_hide_password_3 = 2130837801;
+			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
+			
+			// aapt resource value: 0x7f02012a
+			public const int avd_show_password_1 = 2130837802;
+			
+			// aapt resource value: 0x7f02012b
+			public const int avd_show_password_2 = 2130837803;
+			
+			// aapt resource value: 0x7f02012c
+			public const int avd_show_password_3 = 2130837804;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -5586,47 +5604,47 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f0a0027
 			public const int abc_toolbar_collapse_description = 2131361831;
 			
-			// aapt resource value: 0x7f0a0052
-			public const int aboutContent = 2131361874;
+			// aapt resource value: 0x7f0a0051
+			public const int aboutContent = 2131361873;
+			
+			// aapt resource value: 0x7f0a0086
+			public const int accueilBadgeAbonne = 2131361926;
 			
 			// aapt resource value: 0x7f0a0087
-			public const int accueilBadgeAbonne = 2131361927;
-			
-			// aapt resource value: 0x7f0a0088
-			public const int accueilImageArticleAlt = 2131361928;
-			
-			// aapt resource value: 0x7f0a0048
-			public const int action_about = 2131361864;
-			
-			// aapt resource value: 0x7f0a004b
-			public const int action_comments = 2131361867;
-			
-			// aapt resource value: 0x7f0a004a
-			public const int action_debug = 2131361866;
-			
-			// aapt resource value: 0x7f0a0046
-			public const int action_overflow = 2131361862;
-			
-			// aapt resource value: 0x7f0a0045
-			public const int action_refresh = 2131361861;
+			public const int accueilImageArticleAlt = 2131361927;
 			
 			// aapt resource value: 0x7f0a0047
-			public const int action_settings = 2131361863;
+			public const int action_about = 2131361863;
 			
-			// aapt resource value: 0x7f0a004c
-			public const int action_share = 2131361868;
+			// aapt resource value: 0x7f0a004a
+			public const int action_comments = 2131361866;
 			
 			// aapt resource value: 0x7f0a0049
-			public const int action_support = 2131361865;
+			public const int action_debug = 2131361865;
 			
-			// aapt resource value: 0x7f0a004d
-			public const int app_name = 2131361869;
+			// aapt resource value: 0x7f0a0045
+			public const int action_overflow = 2131361861;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int action_refresh = 2131361860;
+			
+			// aapt resource value: 0x7f0a0046
+			public const int action_settings = 2131361862;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int action_share = 2131361867;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int action_support = 2131361864;
+			
+			// aapt resource value: 0x7f0a004c
+			public const int app_name = 2131361868;
 			
 			// aapt resource value: 0x7f0a0036
 			public const int appbar_scrolling_view_behavior = 2131361846;
 			
-			// aapt resource value: 0x7f0a0054
-			public const int articleVideErreurHTML = 2131361876;
+			// aapt resource value: 0x7f0a0053
+			public const int articleVideErreurHTML = 2131361875;
 			
 			// aapt resource value: 0x7f0a0037
 			public const int bottom_sheet_behavior = 2131361847;
@@ -5634,140 +5652,137 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f0a0038
 			public const int character_counter_pattern = 2131361848;
 			
-			// aapt resource value: 0x7f0a0053
-			public const int chargementPasInternet = 2131361875;
-			
-			// aapt resource value: 0x7f0a008a
-			public const int commentairesChargement = 2131361930;
+			// aapt resource value: 0x7f0a0052
+			public const int chargementPasInternet = 2131361874;
 			
 			// aapt resource value: 0x7f0a0089
-			public const int commentairesPlusDeCommentaires = 2131361929;
+			public const int commentairesChargement = 2131361929;
 			
-			// aapt resource value: 0x7f0a0050
-			public const int contentDescriptionImageArticle = 2131361872;
-			
-			// aapt resource value: 0x7f0a008d
-			public const int debugEffacerCache = 2131361933;
-			
-			// aapt resource value: 0x7f0a008f
-			public const int debugEffacerCacheSmiley = 2131361935;
-			
-			// aapt resource value: 0x7f0a0090
-			public const int debugEffacerCacheSmileyToast = 2131361936;
-			
-			// aapt resource value: 0x7f0a008e
-			public const int debugEffacerCacheToast = 2131361934;
-			
-			// aapt resource value: 0x7f0a0091
-			public const int debugGenererArrayList = 2131361937;
-			
-			// aapt resource value: 0x7f0a0092
-			public const int debugListeFichiers = 2131361938;
-			
-			// aapt resource value: 0x7f0a008c
-			public const int debugPubBeta = 2131361932;
-			
-			// aapt resource value: 0x7f0a0093
-			public const int debugTesterConnexion = 2131361939;
-			
-			// aapt resource value: 0x7f0a008b
-			public const int debugTitre = 2131361931;
-			
-			// aapt resource value: 0x7f0a0041
-			public const int defautOptionLogin = 2131361857;
-			
-			// aapt resource value: 0x7f0a0040
-			public const int defautOptionNbArticles = 2131361856;
-			
-			// aapt resource value: 0x7f0a0042
-			public const int defautOptionPassword = 2131361858;
-			
-			// aapt resource value: 0x7f0a0044
-			public const int defautOptionTelechargerImagesv2 = 2131361860;
-			
-			// aapt resource value: 0x7f0a0043
-			public const int defautOptionTelechargerImagesv2Test = 2131361859;
-			
-			// aapt resource value: 0x7f0a003f
-			public const int defautOptionZoomTexte = 2131361855;
-			
-			// aapt resource value: 0x7f0a0051
-			public const int disclaimerContent = 2131361873;
-			
-			// aapt resource value: 0x7f0a0055
-			public const int erreurAuthentification = 2131361877;
-			
-			// aapt resource value: 0x7f0a0057
-			public const int erreurEnvoiMail = 2131361879;
-			
-			// aapt resource value: 0x7f0a007c
-			public const int idOptionAbonne = 2131361916;
-			
-			// aapt resource value: 0x7f0a0083
-			public const int idOptionAfficherNbNouveauComm = 2131361923;
-			
-			// aapt resource value: 0x7f0a0082
-			public const int idOptionCacherBoutonPartage = 2131361922;
-			
-			// aapt resource value: 0x7f0a0079
-			public const int idOptionCommentairesTelechargementContinu = 2131361913;
-			
-			// aapt resource value: 0x7f0a0078
-			public const int idOptionDebug = 2131361912;
-			
-			// aapt resource value: 0x7f0a0080
-			public const int idOptionDebugEffacerCache = 2131361920;
-			
-			// aapt resource value: 0x7f0a007f
-			public const int idOptionInfoCompteAbonne = 2131361919;
-			
-			// aapt resource value: 0x7f0a007b
-			public const int idOptionInstallationApplication = 2131361915;
-			
-			// aapt resource value: 0x7f0a0074
-			public const int idOptionLiensDansArticles = 2131361908;
-			
-			// aapt resource value: 0x7f0a0075
-			public const int idOptionLiensDansCommentaires = 2131361909;
-			
-			// aapt resource value: 0x7f0a007d
-			public const int idOptionLogin = 2131361917;
-			
-			// aapt resource value: 0x7f0a007a
-			public const int idOptionNbArticles = 2131361914;
-			
-			// aapt resource value: 0x7f0a007e
-			public const int idOptionPassword = 2131361918;
-			
-			// aapt resource value: 0x7f0a0081
-			public const int idOptionPositionCommentaire = 2131361921;
-			
-			// aapt resource value: 0x7f0a0077
-			public const int idOptionTelechargerCommentaires = 2131361911;
-			
-			// aapt resource value: 0x7f0a0085
-			public const int idOptionTelechargerImages = 2131361925;
-			
-			// aapt resource value: 0x7f0a0086
-			public const int idOptionTelechargerImagesv2 = 2131361926;
-			
-			// aapt resource value: 0x7f0a0084
-			public const int idOptionThemeSombre = 2131361924;
-			
-			// aapt resource value: 0x7f0a0076
-			public const int idOptionZoomTexte = 2131361910;
-			
-			// aapt resource value: 0x7f0a0056
-			public const int infoOptionAbonne = 2131361878;
-			
-			// aapt resource value: 0x7f0a004e
-			public const int lastUpdate = 2131361870;
+			// aapt resource value: 0x7f0a0088
+			public const int commentairesPlusDeCommentaires = 2131361928;
 			
 			// aapt resource value: 0x7f0a004f
-			public const int lastUpdateNever = 2131361871;
+			public const int contentDescriptionImageArticle = 2131361871;
+			
+			// aapt resource value: 0x7f0a008c
+			public const int debugEffacerCache = 2131361932;
+			
+			// aapt resource value: 0x7f0a008e
+			public const int debugEffacerCacheSmiley = 2131361934;
+			
+			// aapt resource value: 0x7f0a008f
+			public const int debugEffacerCacheSmileyToast = 2131361935;
+			
+			// aapt resource value: 0x7f0a008d
+			public const int debugEffacerCacheToast = 2131361933;
+			
+			// aapt resource value: 0x7f0a0090
+			public const int debugGenererArrayList = 2131361936;
+			
+			// aapt resource value: 0x7f0a0091
+			public const int debugListeFichiers = 2131361937;
+			
+			// aapt resource value: 0x7f0a008b
+			public const int debugPubBeta = 2131361931;
+			
+			// aapt resource value: 0x7f0a0092
+			public const int debugTesterConnexion = 2131361938;
+			
+			// aapt resource value: 0x7f0a008a
+			public const int debugTitre = 2131361930;
+			
+			// aapt resource value: 0x7f0a0040
+			public const int defautOptionLogin = 2131361856;
+			
+			// aapt resource value: 0x7f0a003f
+			public const int defautOptionNbArticles = 2131361855;
+			
+			// aapt resource value: 0x7f0a0041
+			public const int defautOptionPassword = 2131361857;
+			
+			// aapt resource value: 0x7f0a0043
+			public const int defautOptionTelechargerImagesv2 = 2131361859;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int defautOptionTelechargerImagesv2Test = 2131361858;
 			
 			// aapt resource value: 0x7f0a003e
-			public const int library_name = 2131361854;
+			public const int defautOptionZoomTexte = 2131361854;
+			
+			// aapt resource value: 0x7f0a0050
+			public const int disclaimerContent = 2131361872;
+			
+			// aapt resource value: 0x7f0a0054
+			public const int erreurAuthentification = 2131361876;
+			
+			// aapt resource value: 0x7f0a0056
+			public const int erreurEnvoiMail = 2131361878;
+			
+			// aapt resource value: 0x7f0a007b
+			public const int idOptionAbonne = 2131361915;
+			
+			// aapt resource value: 0x7f0a0082
+			public const int idOptionAfficherNbNouveauComm = 2131361922;
+			
+			// aapt resource value: 0x7f0a0081
+			public const int idOptionCacherBoutonPartage = 2131361921;
+			
+			// aapt resource value: 0x7f0a0078
+			public const int idOptionCommentairesTelechargementContinu = 2131361912;
+			
+			// aapt resource value: 0x7f0a0077
+			public const int idOptionDebug = 2131361911;
+			
+			// aapt resource value: 0x7f0a007f
+			public const int idOptionDebugEffacerCache = 2131361919;
+			
+			// aapt resource value: 0x7f0a007e
+			public const int idOptionInfoCompteAbonne = 2131361918;
+			
+			// aapt resource value: 0x7f0a007a
+			public const int idOptionInstallationApplication = 2131361914;
+			
+			// aapt resource value: 0x7f0a0073
+			public const int idOptionLiensDansArticles = 2131361907;
+			
+			// aapt resource value: 0x7f0a0074
+			public const int idOptionLiensDansCommentaires = 2131361908;
+			
+			// aapt resource value: 0x7f0a007c
+			public const int idOptionLogin = 2131361916;
+			
+			// aapt resource value: 0x7f0a0079
+			public const int idOptionNbArticles = 2131361913;
+			
+			// aapt resource value: 0x7f0a007d
+			public const int idOptionPassword = 2131361917;
+			
+			// aapt resource value: 0x7f0a0080
+			public const int idOptionPositionCommentaire = 2131361920;
+			
+			// aapt resource value: 0x7f0a0076
+			public const int idOptionTelechargerCommentaires = 2131361910;
+			
+			// aapt resource value: 0x7f0a0084
+			public const int idOptionTelechargerImages = 2131361924;
+			
+			// aapt resource value: 0x7f0a0085
+			public const int idOptionTelechargerImagesv2 = 2131361925;
+			
+			// aapt resource value: 0x7f0a0083
+			public const int idOptionThemeSombre = 2131361923;
+			
+			// aapt resource value: 0x7f0a0075
+			public const int idOptionZoomTexte = 2131361909;
+			
+			// aapt resource value: 0x7f0a0055
+			public const int infoOptionAbonne = 2131361877;
+			
+			// aapt resource value: 0x7f0a004d
+			public const int lastUpdate = 2131361869;
+			
+			// aapt resource value: 0x7f0a004e
+			public const int lastUpdateNever = 2131361870;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int mr_button_content_description = 2131361792;
@@ -5832,89 +5847,89 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f0a0013
 			public const int mr_user_route_category_name = 2131361811;
 			
-			// aapt resource value: 0x7f0a005a
-			public const int optionAbonne = 2131361882;
-			
-			// aapt resource value: 0x7f0a005b
-			public const int optionAbonneDetail = 2131361883;
-			
-			// aapt resource value: 0x7f0a005e
-			public const int optionAbonneDisclaimer = 2131361886;
-			
-			// aapt resource value: 0x7f0a0068
-			public const int optionActiverLiensArticle = 2131361896;
-			
-			// aapt resource value: 0x7f0a006d
-			public const int optionActiverLiensCommentaire = 2131361901;
-			
-			// aapt resource value: 0x7f0a0065
-			public const int optionAfficherNbNouveauComm = 2131361893;
-			
-			// aapt resource value: 0x7f0a0066
-			public const int optionAfficherNbNouveauCommDetail = 2131361894;
-			
-			// aapt resource value: 0x7f0a0069
-			public const int optionCacherBoutonPartage = 2131361897;
-			
-			// aapt resource value: 0x7f0a0070
-			public const int optionCommentairesTelechargementContinu = 2131361904;
-			
-			// aapt resource value: 0x7f0a0071
-			public const int optionCommentairesTelechargementContinuDetail = 2131361905;
-			
-			// aapt resource value: 0x7f0a0073
-			public const int optionDebug = 2131361907;
-			
-			// aapt resource value: 0x7f0a005f
-			public const int optionLogin = 2131361887;
-			
-			// aapt resource value: 0x7f0a0060
-			public const int optionLoginDetail = 2131361888;
-			
-			// aapt resource value: 0x7f0a0064
-			public const int optionNbArticles = 2131361892;
-			
-			// aapt resource value: 0x7f0a0061
-			public const int optionPassword = 2131361889;
-			
-			// aapt resource value: 0x7f0a0062
-			public const int optionPasswordDetail = 2131361890;
-			
-			// aapt resource value: 0x7f0a006e
-			public const int optionPositionCommentaire = 2131361902;
-			
-			// aapt resource value: 0x7f0a006f
-			public const int optionPositionCommentaireDetail = 2131361903;
-			
 			// aapt resource value: 0x7f0a0059
-			public const int optionTailleTexte = 2131361881;
+			public const int optionAbonne = 2131361881;
 			
-			// aapt resource value: 0x7f0a006a
-			public const int optionTelechargerImage = 2131361898;
-			
-			// aapt resource value: 0x7f0a006b
-			public const int optionTelechargerImageDetail = 2131361899;
-			
-			// aapt resource value: 0x7f0a005c
-			public const int optionThemeSombre = 2131361884;
+			// aapt resource value: 0x7f0a005a
+			public const int optionAbonneDetail = 2131361882;
 			
 			// aapt resource value: 0x7f0a005d
-			public const int optionsAbonne = 2131361885;
+			public const int optionAbonneDisclaimer = 2131361885;
 			
 			// aapt resource value: 0x7f0a0067
-			public const int optionsArticles = 2131361895;
+			public const int optionActiverLiensArticle = 2131361895;
 			
 			// aapt resource value: 0x7f0a006c
-			public const int optionsCommentaires = 2131361900;
+			public const int optionActiverLiensCommentaire = 2131361900;
+			
+			// aapt resource value: 0x7f0a0064
+			public const int optionAfficherNbNouveauComm = 2131361892;
+			
+			// aapt resource value: 0x7f0a0065
+			public const int optionAfficherNbNouveauCommDetail = 2131361893;
+			
+			// aapt resource value: 0x7f0a0068
+			public const int optionCacherBoutonPartage = 2131361896;
+			
+			// aapt resource value: 0x7f0a006f
+			public const int optionCommentairesTelechargementContinu = 2131361903;
+			
+			// aapt resource value: 0x7f0a0070
+			public const int optionCommentairesTelechargementContinuDetail = 2131361904;
 			
 			// aapt resource value: 0x7f0a0072
-			public const int optionsDeveloppement = 2131361906;
+			public const int optionDebug = 2131361906;
 			
-			// aapt resource value: 0x7f0a0058
-			public const int optionsGenerales = 2131361880;
+			// aapt resource value: 0x7f0a005e
+			public const int optionLogin = 2131361886;
+			
+			// aapt resource value: 0x7f0a005f
+			public const int optionLoginDetail = 2131361887;
 			
 			// aapt resource value: 0x7f0a0063
-			public const int optionsListeArticle = 2131361891;
+			public const int optionNbArticles = 2131361891;
+			
+			// aapt resource value: 0x7f0a0060
+			public const int optionPassword = 2131361888;
+			
+			// aapt resource value: 0x7f0a0061
+			public const int optionPasswordDetail = 2131361889;
+			
+			// aapt resource value: 0x7f0a006d
+			public const int optionPositionCommentaire = 2131361901;
+			
+			// aapt resource value: 0x7f0a006e
+			public const int optionPositionCommentaireDetail = 2131361902;
+			
+			// aapt resource value: 0x7f0a0058
+			public const int optionTailleTexte = 2131361880;
+			
+			// aapt resource value: 0x7f0a0069
+			public const int optionTelechargerImage = 2131361897;
+			
+			// aapt resource value: 0x7f0a006a
+			public const int optionTelechargerImageDetail = 2131361898;
+			
+			// aapt resource value: 0x7f0a005b
+			public const int optionThemeSombre = 2131361883;
+			
+			// aapt resource value: 0x7f0a005c
+			public const int optionsAbonne = 2131361884;
+			
+			// aapt resource value: 0x7f0a0066
+			public const int optionsArticles = 2131361894;
+			
+			// aapt resource value: 0x7f0a006b
+			public const int optionsCommentaires = 2131361899;
+			
+			// aapt resource value: 0x7f0a0071
+			public const int optionsDeveloppement = 2131361905;
+			
+			// aapt resource value: 0x7f0a0057
+			public const int optionsGenerales = 2131361879;
+			
+			// aapt resource value: 0x7f0a0062
+			public const int optionsListeArticle = 2131361890;
 			
 			// aapt resource value: 0x7f0a0039
 			public const int password_toggle_content_description = 2131361849;
@@ -5937,8 +5952,8 @@ namespace NextInpact.NativeDroid
 			// aapt resource value: 0x7f0a0029
 			public const int status_bar_notification_info_overflow = 2131361833;
 			
-			// aapt resource value: 0x7f0a0094
-			public const int supportMessage = 2131361940;
+			// aapt resource value: 0x7f0a0093
+			public const int supportMessage = 2131361939;
 			
 			static String()
 			{
