@@ -14,13 +14,35 @@ namespace NextInpact.Views
         }
 
         public ArticleDetailPage()
-        { 
+        {
             InitializeComponent();
+        }
+
+        //Constructor For UWP
+        public ArticleDetailPage(ArticleDetailViewModel viewModel)
+        {
+            InitializeComponent();
+            
+            BindingContext = viewModel;
         }
 
         private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
         {
-            Vm.ShowCommentsCommand.Execute(null);         
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.WinPhone:
+                case Device.Windows:
+                    var vm = new CommentsViewModel();
+                    vm.Init(Vm.Item.Id);
+                    await Navigation.PushAsync(new CommentsPage(vm));
+                    break;
+                default:
+                    Vm.ShowCommentsCommand.Execute(null);
+                    break;
+            }
+           
         }
+
     }
 }

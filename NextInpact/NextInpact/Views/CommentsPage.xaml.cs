@@ -27,7 +27,15 @@ namespace NextInpact.Views
         {
             InitializeComponent();
         }
-    
+
+        //Constructor For UWP
+        public CommentsPage(CommentsViewModel viewModel)
+        {
+            InitializeComponent();
+
+            BindingContext = viewModel;
+        }
+
     }
    
 }

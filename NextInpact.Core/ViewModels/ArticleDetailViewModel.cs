@@ -14,8 +14,7 @@ namespace NextInpact.Core.ViewModels
         
         public String ArticleContent
         {
-            get => Item?.Content;
-            
+            get => Item?.Content ?? "<html>loading...</html>";
         }
 
         public async void Init(int itemId)
