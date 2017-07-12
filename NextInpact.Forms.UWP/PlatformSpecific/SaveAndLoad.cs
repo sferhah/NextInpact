@@ -4,7 +4,7 @@ using NextInpact.Core.IO;
 using Windows.Storage;
 using System.Threading.Tasks;
 
-namespace NextInpact.UWP.PlatformSpecific
+namespace NextInpact.Forms.UWP.PlatformSpecific
 {
     public class WSaveAndLoad : ISaveAndLoad
     {           

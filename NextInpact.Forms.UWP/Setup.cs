@@ -11,7 +11,7 @@ using NextInpact.Core.ViewModels;
 using System;
 using Windows.UI.Xaml.Controls;
 
-namespace NextInpact.UWP
+namespace NextInpact.Forms.UWP
 {
     public class Setup : MvxWindowsSetup
     {

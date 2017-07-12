@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using NextInpact.Core.Data;
 
-namespace NextInpact.UWP.PlatformSpecific
+namespace NextInpact.Forms.UWP.PlatformSpecific
 {
     public class ConnectionProvider : IStringConnectionProvider
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NextInpact.UWP</RootNamespace>
-    <AssemblyName>NextInpact.UWP</AssemblyName>
+    <RootNamespace>NextInpact.Forms.UWP</RootNamespace>
+    <AssemblyName>NextInpact.Forms.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>

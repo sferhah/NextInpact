@@ -3,11 +3,11 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 using NextInpact.Forms;
-using NextInpact.UWP;
+using NextInpact.Forms.UWP;
 using System.Text.RegularExpressions;
 
 [assembly: ExportRenderer(typeof(HtmlLabel), typeof(HtmlLabelRenderer))]
-namespace NextInpact.UWP
+namespace NextInpact.Forms.UWP
 {
     public class HtmlLabelRenderer : LabelRenderer
     {
