@@ -23,20 +23,20 @@
                                        LineBreakMode="CharacterWrap"
                                        Style="{DynamicResource ListItemTextStyle}"
                                        TextColor="#8A979D"
-                                       FontSize="Micro"/>
+                                       FontSize="10"/>
                                 <Label Text="{Binding Id}"                                    
                                        LineBreakMode="CharacterWrap"
                                        HorizontalOptions="EndAndExpand"
                                        Style="{DynamicResource ListItemTextStyle}"                                       
                                        TextColor="#177DAD"
-                                       FontSize="Micro"
+                                       FontSize="10"
                                        FontAttributes="Italic"/>
                                 </StackLayout>
                                 <StackLayout Padding="10">
                                     <controls:HtmlLabel Text="{Binding Content}"
                                                 LineBreakMode="CharacterWrap"
                                                 Style="{DynamicResource ListItemDetailTextStyle}"
-                                                FontSize="Small" />
+                                                FontSize="14" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

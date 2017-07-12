@@ -4,7 +4,11 @@
              x:Class="NextInpact.Views.ArticleDetailPage"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_menu_start_conversation.png" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Clicked="ToolbarItem_Clicked" >
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" iOS="ic_menu_start_conversation.png" Android="ic_menu_start_conversation.png" WinPhone="Assets/ic_menu_start_conversation.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <WebView VerticalOptions="FillAndExpand">
         <WebView.Source>

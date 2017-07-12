@@ -6,7 +6,11 @@
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_menu_refresh.png" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Clicked="ToolbarItem_Clicked" >
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" iOS="ic_menu_refresh.png" Android="ic_menu_refresh.png" WinPhone="Assets/ic_menu_refresh.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
       
@@ -16,7 +20,7 @@
                                Style="{DynamicResource ListItemTextStyle}"            
                                BackgroundColor="#064358"
                                TextColor="White"
-                               FontSize="Micro"
+                               FontSize="10"
                                FontAttributes="Bold"
                                 HorizontalOptions="Fill"
                              HorizontalTextAlignment="Center"/>
@@ -39,32 +43,35 @@
                                LineBreakMode="CharacterWrap"
                                Style="{DynamicResource ListItemTextStyle}"            
                                TextColor="#EA8211"
-                               FontSize="Medium"
+                               FontSize="18"
                                FontAttributes="Bold"
                                 HorizontalOptions="Fill"
                              HorizontalTextAlignment="Center"/>
                         </StackLayout>
                         <StackLayout Padding="5" Orientation="Horizontal" >
-                       <Image Source="{Binding ImageData , Converter={StaticResource ByteArrayToImageConverter}}" Aspect="AspectFill" />
+                       <Image Source="{Binding ImageData , Converter={StaticResource ByteArrayToImageConverter}}"
+                              HeightRequest="53" 
+                              WidthRequest="70" 
+                              VerticalOptions="Center"/>
                       <StackLayout HorizontalOptions="FillAndExpand">                  
                         
                         <Label Text="{Binding Title}"
                                LineBreakMode="CharacterWrap"
                                Style="{DynamicResource ListItemTextStyle}"
                                TextColor="#01232F"
-                               FontSize="Small"
+                               FontSize="14"
                                FontAttributes="Bold"/>
                        <StackLayout Orientation="Horizontal">             
                             <Label Text="{Binding PublicationTime}"
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                    TextColor="#EA8211"
-                                    FontSize="Small"/>
+                                    FontSize="14"/>
                             <Label Text="{Binding SubTitle}"
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                    TextColor="#A8979D"
-                                    FontSize="Small"/>
+                                    FontSize="14"/>
                          </StackLayout>
                        <StackLayout Orientation="Horizontal"  HorizontalOptions="EndAndExpand">
                             <Image Source="{local:ImageResource small_comms.png}" Aspect="AspectFill"  />                                      
@@ -72,13 +79,13 @@
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     TextColor="#8AA4C0"
-                                    FontSize="Micro"/>               
+                                    FontSize="10"/>               
                       </StackLayout>
                      </StackLayout>
                      </StackLayout>
                         <ProgressBar   Progress="{Binding SyncPercentage}"                                        
                                  WidthRequest="300" 
-                                 HeightRequest="10" 
+                                 HeightRequest="5" 
                                  HorizontalOptions="Fill"
                                  VerticalOptions="Center"  />  
              </StackLayout>
