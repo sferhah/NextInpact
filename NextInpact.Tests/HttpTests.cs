@@ -12,7 +12,7 @@ using NextInpact.Core.Networking;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class UnitTest1
+    public class HttpTests
     {
 
         [TestMethod]

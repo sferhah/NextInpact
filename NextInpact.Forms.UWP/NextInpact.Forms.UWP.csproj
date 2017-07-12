@@ -140,13 +140,13 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NextInpact.Core\NextInpact.Core.csproj">
+    <ProjectReference Include="..\NextInpact.Core\NextInpact.Core.csproj">
       <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
       <Name>NextInpact.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NextInpact\NextInpact.csproj">
+    <ProjectReference Include="..\NextInpact.Forms\NextInpact.Forms.csproj">
       <Project>{5137ee36-f5ab-4b9c-afa5-2ac161c9f667}</Project>
-      <Name>NextInpact</Name>
+      <Name>NextInpact.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
