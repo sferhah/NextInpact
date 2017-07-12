@@ -7,7 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
-namespace NextInpact
+namespace NextInpact.Forms
 {
     [Preserve(AllMembers = true)]
     [ContentProperty("Source")]
@@ -22,7 +22,7 @@ namespace NextInpact
                 return null;
             }
 
-            return ImageSource.FromResource("NextInpact.Resources." + Source);
+            return ImageSource.FromResource("NextInpact.Forms.Resources." + Source);
            
         }
     }

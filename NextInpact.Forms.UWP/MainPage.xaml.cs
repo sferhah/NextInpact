@@ -16,7 +16,7 @@ namespace NextInpact.UWP
             Mvx.RegisterSingleton<IStringConnectionProvider>(new ConnectionProvider());
             Mvx.RegisterSingleton<ISaveAndLoad>(new WSaveAndLoad());
 
-            LoadApplication(new NextInpact.App());
+            LoadApplication(new NextInpact.Forms.App());
         }
     }
 }

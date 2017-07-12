@@ -7,8 +7,8 @@ using MvvmCross.Forms.Droid.Presenters;
 using MvvmCross.Platform;
 using NextInpact.Core.Data;
 using NextInpact.Core.IO;
+using NextInpact.Forms;
 using NextInpact.PlatformSpecific.Droid;
-using Xamarin.Forms;
 
 namespace NextInpact.Droid
 {
@@ -22,7 +22,7 @@ namespace NextInpact.Droid
 
             base.OnCreate(bundle);
 
-            Forms.Init(this, bundle);
+            global::Xamarin.Forms.Forms.Init(this, bundle);
 
             Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());
             Mvx.RegisterSingleton<ISaveAndLoad>(new AndroidSaveAndLoad());

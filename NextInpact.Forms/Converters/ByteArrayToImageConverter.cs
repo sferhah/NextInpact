@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace NextInpact.Converters
+namespace NextInpact.Forms.Converters
 {   
 
     public class ByteArrayToImageConverter : IValueConverter

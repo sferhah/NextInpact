@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace NextInpact
+namespace NextInpact.Forms
 {
     public class HtmlLabel : Label
     {

@@ -11,7 +11,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace NextInpact.Views
+namespace NextInpact.Forms.Views
 {   
     public partial class CommentsPage : ContentPage
     {

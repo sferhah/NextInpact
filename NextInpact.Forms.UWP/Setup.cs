@@ -6,7 +6,7 @@ using MvvmCross.Platform;
 using MvvmCross.Core.Views;
 using MvvmCross.Forms.Uwp.Presenters;
 using System.Collections.Generic;
-using NextInpact.Views;
+using NextInpact.Forms.Views;
 using NextInpact.Core.ViewModels;
 using System;
 using Windows.UI.Xaml.Controls;

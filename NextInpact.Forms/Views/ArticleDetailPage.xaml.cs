@@ -1,7 +1,7 @@
 ﻿using NextInpact.Core.ViewModels;
 using Xamarin.Forms;
 
-namespace NextInpact.Views
+namespace NextInpact.Forms.Views
 {
     public partial class ArticleDetailPage : ContentPage
     {

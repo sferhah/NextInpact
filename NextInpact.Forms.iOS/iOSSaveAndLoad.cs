@@ -1,7 +1,7 @@
 ﻿using NextInpact.iOS;
-using NextInpact.IO;
 using System.IO;
 using System;
+using NextInpact.Core.IO;
 
 [assembly: Xamarin.Forms.Dependency(typeof(iOSSaveAndLoad))]
 namespace NextInpact.iOS

@@ -1,7 +1,7 @@
 ﻿using NextInpact.iOS;
 using System.IO;
 using System;
-using NextInpact.Data;
+using NextInpact.Core.Data;
 
 [assembly: Xamarin.Forms.Dependency(typeof(iOSConnectionProvider))]
 namespace NextInpact.iOS

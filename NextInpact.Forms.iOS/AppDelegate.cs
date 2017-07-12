@@ -1,5 +1,6 @@
 ﻿
 using Foundation;
+using NextInpact.Forms;
 using UIKit;
 
 namespace NextInpact.iOS

@@ -4,7 +4,7 @@ using Android.Text;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using NextInpact;
+using NextInpact.Forms;
 using NextInpact.Droid;
 
 [assembly: ExportRenderer(typeof(HtmlLabel), typeof(AndroidHtmlLabelRenderer))]

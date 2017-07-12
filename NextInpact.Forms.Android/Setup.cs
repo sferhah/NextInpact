@@ -7,7 +7,7 @@ using MvvmCross.Platform;
 using MvvmCross.Core.Views;
 using MvvmCross.Forms.Droid.Presenters;
 using System.Collections.Generic;
-using NextInpact.Views;
+using NextInpact.Forms.Views;
 using NextInpact.Core.ViewModels;
 
 namespace NextInpact.Droid
@@ -20,7 +20,7 @@ namespace NextInpact.Droid
 
         protected override IMvxApplication CreateApp()
         {
-            return new Core.App();
+            return new NextInpact.Core.App();
         }
 
         protected override IMvxAndroidViewPresenter CreateViewPresenter()

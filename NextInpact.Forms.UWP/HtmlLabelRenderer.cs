@@ -2,7 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
-using NextInpact;
+using NextInpact.Forms;
 using NextInpact.UWP;
 using System.Text.RegularExpressions;
 

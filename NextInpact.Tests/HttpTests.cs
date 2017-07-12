@@ -9,7 +9,7 @@ using System.Net;
 using System.Reflection;
 using NextInpact.Core.Networking;
 
-namespace UnitTestProject1
+namespace NextInpact.Tests
 {
     [TestClass]
     public class HttpTests

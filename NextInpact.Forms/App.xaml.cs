@@ -1,20 +1,12 @@
 ﻿using NextInpact.Core.Data;
 using NextInpact.Core.Models;
-using NextInpact.Core.Parsing;
-using NextInpact.Views;
-using RestSharp.Portable;
-using RestSharp.Portable.HttpClient;
-using System;
-using System.Diagnostics;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
+using NextInpact.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace NextInpact
+namespace NextInpact.Forms
 {
     public partial class App : Application
     {

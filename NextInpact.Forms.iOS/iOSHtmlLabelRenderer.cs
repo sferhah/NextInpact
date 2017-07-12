@@ -1,9 +1,9 @@
 ﻿using Foundation;
 using System.ComponentModel;
-using NextInpact;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using NextInpact.iOS;
+using NextInpact.Forms;
 
 [assembly: ExportRenderer(typeof(HtmlLabel), typeof(iOSHtmlLabelRenderer))]
 namespace NextInpact.iOS
