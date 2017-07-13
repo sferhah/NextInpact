@@ -48,9 +48,7 @@ namespace NextInpact.Forms.UWP
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
-
-                Xamarin.Forms.Forms.Init(e);
+                rootFrame.NavigationFailed += OnNavigationFailed;           
 
                 var setup = new Setup(rootFrame, e);
                 setup.Initialize();

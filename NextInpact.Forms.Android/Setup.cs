@@ -1,31 +1,30 @@
 ﻿using Android.Content;
-using MvvmCross.Droid.Platform;
 using MvvmCross.Core.ViewModels;
-using MvvmCross.Platform.Platform;
-using MvvmCross.Droid.Views;
 using MvvmCross.Platform;
 using MvvmCross.Core.Views;
-using MvvmCross.Forms.Droid.Presenters;
 using System.Collections.Generic;
 using NextInpact.Forms.Views;
 using NextInpact.Core.ViewModels;
 using MvvmCross.Forms.Droid;
 using System.Reflection;
-using Java.Util;
 using System.Linq;
 using NextInpact.Forms.Converters;
+using NextInpact.Core.Data;
+using NextInpact.Core.IO;
+using NextInpact.PlatformSpecific.Droid;
 
 namespace NextInpact.Droid
 {
     public class Setup : MvxFormsAndroidSetup
     {
-        public Setup(Context applicationContext) : base(applicationContext)
-        {
-        }
+        public Setup(Context applicationContext) : base(applicationContext) {}
 
         protected override IMvxApplication CreateApp()
         {
-            return new NextInpact.Core.App();
+            Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());
+            Mvx.RegisterSingleton<ISaveAndLoad>(new AndroidSaveAndLoad());
+
+            return new Core.App();
         }
 
         protected override void InitializeViewLookup()

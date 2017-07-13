@@ -13,16 +13,12 @@ namespace NextInpact.Forms.UWP
     {
         public MainPage()
         {
-            this.InitializeComponent();            
-
-            Mvx.RegisterSingleton<IStringConnectionProvider>(new ConnectionProvider());
-            Mvx.RegisterSingleton<ISaveAndLoad>(new WSaveAndLoad());
+            this.InitializeComponent();
 
             var start = Mvx.Resolve<IMvxAppStart>();
             start.Start();
 
             var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsUwpPagePresenter;
-
             LoadApplication(presenter.MvxFormsApp);
         }
     }

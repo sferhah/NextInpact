@@ -1,5 +1,7 @@
 ﻿using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.IoC;
+using NextInpact.Core.Data;
+using NextInpact.Core.Models;
 using NextInpact.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,8 @@ namespace NextInpact.Core
     {
         public override void Initialize()
         {
+            ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
+
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()

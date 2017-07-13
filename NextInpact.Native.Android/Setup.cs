@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.Content;
 using MvvmCross.Droid.Platform;
 using MvvmCross.Core.ViewModels;
+using NextInpact.Core.IO;
+using NextInpact.PlatformSpecific.NativeDroid;
+using NextInpact.Core.Data;
+using MvvmCross.Platform;
 
 namespace NextInpact.NativeDroid
 {
     public class Setup : MvxAndroidSetup
     {
-        public Setup(Context applicationContext) : base(applicationContext)
-        {
-        }
+        public Setup(Context applicationContext) : base(applicationContext)  { }
 
         protected override IMvxApplication CreateApp()
         {
-            return new Core.App();            
+            Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());
+            Mvx.RegisterSingleton<ISaveAndLoad>(new AndroidSaveAndLoad());
+
+            return new Core.App();
         }
     }
 }

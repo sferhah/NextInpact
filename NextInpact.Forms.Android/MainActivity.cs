@@ -5,10 +5,7 @@ using MvvmCross.Core.Views;
 using MvvmCross.Forms.Droid;
 using MvvmCross.Forms.Droid.Presenters;
 using MvvmCross.Platform;
-using NextInpact.Core.Data;
-using NextInpact.Core.IO;
 using NextInpact.Forms;
-using NextInpact.PlatformSpecific.Droid;
 
 namespace NextInpact.Droid
 {
@@ -22,22 +19,14 @@ namespace NextInpact.Droid
 
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-
-            Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());
-            Mvx.RegisterSingleton<ISaveAndLoad>(new AndroidSaveAndLoad());
-
-            var app = new App();
-
-            LoadApplication(app);
-        
-
-            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
-
+            global::Xamarin.Forms.Forms.Init(this, bundle);         
+       
             var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsDroidPagePresenter;
-            presenter.MvxFormsApp = app;
+            presenter.MvxFormsApp = new App();
+            LoadApplication(presenter.MvxFormsApp);
 
-
+            //Needs to be set after 'LoadApplication'
+            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
         }
 
 

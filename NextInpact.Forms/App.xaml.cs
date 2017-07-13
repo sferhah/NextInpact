@@ -16,8 +16,6 @@ namespace NextInpact.Forms
         public App()
         {
             InitializeComponent();
-
-            ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
         }
 
         protected override void OnStart()
