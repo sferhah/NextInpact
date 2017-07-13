@@ -9,10 +9,11 @@ using MvvmCross.Forms.Droid.Presenters;
 using System.Collections.Generic;
 using NextInpact.Forms.Views;
 using NextInpact.Core.ViewModels;
+using MvvmCross.Forms.Droid;
 
 namespace NextInpact.Droid
 {
-    public class Setup : MvxAndroidSetup
+    public class Setup : MvxFormsAndroidSetup
     {
         public Setup(Context applicationContext) : base(applicationContext)
         {
@@ -22,15 +23,6 @@ namespace NextInpact.Droid
         {
             return new NextInpact.Core.App();
         }
-
-        protected override IMvxAndroidViewPresenter CreateViewPresenter()
-        {
-            var presenter = new MvxFormsDroidPagePresenter();
-            Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
-
-            return presenter;
-        }
-
 
         protected override void InitializeViewLookup()
         {
