@@ -30,22 +30,8 @@ namespace NextInpact.Forms.Views
             {
                 return;
             }
-
-            switch (Device.RuntimePlatform)
-            {
-                
-                case Device.WinPhone:
-                case Device.Windows:
-                    var vm = new ArticleDetailViewModel();
-                    vm.Init(item.Id);
-                    await Navigation.PushAsync(new ArticleDetailPage(vm));
-                    break;
-                default:
-                    viewModel.ItemSelectedCommand.Execute(item);
-                    break;
-            }
-
             
+            viewModel.ItemSelectedCommand.Execute(item);            
 
             // Manually deselect item
             ItemsListView.SelectedItem = null;

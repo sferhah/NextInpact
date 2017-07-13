@@ -63,7 +63,7 @@ namespace NextInpact.Forms.UWP
 
             if (rootFrame.Content == null)
             {
-                var setup = new Setup(rootFrame);
+                var setup = new Setup(rootFrame, e);
                 setup.Initialize();
 
                 // When the navigation stack isn't restored navigate to the first page,

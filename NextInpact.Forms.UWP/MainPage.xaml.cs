@@ -1,4 +1,6 @@
 ﻿using MvvmCross.Core.Views;
+using MvvmCross.Forms.Uwp;
+using MvvmCross.Forms.Uwp.Presenters;
 using MvvmCross.Platform;
 using NextInpact.Core.Data;
 using NextInpact.Core.IO;
@@ -16,7 +18,12 @@ namespace NextInpact.Forms.UWP
             Mvx.RegisterSingleton<IStringConnectionProvider>(new ConnectionProvider());
             Mvx.RegisterSingleton<ISaveAndLoad>(new WSaveAndLoad());
 
-            LoadApplication(new NextInpact.Forms.App());
+            var app = new NextInpact.Forms.App();
+
+            LoadApplication(app);
+
+            var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsUwpPagePresenter;
+            presenter.MvxFormsApp = app;
         }
     }
 }

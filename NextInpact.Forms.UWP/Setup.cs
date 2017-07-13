@@ -10,25 +10,20 @@ using NextInpact.Forms.Views;
 using NextInpact.Core.ViewModels;
 using System;
 using Windows.UI.Xaml.Controls;
+using MvvmCross.Forms.Uwp;
+using Windows.ApplicationModel.Activation;
 
 namespace NextInpact.Forms.UWP
 {
-    public class Setup : MvxWindowsSetup
+    public class Setup : MvxFormsWindowsSetup
     {
-        public Setup(Frame rootFrame, string suspensionManagerSessionStateKey = null) : base(rootFrame, suspensionManagerSessionStateKey)
+        public Setup(Frame rootFrame, LaunchActivatedEventArgs e) : base(rootFrame, e)
         {
-        }     
+        } 
 
         protected override IMvxApplication CreateApp()
         {
             return new Core.App();
-        }
-
-        protected override IMvxWindowsViewPresenter CreateViewPresenter(IMvxWindowsFrame rootFrame)
-        {
-            var presenter = new MvxWindowsMultiRegionViewPresenter(rootFrame);
-            Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
-            return presenter;
         }
 
         protected override void InitializeViewLookup()
