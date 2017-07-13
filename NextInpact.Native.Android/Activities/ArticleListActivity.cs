@@ -11,7 +11,7 @@ using NextInpact.NativeDroid;
 
 namespace NextInpact.Activities.NativeDroid
 {
-    [Activity(Label = "NextInpact.NativeDroid", MainLauncher = true, Icon = "@drawable/logo_nextinpact")]
+    [Activity(Label = "NextInpact.NativeDroid", MainLauncher = false, Icon = "@drawable/logo_nextinpact")]
     public class ArticleListActivity : V7.MvxAppCompatActivity<ArticlesViewModel>
     {
 
