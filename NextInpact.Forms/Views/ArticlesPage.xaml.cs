@@ -2,24 +2,24 @@
 using NextInpact.Core.Models;
 using NextInpact.Core.ViewModels;
 using Xamarin.Forms;
-
+using MvvmCross.Forms.Core;
 
 namespace NextInpact.Forms.Views
 {
-    public partial class ArticlesPage : ContentPage
+    public partial class ArticlesPage : MvxContentPage<ArticlesViewModel>
     {
-        ArticlesViewModel viewModel;
-
         public ArticlesPage()
         {
-            InitializeComponent();        
+            InitializeComponent();
 
-            BindingContext = viewModel = new ArticlesViewModel();
+            // temp, should not be null
+            if (base.ViewModel == null) 
+                base.ViewModel = new ArticlesViewModel();
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            viewModel.LoadItemsCommand.Execute(null);
+            base.ViewModel.LoadItemsCommand.Execute(null);
         }
         
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -30,8 +30,8 @@ namespace NextInpact.Forms.Views
             {
                 return;
             }
-            
-            viewModel.ItemSelectedCommand.Execute(item);            
+
+            base.ViewModel.ItemSelectedCommand.Execute(item);            
 
             // Manually deselect item
             ItemsListView.SelectedItem = null;

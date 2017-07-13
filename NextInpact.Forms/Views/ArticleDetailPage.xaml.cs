@@ -1,17 +1,11 @@
-﻿using NextInpact.Core.ViewModels;
+﻿using MvvmCross.Forms.Core;
+using NextInpact.Core.ViewModels;
 using Xamarin.Forms;
 
 namespace NextInpact.Forms.Views
 {
-    public partial class ArticleDetailPage : ContentPage
+    public partial class ArticleDetailPage : MvxContentPage<ArticleDetailViewModel>
     {
-        ArticleDetailViewModel Vm
-        {
-            get
-            {
-                return ((ArticleDetailViewModel)this.BindingContext);
-            }
-        }
 
         public ArticleDetailPage()
         {
@@ -20,7 +14,7 @@ namespace NextInpact.Forms.Views
 
         private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
         {
-            Vm.ShowCommentsCommand.Execute(null);
+            base.ViewModel.ShowCommentsCommand.Execute(null);
         }
 
     }

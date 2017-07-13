@@ -1,4 +1,5 @@
-﻿using NextInpact.Core.ViewModels;
+﻿using MvvmCross.Forms.Core;
+using NextInpact.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,16 +14,8 @@ using Xamarin.Forms.Xaml;
 
 namespace NextInpact.Forms.Views
 {   
-    public partial class CommentsPage : ContentPage
-    {
-        CommentsViewModel Vm
-        {
-            get
-            {
-                return ((CommentsViewModel)this.BindingContext);
-            }
-        }
-        
+    public partial class CommentsPage : MvxContentPage<CommentsViewModel>
+    {   
         public CommentsPage()
         {
             InitializeComponent();
