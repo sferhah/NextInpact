@@ -10,11 +10,7 @@ namespace NextInpact.Forms.Views
     {
         public ArticlesPage()
         {
-            InitializeComponent();
-
-            // temp, should not be null
-            if (base.ViewModel == null) 
-                base.ViewModel = new ArticlesViewModel();
+            InitializeComponent();            
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)

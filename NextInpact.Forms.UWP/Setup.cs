@@ -12,6 +12,8 @@ using System;
 using Windows.UI.Xaml.Controls;
 using MvvmCross.Forms.Uwp;
 using Windows.ApplicationModel.Activation;
+using MvvmCross.Platform.Converters;
+using NextInpact.Forms.Converters;
 
 namespace NextInpact.Forms.UWP
 {
@@ -37,6 +39,13 @@ namespace NextInpact.Forms.UWP
 
             var container = Mvx.Resolve<IMvxViewsContainer>();
             container.AddAll(registry);
+        }
+
+        protected override void InitializeLastChance()
+        {
+            base.InitializeLastChance();
+            var registry = Mvx.Resolve<IMvxValueConverterRegistry>();
+            registry.AddOrOverwrite("ByteArrayToImage", new ByteArrayToImageValueConverter());
         }
 
     }

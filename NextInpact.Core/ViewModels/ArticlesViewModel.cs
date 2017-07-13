@@ -14,7 +14,7 @@ namespace NextInpact.Core.ViewModels
 {
     public class ArticlesViewModel : NextInpactBaseViewModel
     {
-        public ObservableRangeCollection<Article> Items { get; set; }
+        public ObservableRangeCollection<Article> Items { get; set; } 
         public MvxCommand LoadItemsCommand { get; set; }
 
         

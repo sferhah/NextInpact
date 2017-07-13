@@ -10,6 +10,10 @@ using System.Collections.Generic;
 using NextInpact.Forms.Views;
 using NextInpact.Core.ViewModels;
 using MvvmCross.Forms.Droid;
+using System.Reflection;
+using Java.Util;
+using System.Linq;
+using NextInpact.Forms.Converters;
 
 namespace NextInpact.Droid
 {
@@ -35,6 +39,16 @@ namespace NextInpact.Droid
 
             var container = Mvx.Resolve<IMvxViewsContainer>();
             container.AddAll(registry);
+        }
+
+        protected override IEnumerable<Assembly> ValueConverterAssemblies
+        {
+            get
+            {
+                var toReturn = base.ValueConverterAssemblies.ToList();
+                toReturn.Add(typeof(ByteArrayToImageValueConverter).Assembly);
+                return toReturn;
+            }
         }
 
     }

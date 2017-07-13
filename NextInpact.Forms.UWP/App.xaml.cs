@@ -52,6 +52,9 @@ namespace NextInpact.Forms.UWP
 
                 Xamarin.Forms.Forms.Init(e);
 
+                var setup = new Setup(rootFrame, e);
+                setup.Initialize();
+
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
@@ -63,9 +66,6 @@ namespace NextInpact.Forms.UWP
 
             if (rootFrame.Content == null)
             {
-                var setup = new Setup(rootFrame, e);
-                setup.Initialize();
-
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter

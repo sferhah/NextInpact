@@ -1,4 +1,7 @@
-﻿using NextInpact.Core.Data;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Forms.Core;
+using MvvmCross.Platform;
+using NextInpact.Core.Data;
 using NextInpact.Core.Models;
 using NextInpact.Forms.Views;
 using Xamarin.Forms;
@@ -8,16 +11,18 @@ using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace NextInpact.Forms
 {
-    public partial class App : Application
+    public partial class App : MvxFormsApplication
     {
         public App()
         {
             InitializeComponent();
 
             ThreadSafeSqlite.Instance.Init(typeof(Article), typeof(Comment));
+        }
 
-            Current.MainPage = new NavigationPage(new ArticlesPage());
-
-        }        
+        protected override void OnStart()
+        {
+            Mvx.Resolve<IMvxAppStart>().Start();            
+        }
     }
 }
