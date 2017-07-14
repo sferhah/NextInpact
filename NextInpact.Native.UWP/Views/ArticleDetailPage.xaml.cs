@@ -23,7 +23,7 @@ namespace NextInpact.Native.UWP.Views
         public ArticleDetailPage()
         {
             this.InitializeComponent();
-            ViewModel = new ArticleDetailViewModel();
+            DataContext = ViewModel = new ArticleDetailViewModel();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

@@ -15,15 +15,15 @@
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0">
             <CommandBar.Content>
-                <TextBlock Text="{x:Bind ViewModel.Title}"/>
+                <TextBlock Text="{Binding Title}"/>
             </CommandBar.Content>
-            <AppBarButton Icon="Refresh" Command="{x:Bind ViewModel.LoadItemsCommand}" />
+            <AppBarButton Icon="Refresh" Command="{Binding LoadItemsCommand}" />
         </CommandBar>
         <Grid Background="#064358" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>                
             </Grid.RowDefinitions>
-            <TextBlock Text="{x:Bind ViewModel.LastRefreshDate}"                               
+            <TextBlock Text="{Binding LastRefreshDate}"                               
                                FontSize="10" 
                                FontStyle="Normal" 
                                FontWeight="Bold"
@@ -32,7 +32,7 @@
                                 Grid.Row="0"/>
         </Grid>
         <ListView Grid.Row="2"               
-                  ItemsSource="{x:Bind ViewModel.Items}" IsItemClickEnabled="True"  ItemClick="ListView_ItemClick" >
+                  ItemsSource="{Binding Items}" IsItemClickEnabled="True"  ItemClick="ListView_ItemClick" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

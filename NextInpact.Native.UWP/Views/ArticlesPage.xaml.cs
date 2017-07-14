@@ -26,7 +26,7 @@ namespace NextInpact.Native.UWP.Views
         {
             this.InitializeComponent();
 
-            ViewModel = new ArticlesViewModel();
+            DataContext = ViewModel = new ArticlesViewModel();
 
         }
       
