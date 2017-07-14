@@ -7,57 +7,100 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Background="#064358">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="#064358" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>                
+            </Grid.RowDefinitions>
             <TextBlock Text="{x:Bind ViewModel.LastRefreshDate}"                               
                                FontSize="10" 
                                FontStyle="Normal" 
                                FontWeight="Bold"
                                Foreground="White"
-                                HorizontalAlignment="Center" />
-        </StackPanel>
-        <ListView x:Name="StudentsList" ItemsSource="{x:Bind ViewModel.Items}" >
+                                HorizontalAlignment="Center"
+                                Grid.Row="0"/>
+        </Grid>
+        <ListView Grid.Row="1"
+                  x:Name="StudentsList" 
+                  ItemsSource="{x:Bind ViewModel.Items}" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <StackPanel Background="#E7ECEE" Visibility="{Binding ShowDateSection}" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Background="#E7ECEE" Visibility="{Binding ShowDateSection}"  Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>                               
+                            </Grid.RowDefinitions>
                             <TextBlock Text="{Binding PublicationDate}" HorizontalAlignment="Center"                               
                                FontSize="18" 
                                FontStyle="Normal" 
                                FontWeight="Bold"
-                               Foreground="#EA8211" />                          
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
+                               Foreground="#EA8211"
+                               Grid.Row="0"/>                          
+                        </Grid>
+                        <Grid  Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
                             <Image Height="53"
                                    Width="70" 
                                    VerticalAlignment="Center" 
-                                   Source="{Binding ImageData, Converter={StaticResource ByteArrayToImageConverter}}"/>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Title}"                               
+                                   Source="{Binding ImageData, Converter={StaticResource ByteArrayToImageConverter}}"
+                                   Grid.Column="0"/>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="{Binding Title}"
                                    FontSize="14" 
                                    FontStyle="Normal" 
                                    FontWeight="Bold"
-                                   Foreground="#01232F" />
-                                <StackPanel Orientation="Horizontal">
+                                   Foreground="#01232F" Grid.Row="0" />
+                                <Grid  Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
                                     <TextBlock Text="{Binding PublicationTime}"                                            
                                            FontSize="14"
-                                           Foreground="#EA8211" />
+                                           Foreground="#EA8211" Grid.Column="0" />
                                     <TextBlock Text="{Binding SubTitle}"                                         
                                            FontSize="14"
-                                           Foreground="#A8979D" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Image Source="Assets/small_comms.png" />
+                                           Foreground="#A8979D" Grid.Column="1"/>
+                                </Grid>
+                                <Grid HorizontalAlignment="Right" Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="Assets/small_comms.png" Grid.Column="0" Height="10" />
                                     <TextBlock Text="{Binding TotalCommentsCount}"                                         
                                            FontSize="10"
-                                           Foreground="#8AA4C0" />
-                                </StackPanel>
-                            </StackPanel>
-                        </StackPanel>
-                        <ProgressBar Value="{Binding SyncPercentage, Converter={StaticResource DoubleToPercentageConverter}}"/>
-                    </StackPanel>
+                                           Foreground="#8AA4C0"
+                                           Grid.Column="1" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <ProgressBar Grid.Row="2" Value="{Binding SyncPercentage, Converter={StaticResource DoubleToPercentageConverter}}"/>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackPanel>
+    </Grid>
 </Page>
