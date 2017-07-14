@@ -9,10 +9,17 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Background="#064358" Grid.Row="0">
+        <CommandBar Grid.Row="0">
+            <CommandBar.Content>
+                <TextBlock Text="{x:Bind ViewModel.Title}"/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Refresh" Command="{x:Bind ViewModel.LoadItemsCommand}" />
+        </CommandBar>
+        <Grid Background="#064358" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>                
             </Grid.RowDefinitions>
@@ -24,8 +31,7 @@
                                 HorizontalAlignment="Center"
                                 Grid.Row="0"/>
         </Grid>
-        <ListView Grid.Row="1"
-                  x:Name="StudentsList" 
+        <ListView Grid.Row="2"               
                   ItemsSource="{x:Bind ViewModel.Items}" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
