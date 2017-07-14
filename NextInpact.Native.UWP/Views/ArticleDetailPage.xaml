@@ -19,7 +19,7 @@
                     <TextBlock Text="{Binding Title}" Margin="8,10,0,0" FontSize="18"/>
                 </StackPanel>
             </CommandBar.Content>
-            <AppBarButton Icon="Comment" Command="{Binding ShowCommentsCommand}" />
+            <AppBarButton Icon="Comment" Click="AppBarButton_Click_1" Command="{Binding ShowCommentsCommand}" />
         </CommandBar>
         <WebView Grid.Row="1" local:WebViewProperties.RawHtml="{Binding ArticleContent}"/>
     </Grid>

@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <converters:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" />
             <converters:DoubleToPercentageConverter x:Key="DoubleToPercentageConverter" />
+            <converters:RawHtmlToStringConverter x:Key="RawHtmlToStringConverter" />            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

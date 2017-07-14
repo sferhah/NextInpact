@@ -14,40 +14,40 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace NextInpact.Native.UWP.Views
-{ 
-    public sealed partial class ArticleDetailPage : Page
-    {
-        public ArticleDetailViewModel ViewModel { get; set; }
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-        public ArticleDetailPage()
+namespace NextInpact.Native.UWP.Views
+{
+    
+    public sealed partial class CommentsPage : Page
+    {
+        public CommentsViewModel ViewModel { get; set; }
+
+
+        public CommentsPage()
         {
             this.InitializeComponent();
-            DataContext = ViewModel = new ArticleDetailViewModel();
+
+            DataContext = ViewModel = new CommentsViewModel();
+
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter is int)
             {
-                ViewModel.Init((int)e.Parameter);                
+                ViewModel.Init((int)e.Parameter);
             }
 
             base.OnNavigatedTo(e);
-        }
-
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            if(Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
-        }
-
-        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(CommentsPage), ViewModel.Item.Id);            
-            
         }
     }
 }

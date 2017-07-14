@@ -96,8 +96,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BaseApplicationMvxPage.cs" />
+    <Compile Include="Converters\RawHtmlToStringConverter.cs" />
     <Compile Include="Converters\DoubleToPercentageConverter.cs" />
     <Compile Include="Converters\ByteArrayToImageConverter.cs" />
+    <Compile Include="Views\CommentsPage.xaml.cs">
+      <DependentUpon>CommentsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WebViewProperties.cs" />
     <Compile Include="Views\ArticleDetailPage.xaml.cs">
       <DependentUpon>ArticleDetailPage.xaml</DependentUpon>
@@ -139,6 +143,10 @@
     <Page Include="Views\ArticlesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CommentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
