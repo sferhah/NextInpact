@@ -98,8 +98,12 @@
     <Compile Include="BaseApplicationMvxPage.cs" />
     <Compile Include="Converters\DoubleToPercentageConverter.cs" />
     <Compile Include="Converters\ByteArrayToImageConverter.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="WebViewProperties.cs" />
+    <Compile Include="Views\ArticleDetailPage.xaml.cs">
+      <DependentUpon>ArticleDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ArticlesPage.xaml.cs">
+      <DependentUpon>ArticlesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PlatformSpecific\ConnectionProvider.cs" />
     <Compile Include="PlatformSpecific\SaveAndLoad.cs" />
@@ -128,7 +132,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="Views\ArticleDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ArticlesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

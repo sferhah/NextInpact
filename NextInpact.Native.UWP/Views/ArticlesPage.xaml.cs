@@ -1,4 +1,5 @@
-﻿using NextInpact.Core.ViewModels;
+﻿using NextInpact.Core.Models;
+using NextInpact.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,19 +15,31 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace NextInpact.Native.UWP
+namespace NextInpact.Native.UWP.Views
 {
-    public sealed partial class MainPage : Page
+    public sealed partial class ArticlesPage : Page
     {
         public ArticlesViewModel ViewModel { get; set; }
 
 
-        public MainPage()
+        public ArticlesPage()
         {
             this.InitializeComponent();
 
             ViewModel = new ArticlesViewModel();
 
+        }
+      
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var item = e.ClickedItem as Article;
+
+            if (item == null)
+            {
+                return;
+            }
+
+            this.Frame.Navigate(typeof(ArticleDetailPage), item.Id);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NextInpact.Native.UWP.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -68,7 +69,7 @@ namespace NextInpact.Native.UWP
 
                     //var start = MvvmCross.Platform.Mvx.Resolve<MvvmCross.Core.ViewModels.IMvxAppStart>();
                     //start.Start();
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(ArticlesPage), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
