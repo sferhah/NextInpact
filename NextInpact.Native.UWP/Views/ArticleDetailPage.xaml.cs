@@ -38,7 +38,10 @@ namespace NextInpact.Native.UWP.Views
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.GoBack();
+            if(Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
         }
     }
 }

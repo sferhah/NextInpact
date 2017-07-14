@@ -16,7 +16,7 @@
             <CommandBar.Content>
                 <StackPanel Orientation="Horizontal" >
                     <AppBarButton Click="AppBarButton_Click" Icon="Back"/>
-                    <TextBlock Text="{Binding Title}"/>
+                    <TextBlock Text="{Binding Title}" Margin="8,10,0,0" FontSize="18"/>
                 </StackPanel>
             </CommandBar.Content>
             <AppBarButton Icon="Comment" Command="{Binding ShowCommentsCommand}" />

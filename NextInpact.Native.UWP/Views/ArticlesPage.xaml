@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0">
             <CommandBar.Content>
-                <TextBlock Text="{Binding Title}"/>
+                <TextBlock Text="{Binding Title}" Margin="8,10,0,0" FontSize="18"/>
             </CommandBar.Content>
             <AppBarButton Icon="Refresh" Command="{Binding LoadItemsCommand}" />
         </CommandBar>
