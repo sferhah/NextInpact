@@ -1,4 +1,6 @@
-﻿using NextInpact.Core.ViewModels;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Uwp.Views;
+using NextInpact.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,26 +17,14 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace NextInpact.Native.UWP.Views
-{ 
-    public sealed partial class ArticleDetailPage : Page
+{
+    [MvxViewFor(typeof(ArticleDetailViewModel))]
+    public sealed partial class ArticleDetailPage : MvxWindowsPage
     {
-        public ArticleDetailViewModel ViewModel { get; set; }
-
         public ArticleDetailPage()
         {
-            this.InitializeComponent();
-            DataContext = ViewModel = new ArticleDetailViewModel();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            if (e.Parameter is int)
-            {
-                ViewModel.Init((int)e.Parameter);                
-            }
-
-            base.OnNavigatedTo(e);
-        }
+            this.InitializeComponent();         
+        }      
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -42,12 +32,6 @@ namespace NextInpact.Native.UWP.Views
             {
                 Frame.GoBack();
             }
-        }
-
-        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(CommentsPage), ViewModel.Item.Id);            
-            
-        }
+        }    
     }
 }

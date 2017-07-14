@@ -67,9 +67,9 @@ namespace NextInpact.Native.UWP
                     var setup = new Setup(rootFrame);
                     setup.Initialize();
 
-                    //var start = MvvmCross.Platform.Mvx.Resolve<MvvmCross.Core.ViewModels.IMvxAppStart>();
-                    //start.Start();
-                    rootFrame.Navigate(typeof(ArticlesPage), e.Arguments);
+                    var start = MvvmCross.Platform.Mvx.Resolve<MvvmCross.Core.ViewModels.IMvxAppStart>();
+                    start.Start();
+                   // rootFrame.Navigate(typeof(ArticlesPage), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

@@ -1,8 +1,9 @@
-﻿<Page
+﻿<views:MvxWindowsPage
     x:Class="NextInpact.Native.UWP.Views.ArticlesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NextInpact.Native.UWP"
+    xmlns:views="using:MvvmCross.Uwp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -32,7 +33,7 @@
                                 Grid.Row="0"/>
         </Grid>
         <ListView Grid.Row="2"               
-                  ItemsSource="{Binding Items}" IsItemClickEnabled="True"  ItemClick="ListView_ItemClick" >
+                   ItemsSource="{Binding Items}" IsItemClickEnabled="True"  ItemClick="ListView_ItemClick" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -111,4 +112,4 @@
             </ListView.ItemTemplate>
         </ListView>
     </Grid>
-</Page>
+</views:MvxWindowsPage>

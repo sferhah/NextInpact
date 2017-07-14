@@ -1,4 +1,6 @@
-﻿using NextInpact.Core.ViewModels;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Uwp.Views;
+using NextInpact.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,22 +16,14 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace NextInpact.Native.UWP.Views
 {
-    
-    public sealed partial class CommentsPage : Page
+    [MvxViewFor(typeof(CommentsViewModel))]
+    public sealed partial class CommentsPage : MvxWindowsPage
     {
-        public CommentsViewModel ViewModel { get; set; }
-
-
         public CommentsPage()
         {
             this.InitializeComponent();
-
-            DataContext = ViewModel = new CommentsViewModel();
-
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
@@ -39,15 +33,6 @@ namespace NextInpact.Native.UWP.Views
                 Frame.GoBack();
             }
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            if (e.Parameter is int)
-            {
-                ViewModel.Init((int)e.Parameter);
-            }
-
-            base.OnNavigatedTo(e);
-        }
+     
     }
 }

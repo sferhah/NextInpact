@@ -95,7 +95,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BaseApplicationMvxPage.cs" />
     <Compile Include="Converters\RawHtmlToStringConverter.cs" />
     <Compile Include="Converters\DoubleToPercentageConverter.cs" />
     <Compile Include="Converters\ByteArrayToImageConverter.cs" />

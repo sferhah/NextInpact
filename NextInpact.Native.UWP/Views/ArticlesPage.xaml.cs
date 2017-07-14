@@ -1,4 +1,6 @@
-﻿using NextInpact.Core.Models;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Uwp.Views;
+using NextInpact.Core.Models;
 using NextInpact.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,17 +19,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace NextInpact.Native.UWP.Views
 {
-    public sealed partial class ArticlesPage : Page
-    {
-        public ArticlesViewModel ViewModel { get; set; }
-
-
+    [MvxViewFor(typeof(ArticlesViewModel))]
+    public sealed partial class ArticlesPage : MvxWindowsPage
+    {   
         public ArticlesPage()
         {
-            this.InitializeComponent();
-
-            DataContext = ViewModel = new ArticlesViewModel();
-
+            this.InitializeComponent();            
         }
       
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -39,7 +36,7 @@ namespace NextInpact.Native.UWP.Views
                 return;
             }
 
-            this.Frame.Navigate(typeof(ArticleDetailPage), item.Id);
+            ((ArticlesViewModel)ViewModel).ItemSelectedCommand.Execute(item);
         }
     }
 }
