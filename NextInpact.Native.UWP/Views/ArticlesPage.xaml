@@ -53,8 +53,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
                         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" Background="#E7ECEE" Visibility="{Binding ShowDateSection}" >
