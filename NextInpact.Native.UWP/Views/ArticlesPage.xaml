@@ -33,7 +33,7 @@
                                 HorizontalAlignment="Center"
                                 Grid.Row="0"/>
         </Grid>
-        <ListView Grid.Row="2"               
+        <ListView x:Name="ItemsListView" Grid.Row="2"               
                    ItemsSource="{Binding Items}" IsItemClickEnabled="True"  ItemClick="ListView_ItemClick" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
