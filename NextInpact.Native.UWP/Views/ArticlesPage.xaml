@@ -66,7 +66,7 @@
                         <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Text="{Binding Title}" TextWrapping="Wrap" FontSize="14" FontStyle="Normal" FontWeight="Bold" Foreground="#01232F" />
                         <TextBlock Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" Text="{Binding PublicationTime}" FontSize="14" Foreground="#EA8211" />
                         <TextBlock Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Left" Text="{Binding SubTitle}"  TextWrapping="Wrap" FontSize="14" Foreground="#A8979D"/>
-                        <Image Grid.Row="3" Grid.Column="2"  HorizontalAlignment="Right" Source="Assets/small_comms.png" />
+                        <Image Grid.Row="3" Grid.Column="2"  HorizontalAlignment="Right" Source="/Assets/small_comms.png" Height="10" Width="10" />
                         <TextBlock Grid.Row="3" Grid.Column="3"  HorizontalAlignment="Right" Text="{Binding TotalCommentsCount}" FontSize="10" Foreground="#8AA4C0"/>
 
                     </Grid>
