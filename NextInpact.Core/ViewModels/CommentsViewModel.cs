@@ -5,6 +5,7 @@ using NextInpact.Core.Helpers;
 using NextInpact.Core.Models;
 using MvvmCross.Core.ViewModels;
 using NextInpact.Core.Data;
+using System.Collections.Generic;
 
 namespace NextInpact.Core.ViewModels
 {
@@ -13,11 +14,11 @@ namespace NextInpact.Core.ViewModels
         public ObservableRangeCollection<Comment> Items { get; set; }
         public MvxCommand LoadItemsCommand { get; set; }
 
-        private Article article;
+        private List<Comment> comments;
 
         public async void Init(int itemId)
         {
-            this.article = await Store.GetArticle(itemId);
+            this.comments = await Store.GetArticleComments(itemId);
             IsBusy = false;
             await ExecuteLoadItemsCommand();
         }
@@ -41,9 +42,8 @@ namespace NextInpact.Core.ViewModels
 
             try
             {
-                Items.Clear();
-                var items = article.Comments;
-                Items.ReplaceRange(items);
+                Items.Clear();                
+                Items.ReplaceRange(comments);
             }
             catch (Exception ex)
             {

@@ -38,6 +38,7 @@ namespace NextInpact.Core.Networking
             await SaveAndLoad.SaveAsync(ImageFolder.MINIATURES, article.Id.ToString(), data);
 
             article.ImageData = data;
+            article.SyncPercentage += 0.33;
         }
 
         public static async Task DownloadArticlesContent(IEnumerable<Article> items)
@@ -53,6 +54,7 @@ namespace NextInpact.Core.Networking
         {
             String html = await Downloader.GetAsync(article.Url);
             article.Content = await HtmlParser.ParseArticleContentAsync(html, article.Url);
+            article.SyncPercentage += 0.33;
         }
 
         public static async Task DownloadArticlesComs(IEnumerable<Article> items)
@@ -71,6 +73,9 @@ namespace NextInpact.Core.Networking
             String html = await Downloader.GetAsync(urlPage);
 
             article.Comments = await HtmlParser.ParseCommentsAsync(html, urlPage);
+
+            article.SyncPercentage += 0.34;
+
             article.TotalCommentsCount = await HtmlParser.GetNbCommentairesAsync(html, urlPage);
 
             return article.Comments;

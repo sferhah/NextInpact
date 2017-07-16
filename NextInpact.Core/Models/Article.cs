@@ -22,8 +22,7 @@ namespace NextInpact.Core.Models
         {
             get { return _Content; }
             set
-            {
-                SyncPercentage += 0.33;
+            {  
                 _Content = value;
             }
         }
@@ -54,16 +53,13 @@ namespace NextInpact.Core.Models
             get { return _ImageData; }
             set
             {
-                ImageSourceIsDefault = false;
-                SyncPercentage += 0.33;
+                ImageSourceIsDefault = false;                
                 SetProperty(ref _ImageData, value);
             }
         }
       
 
-        private double _SyncPercentage;
-
-        [Ignore]
+        private double _SyncPercentage;        
         public double SyncPercentage
         {
             get { return _SyncPercentage; }
@@ -105,8 +101,7 @@ namespace NextInpact.Core.Models
                 return _Comments;
             }
             set
-            {
-                SyncPercentage += 0.34;
+            {  
                 _Comments = value ?? new List<Comment>();
             }
         }

@@ -16,12 +16,7 @@ namespace NextInpact.Core.Data
             var items_in_db = (await ThreadSafeSqlite.Instance.GetAllAsync<Article>()).OrderByDescending(x => x.PublicationTimeStamp).ToList();
 
             await Store.SetMiniaturesFromCache(items_in_db);
-
-            foreach (var item_in_db in items_in_db)
-            {
-                item_in_db.Comments = (await ThreadSafeSqlite.Instance.GetAllAsync<Comment>()).Where(x => x.ArticleId == item_in_db.Id).OrderBy(x => x.TimeStampPublication).ToList();
-            }
-
+        
             return items_in_db;
         }
 
@@ -29,9 +24,14 @@ namespace NextInpact.Core.Data
         {
             var item = await ThreadSafeSqlite.Instance.GetAsync<Article>(id);
 
-            item.Comments = (await ThreadSafeSqlite.Instance.GetAllAsync<Comment>()).Where(x => x.ArticleId == item.Id).OrderBy(x => x.TimeStampPublication).ToList();
-
             return item;
+        }
+
+        public static async Task<List<Comment>> GetArticleComments(int articleId)
+        {
+            var comments = (await ThreadSafeSqlite.Instance.GetAllAsync<Comment>()).Where(x => x.ArticleId == articleId).OrderBy(x => x.TimeStampPublication).ToList();
+
+            return comments;
         }
 
         public static async Task SetMiniaturesFromCache(IEnumerable<Article> items)
@@ -78,6 +78,9 @@ namespace NextInpact.Core.Data
         {
             foreach (var item in items)
             {
+                //Update progress
+                await ThreadSafeSqlite.Instance.InsertOrReplaceAsync(item);
+
                 foreach (Comment comment in item.Comments)
                 {
                     Comment comment_int_db = await ThreadSafeSqlite.Instance.GetAsync<Comment>(comment.PrimaryKey);
