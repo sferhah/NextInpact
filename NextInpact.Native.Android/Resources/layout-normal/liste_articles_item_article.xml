@@ -112,8 +112,7 @@
         android:layout_below="@id/titreArticle"
         android:layout_marginRight="2dp"
         android:layout_toRightOf="@id/heureArticle"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:visibility="gone"
+        android:textAppearance="?android:attr/textAppearanceSmall"        
         local:MvxBind="Text SubTitle"/>
 
       
