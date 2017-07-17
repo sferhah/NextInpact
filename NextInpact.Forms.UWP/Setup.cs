@@ -48,6 +48,7 @@ namespace NextInpact.Forms.UWP
             base.InitializeLastChance();
             var registry = Mvx.Resolve<IMvxValueConverterRegistry>();
             registry.AddOrOverwrite("ByteArrayToImage", new ByteArrayToImageValueConverter());
+            registry.AddOrOverwrite("StringToHtml", new StringToHtmlValueConverter());            
         }
 
     }

@@ -14,9 +14,5 @@
             </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <WebView VerticalOptions="FillAndExpand">
-        <WebView.Source>
-            <HtmlWebViewSource Html="{Binding ArticleContent}"/>
-        </WebView.Source>
-    </WebView>
+    <WebView VerticalOptions="FillAndExpand" mvx:Bi.nd="Source StringToHtml(ArticleContent)"/>
 </core:MvxContentPage>
