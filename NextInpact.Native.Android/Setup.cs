@@ -2,11 +2,11 @@
 using MvvmCross.Droid.Platform;
 using MvvmCross.Core.ViewModels;
 using NextInpact.Core.IO;
-using NextInpact.PlatformSpecific.NativeDroid;
 using NextInpact.Core.Data;
 using MvvmCross.Platform;
+using NextInpact.Native.Droid.PlatformSpecific;
 
-namespace NextInpact.NativeDroid
+namespace NextInpact.Native.Droid
 {
     public class Setup : MvxAndroidSetup
     {

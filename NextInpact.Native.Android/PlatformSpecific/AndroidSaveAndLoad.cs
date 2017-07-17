@@ -2,7 +2,7 @@
 using System.IO;
 using NextInpact.Core.IO;
 
-namespace NextInpact.PlatformSpecific.NativeDroid
+namespace NextInpact.Native.Droid.PlatformSpecific
 {
     public class AndroidSaveAndLoad : ISaveAndLoad
     {

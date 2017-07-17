@@ -1,17 +1,13 @@
 ﻿using Android.App;
-using Android.Widget;
 using Android.OS;
 using NextInpact.Core.ViewModels;
-using NextInpact.Core.Models;
 using Android.Views;
-using NextInpact.Core.Data;
 using V7 = MvvmCross.Droid.Support.V7.AppCompat;
-using NextInpact.NativeDroid;
 
 
-namespace NextInpact.Activities.NativeDroid
+namespace NextInpact.Native.Droid.Activities
 {
-    [Activity(Label = "NextInpact.NativeDroid", MainLauncher = false, Icon = "@drawable/logo_nextinpact")]
+    [Activity(Label = "NextInpact.Native.Droid", MainLauncher = false, Icon = "@drawable/logo_nextinpact")]
     public class ArticleListActivity : V7.MvxAppCompatActivity<ArticlesViewModel>
     {
 

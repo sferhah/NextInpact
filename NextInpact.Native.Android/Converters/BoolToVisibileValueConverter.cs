@@ -3,7 +3,7 @@ using Android.Views;
 using System.Globalization;
 using MvvmCross.Platform.Converters;
 
-namespace NextInpact.NativeDroid.Converters
+namespace NextInpact.Native.Droid.Converters
 {
     public class BoolToVisibileValueConverter : MvxValueConverter<bool, ViewStates>
     {

@@ -2,14 +2,12 @@
 using Android.OS;
 using V7 = MvvmCross.Droid.Support.V7.AppCompat;
 using NextInpact.Core.ViewModels;
-using NextInpact.NativeDroid;
 
-namespace NextInpact.Activities.NativeDroid
+namespace NextInpact.Native.Droid.Activities
 {
-    [Activity(Label = "NextInpact.NativeDroid", MainLauncher = false, Icon = "@drawable/logo_nextinpact")]
+    [Activity(Label = "NextInpact.Native.Droid", MainLauncher = false, Icon = "@drawable/logo_nextinpact")]
     public class CommentsActivity : V7.MvxAppCompatActivity<CommentsViewModel>
     {
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);

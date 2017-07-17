@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Core", "NextInpact.Core\NextInpact.Core.csproj", "{67F9D3A8-F71E-4428-913F-C37AE82CDB24}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Forms.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Forms.UWP", "NextInpact.Forms.UWP\NextInpact.Forms.UWP.csproj", "{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Native.Android", "NextInpact.Native.Android\NextInpact.Native.Android.csproj", "{D34EE8C5-90EE-47A0-95F1-02D96FFBDA08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Native.Droid", "NextInpact.Native.Android\NextInpact.Native.Droid.csproj", "{D34EE8C5-90EE-47A0-95F1-02D96FFBDA08}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Forms.iOS", "NextInpact.Forms.iOS\NextInpact.Forms.iOS.csproj", "{07048848-A37D-4B87-BA32-945B44AA6B3E}"
 EndProject

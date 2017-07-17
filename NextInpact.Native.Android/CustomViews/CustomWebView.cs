@@ -5,7 +5,7 @@ using Android.Util;
 using Android.Webkit;
 using static Android.Webkit.WebSettings;
 
-namespace NextInpact.CustomViews.NativeDroid
+namespace NextInpact.Native.Droid.CustomViews
 {
     [Register("com.nextinpact.ui.widgets.CustomWebView")]
     public class CustomWebView : WebView

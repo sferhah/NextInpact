@@ -4,7 +4,7 @@ using Android.Widget;
 using Android.Graphics;
 using Android.Util;
 
-namespace NextInpact.CustomViews.NativeDroid
+namespace NextInpact.Native.Droid.CustomViews
 {
     [Register("com.nextinpact.ui.widgets.CustomImageView")]
     public class CustomImageView : ImageView

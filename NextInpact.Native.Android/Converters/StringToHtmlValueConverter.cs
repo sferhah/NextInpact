@@ -4,7 +4,7 @@ using System.Globalization;
 using MvvmCross.Platform.Converters;
 using Android.Text;
 
-namespace NextInpact.NativeDroid.Converters
+namespace NextInpact.Native.Droid.Converters
 {
     public class StringToHtmlValueConverter : MvxValueConverter<String, ISpanned>
     {
