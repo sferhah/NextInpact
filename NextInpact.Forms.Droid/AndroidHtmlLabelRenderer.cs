@@ -5,10 +5,10 @@ using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using NextInpact.Forms;
-using NextInpact.Droid;
+using NextInpact.Forms.Droid;
 
 [assembly: ExportRenderer(typeof(HtmlLabel), typeof(AndroidHtmlLabelRenderer))]
-namespace NextInpact.Droid
+namespace NextInpact.Forms.Droid
 {
     public class AndroidHtmlLabelRenderer : LabelRenderer
     {

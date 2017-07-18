@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using MvvmCross.Platform.Platform;
 
-namespace NextInpact.Droid
+namespace NextInpact.Forms.Droid
 {
     public class DebugTrace : IMvxTrace
     {

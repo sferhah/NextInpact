@@ -1,15 +1,12 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.Views;
-using MvvmCross.Forms.Core;
 using MvvmCross.Forms.Droid;
 using MvvmCross.Forms.Droid.Presenters;
 using MvvmCross.Platform;
-using NextInpact.Forms;
 
-namespace NextInpact.Droid
+namespace NextInpact.Forms.Droid
 {
     [Activity(Label = "@string/app_name", Theme = "@style/MyTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : MvxFormsAppCompatActivity

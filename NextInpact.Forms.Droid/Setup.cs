@@ -11,9 +11,9 @@ using System.Linq;
 using NextInpact.Forms.Converters;
 using NextInpact.Core.Data;
 using NextInpact.Core.IO;
-using NextInpact.PlatformSpecific.Droid;
+using NextInpact.Forms.Droid.PlatformSpecific;
 
-namespace NextInpact.Droid
+namespace NextInpact.Forms.Droid
 {
     public class Setup : MvxFormsAndroidSetup
     {

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using NextInpact.Core.Data;
 
-namespace NextInpact.PlatformSpecific.Droid
+namespace NextInpact.Forms.Droid.PlatformSpecific
 {
     public class AndroidConnectionProvider : IStringConnectionProvider
     {

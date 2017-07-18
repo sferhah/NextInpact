@@ -7,7 +7,7 @@
     <ProjectGuid>{57EAEDC4-032F-4B4B-ABB8-D3AFF5475459}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>NextInpact.Droid</RootNamespace>
+    <RootNamespace>NextInpact.Forms.Droid</RootNamespace>
     <AssemblyName>NextInpact.Android</AssemblyName>
     <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>

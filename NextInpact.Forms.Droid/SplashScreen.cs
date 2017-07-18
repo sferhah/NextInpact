@@ -4,7 +4,7 @@ using Android.OS;
 using MvvmCross.Droid.Views;
 using Xamarin.Forms;
 
-namespace NextInpact.Droid
+namespace NextInpact.Forms.Droid
 {
     [Activity(
         Label = "NextInpact.Droid"
