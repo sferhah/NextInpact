@@ -23,7 +23,9 @@ namespace NextInpact.Forms.UWP
                 {
                     IsActive = true,
                     Visibility = Windows.UI.Xaml.Visibility.Visible,
-                    IsEnabled = true
+                    IsEnabled = true,
+                    Height = 64,
+                    Width = 64,
                 };
                 SetNativeControl(ring);
             }
