@@ -30,6 +30,7 @@ namespace NextInpact.Forms.UWP
             return new Core.App();
         }
 
+        //MVVMCross all versions : Manually map ViewModels to Views if they are not in the same project otherwise MVVMCross won't do it
         protected override void InitializeViewLookup()
         {
             var registry = new Dictionary<System.Type, System.Type>()

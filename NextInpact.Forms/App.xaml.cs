@@ -20,7 +20,8 @@ namespace NextInpact.Forms
 
         protected override void OnStart()
         {
-            Mvx.Resolve<IMvxAppStart>().Start();            
+            var s = Mvx.Resolve<IMvxAppStart>();
+            s.Start();            
         }
     }
 }

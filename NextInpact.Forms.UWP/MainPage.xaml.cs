@@ -15,11 +15,11 @@ namespace NextInpact.Forms.UWP
         {
             this.InitializeComponent();
 
-            var start = Mvx.Resolve<IMvxAppStart>();
-            start.Start();
+            //need to force this call otherwise FormsApplication.MainPage is null            
+            Mvx.Resolve<IMvxAppStart>().Start();
 
             var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsUwpPagePresenter;
-            LoadApplication(presenter.MvxFormsApp);
+            LoadApplication(presenter.FormsApplication);
         }
     }
 }

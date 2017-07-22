@@ -1,4 +1,6 @@
-﻿using NextInpact.Native.UWP.Views;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform;
+using NextInpact.Native.UWP.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -67,8 +69,8 @@ namespace NextInpact.Native.UWP
                     var setup = new Setup(rootFrame);
                     setup.Initialize();
 
-                    var start = MvvmCross.Platform.Mvx.Resolve<MvvmCross.Core.ViewModels.IMvxAppStart>();
-                    start.Start();
+                    // Sets first page and navigate to it.
+                    Mvx.Resolve<IMvxAppStart>().Start();
                    // rootFrame.Navigate(typeof(ArticlesPage), e.Arguments);
                 }
                 // Ensure the current window is active

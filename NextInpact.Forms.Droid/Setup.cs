@@ -12,6 +12,8 @@ using NextInpact.Forms.Converters;
 using NextInpact.Core.Data;
 using NextInpact.Core.IO;
 using NextInpact.Forms.Droid.PlatformSpecific;
+using MvvmCross.Forms.Droid.Presenters;
+using MvvmCross.Droid.Views;
 
 namespace NextInpact.Forms.Droid
 {
@@ -27,6 +29,20 @@ namespace NextInpact.Forms.Droid
             return new Core.App();
         }
 
+        //MVVMCross 5.1 Forms.Android : Manually create a presenter otherwise MVVMCross won't do it
+        protected override IMvxAndroidViewPresenter CreateViewPresenter()
+        {
+            var presenter = new MvxFormsDroidPagePresenter()
+            {
+                FormsApplication = new App()
+            };
+
+            Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
+
+            return presenter;
+        }
+
+        //MVVMCross all versions : Manually map ViewModels to Views if they are not in the same project otherwise MVVMCross won't do it
         protected override void InitializeViewLookup()
         {
             var registry = new Dictionary<System.Type, System.Type>()
