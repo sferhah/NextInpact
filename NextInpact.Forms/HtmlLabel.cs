@@ -11,7 +11,11 @@ namespace NextInpact.Forms
     {
         public HtmlLabel()
         {
-
+         
         }
+    }
+
+    public class MyProgressRing : View
+    {
     }
 }

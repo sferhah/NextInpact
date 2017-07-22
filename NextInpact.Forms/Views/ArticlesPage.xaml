@@ -7,6 +7,7 @@
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"                     
              xmlns:viewModels="clr-namespace:NextInpact.Core.ViewModels;assembly=NextInpact.Core"
              xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+             xmlns:controls ="clr-namespace:NextInpact.Forms;assembly=NextInpact.Forms"
              x:Class="NextInpact.Forms.Views.ArticlesPage"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage">
@@ -29,86 +30,90 @@
                                FontAttributes="Bold"
                                 HorizontalOptions="Fill"
                              HorizontalTextAlignment="Center"/>
-            <ListView x:Name="ItemsListView"
-				        ItemsSource="{Binding Items}"
-                VerticalOptions="FillAndExpand"
-                HasUnevenRows="true"
-                RefreshCommand="{Binding LoadItemsCommand}"
-                IsPullToRefreshEnabled="true"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement"
-			          ItemSelected="OnItemSelected" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+            <Grid VerticalOptions="FillAndExpand">
+                <!--MyProgressRing is for UWP-->
+                <controls:MyProgressRing IsVisible="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="Center" />
+                <ListView x:Name="ItemsListView"
+				            ItemsSource="{Binding Items}"
+                    VerticalOptions="FillAndExpand"
+                    HasUnevenRows="true"
+                    RefreshCommand="{Binding LoadItemsCommand}"
+                    IsPullToRefreshEnabled="true"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    CachingStrategy="RecycleElement"
+			              ItemSelected="OnItemSelected" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
 
-                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="#E7ECEE" IsVisible="{Binding ShowDateSection}"
-                                           Text="{Binding PublicationDate}"                             
-                                               LineBreakMode="CharacterWrap"
-                                               Style="{DynamicResource ListItemTextStyle}"            
-                                               TextColor="#EA8211"
-                                               FontSize="18"
-                                               FontAttributes="Bold"
-                                                HorizontalOptions="Fill"
-                                             HorizontalTextAlignment="Center"/>
+                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="#E7ECEE" IsVisible="{Binding ShowDateSection}"
+                                               Text="{Binding PublicationDate}"                             
+                                                   LineBreakMode="CharacterWrap"
+                                                   Style="{DynamicResource ListItemTextStyle}"            
+                                                   TextColor="#EA8211"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                    HorizontalOptions="Fill"
+                                                 HorizontalTextAlignment="Center"/>
 
 
-                                <Image Grid.Row="1" Grid.RowSpan="3"  Grid.Column="0"
-                                          mvx:Bi.nd="Source ByteArrayToImage(ImageData)"
-                                          HeightRequest="53" 
-                                          WidthRequest="70" 
-                                          VerticalOptions="Center"/>
-                                <ProgressBar  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Progress="{Binding SyncPercentage}"                                        
-                                 WidthRequest="300" 
-                                 HeightRequest="5" 
-                                 HorizontalOptions="Fill"
-                                 VerticalOptions="Center"  />
+                                    <Image Grid.Row="1" Grid.RowSpan="3"  Grid.Column="0"
+                                              mvx:Bi.nd="Source ByteArrayToImage(ImageData)"
+                                              HeightRequest="53" 
+                                              WidthRequest="70" 
+                                              VerticalOptions="Center"/>
+                                    <ProgressBar  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Progress="{Binding SyncPercentage}"                                        
+                                     WidthRequest="300" 
+                                     HeightRequest="5" 
+                                     HorizontalOptions="Fill"
+                                     VerticalOptions="Center"  />
 
-                                <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Title}"
-                                       LineBreakMode="CharacterWrap"
-                                       Style="{DynamicResource ListItemTextStyle}"
-                                       TextColor="#01232F"
-                                       FontSize="14"
-                                       FontAttributes="Bold"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Title}"
+                                           LineBreakMode="CharacterWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           TextColor="#01232F"
+                                           FontSize="14"
+                                           FontAttributes="Bold"/>
 
-                                <Label  Grid.Row="2" Grid.Column="1" Text="{Binding PublicationTime}"
-                                    LineBreakMode="NoWrap"
-                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                   TextColor="#EA8211"
-                                    FontSize="14"/>
-                                <Label Grid.Row="2" Grid.Column="2" Text="{Binding SubTitle}"
-                                    LineBreakMode="NoWrap"
-                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                   TextColor="#A8979D"
-                                    FontSize="14"/>
+                                    <Label  Grid.Row="2" Grid.Column="1" Text="{Binding PublicationTime}"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                       TextColor="#EA8211"
+                                        FontSize="14"/>
+                                    <Label Grid.Row="2" Grid.Column="2" Text="{Binding SubTitle}"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                       TextColor="#A8979D"
+                                        FontSize="14"/>
 
 
-                                <Image Grid.Row="3" Grid.Column="2" Source="{local:ImageResource small_comms.png}"  HorizontalOptions="End" />
-                                <Label Grid.Row="3" Grid.Column="3" Text="{Binding TotalCommentsCount}"                           
-                                    LineBreakMode="NoWrap"
-                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                    TextColor="#8AA4C0"
-                                    FontSize="10"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                    <Image Grid.Row="3" Grid.Column="2" Source="{local:ImageResource small_comms.png}"  HorizontalOptions="End" />
+                                    <Label Grid.Row="3" Grid.Column="3" Text="{Binding TotalCommentsCount}"                           
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        TextColor="#8AA4C0"
+                                        FontSize="10"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </core:MvxContentPage>
