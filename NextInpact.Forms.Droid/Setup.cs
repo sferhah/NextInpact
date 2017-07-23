@@ -44,16 +44,8 @@ namespace NextInpact.Forms.Droid
 
         //MVVMCross all versions : Manually map ViewModels to Views if they are not in the same project otherwise MVVMCross won't do it
         protected override void InitializeViewLookup()
-        {
-            var registry = new Dictionary<System.Type, System.Type>()
-            {
-                { typeof(ArticlesViewModel), typeof(ArticlesPage) },
-                { typeof(ArticleDetailViewModel), typeof(ArticleDetailPage) } ,
-                { typeof(CommentsViewModel), typeof(CommentsPage) } ,
-            };
-
-            var container = Mvx.Resolve<IMvxViewsContainer>();
-            container.AddAll(registry);
+        {   
+            Mvx.Resolve<IMvxViewsContainer>().AddAll(App.Mapping);
         }
 
         protected override IEnumerable<Assembly> ValueConverterAssemblies
