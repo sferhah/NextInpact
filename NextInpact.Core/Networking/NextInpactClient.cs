@@ -37,8 +37,7 @@ namespace NextInpact.Core.Networking
 
             await SaveAndLoad.SaveAsync(ImageFolder.MINIATURES, article.Id.ToString(), data);
 
-            article.ImageData = data;
-            article.SyncPercentage += 0.33;
+            article.ImageData = data;            
         }
 
         public static async Task DownloadArticlesContent(IEnumerable<Article> items)
@@ -53,17 +52,18 @@ namespace NextInpact.Core.Networking
         public static async Task DownloadArticleContent(Article article)
         {
             String html = await Downloader.GetAsync(article.Url);
-            article.Content = await HtmlParser.ParseArticleContentAsync(html, article.Url);
-            article.SyncPercentage += 0.33;
+            article.Content = await HtmlParser.ParseArticleContentAsync(html, article.Url);                        
         }
 
-        public static async Task DownloadArticlesComs(IEnumerable<Article> items)
+        public static async Task<List<Comment>> DownloadArticlesComs(IEnumerable<Article> items)
         {
             var tasks = items
                         .Select(x => DownloadComments(x))
                         .ToArray();
 
-            await Task.WhenAll(tasks);
+            var arrayOfListOfComments = await Task.WhenAll(tasks);
+
+            return arrayOfListOfComments.SelectMany(x => x).ToList();
         }
 
         public static async Task<List<Comment>> DownloadComments(Article article)
@@ -72,13 +72,13 @@ namespace NextInpact.Core.Networking
 
             String html = await Downloader.GetAsync(urlPage);
 
-            article.Comments = await HtmlParser.ParseCommentsAsync(html, urlPage);
-
-            article.SyncPercentage += 0.34;
+            var comments = await HtmlParser.ParseCommentsAsync(html, urlPage);
 
             article.TotalCommentsCount = await HtmlParser.GetNbCommentairesAsync(html, urlPage);
 
-            return article.Comments;
+            article.HasComments = true;
+
+            return comments;
         }
 
         public static String GetUrlComs(int articleId)

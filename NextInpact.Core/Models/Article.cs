@@ -20,10 +20,11 @@ namespace NextInpact.Core.Models
         private String _Content;
         public String Content
         {
-            get { return _Content; }
+            get => _Content; 
             set
             {  
                 _Content = value;
+                SyncPercentage += 0.33;
             }
         }
 
@@ -34,7 +35,7 @@ namespace NextInpact.Core.Models
         private int _TotalCommentsCount;
         public int TotalCommentsCount
         {
-            get { return _TotalCommentsCount; }
+            get => _TotalCommentsCount; 
             set
             {
                 SetProperty(ref _TotalCommentsCount, value);
@@ -50,21 +51,25 @@ namespace NextInpact.Core.Models
         [Ignore]
         public byte[] ImageData
         {
-            get { return _ImageData; }
+            get => _ImageData; 
             set
             {
                 ImageSourceIsDefault = false;                
                 SetProperty(ref _ImageData, value);
+
+                SyncPercentage += 0.33;
             }
         }
-      
 
-        private double _SyncPercentage;        
+        
+        private double _SyncPercentage;
+        [Ignore]
         public double SyncPercentage
         {
             get { return _SyncPercentage; }
             set { SetProperty(ref _SyncPercentage, value); }
         }
+
 
         [Ignore]
         public bool ShowDateSection { get; set; }
@@ -72,40 +77,21 @@ namespace NextInpact.Core.Models
 
         public String PublicationTime
         {
-            get
-            {
-                return new DateTime(PublicationTimeStamp).ToString(Constantes.FORMAT_AFFICHAGE_ARTICLE_HEURE);
-            }
+            get => new DateTime(PublicationTimeStamp).ToString(Constantes.FORMAT_AFFICHAGE_ARTICLE_HEURE);         
         }
 
         public String PublicationDate
         {
-            get
-            {
-                return new DateTime(PublicationTimeStamp).ToString(Constantes.FORMAT_AFFICHAGE_SECTION_DATE);
-            }
+            get => new DateTime(PublicationTimeStamp).ToString(Constantes.FORMAT_AFFICHAGE_SECTION_DATE);            
         }
 
 
-        private List<Comment> _Comments;
+        private bool _HasComments;
         [Ignore]
-        public List<Comment> Comments
+        public bool HasComments
         {
-            get
-            {
-                if (_Comments == null)
-                {
-                    _Comments = new List<Comment>();
-                }
-
-                return _Comments;
-            }
-            set
-            {  
-                _Comments = value ?? new List<Comment>();
-            }
+            get => _HasComments; 
+            set { _HasComments =  value; SyncPercentage += 0.34; }
         }
-
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using NextInpact.Core.IO;
 using NextInpact.Core.Models;
+using NextInpact.Core.Parsing;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,8 +17,14 @@ namespace NextInpact.Core.Data
             var items_in_db = (await ThreadSafeSqlite.Instance.GetAllAsync<Article>()).OrderByDescending(x => x.PublicationTimeStamp).ToList();
 
             await Store.SetMiniaturesFromCache(items_in_db);
-        
+
+            foreach (var item in items_in_db)
+            {
+                item.HasComments = true;
+            }
+
             return items_in_db;
+
         }
 
         public static async Task<Article> GetArticle(int id)
@@ -46,7 +53,6 @@ namespace NextInpact.Core.Data
                 }
 
                 item.ImageData = datas;
-                
             }
         }
 
@@ -66,7 +72,7 @@ namespace NextInpact.Core.Data
 
                 if (db_item != null)
                 {
-                    item.Content = db_item.Content;
+                    item.Content = db_item.Content;                    
                 }
 
                 //Update info : CommsCount, DatePublication.
@@ -74,24 +80,11 @@ namespace NextInpact.Core.Data
             }
         }
 
-        public static async Task SaveComments(IEnumerable<Article> items)
+        public static async Task SaveComments(IEnumerable<Comment> items)
         {
-            foreach (var item in items)
+            foreach (Comment comment in items)
             {
-                //Update progress
-                await ThreadSafeSqlite.Instance.InsertOrReplaceAsync(item);
-
-                foreach (Comment comment in item.Comments)
-                {
-                    Comment comment_int_db = await ThreadSafeSqlite.Instance.GetAsync<Comment>(comment.PrimaryKey);
-
-                    if (comment_int_db != null)
-                    {
-                        continue;
-                    }
-
-                    await ThreadSafeSqlite.Instance.InsertOrReplaceAsync(comment);
-                }
+                await ThreadSafeSqlite.Instance.InsertOrReplaceAsync(comment);
             }
         }
 
