@@ -96,6 +96,12 @@
     <Reference Include="MvvmCross.Platform.Droid, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Platform.5.1.0\lib\MonoAndroid\MvvmCross.Platform.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="PCLStorage, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Plugin.Settings, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xam.Plugins.Settings.3.0.1\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
     </Reference>
@@ -179,7 +185,6 @@
     <Compile Include="Activities\SplashScreen.cs" />
     <Compile Include="CustomViews\CustomWebView.cs" />
     <Compile Include="PlatformSpecific\AndroidConnectionProvider.cs" />
-    <Compile Include="PlatformSpecific\AndroidSaveAndLoad.cs" />
     <Compile Include="Activities\CommentsActivity.cs" />
     <Compile Include="Activities\ArticleActivity.cs" />
     <Compile Include="Converters\DoubleToPercentageValueConverter.cs" />

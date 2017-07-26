@@ -45,7 +45,6 @@
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\ObservableRangeCollection.cs" />
     <Compile Include="IO\ImageFolder.cs" />
-    <Compile Include="IO\ISaveAndLoad.cs" />
     <Compile Include="IO\SaveAndLoad.cs" />
     <Compile Include="JavaExtensions.cs" />
     <Compile Include="Models\Article.cs" />

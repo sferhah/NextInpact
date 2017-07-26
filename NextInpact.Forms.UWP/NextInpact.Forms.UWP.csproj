@@ -111,7 +111,6 @@
     </Compile>
     <Compile Include="MyProgressRingRenderer.cs" />
     <Compile Include="PlatformSpecific\ConnectionProvider.cs" />
-    <Compile Include="PlatformSpecific\SaveAndLoad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
   </ItemGroup>

@@ -19,8 +19,7 @@ namespace NextInpact.Native.UWP
 
         protected override IMvxApplication CreateApp()
         {
-            Mvx.RegisterSingleton<IStringConnectionProvider>(new ConnectionProvider());
-            Mvx.RegisterSingleton<ISaveAndLoad>(new WSaveAndLoad());
+            Mvx.RegisterSingleton<IStringConnectionProvider>(new ConnectionProvider());            
 
             return new Core.App();
         }

@@ -14,8 +14,7 @@ namespace NextInpact.Native.Droid
 
         protected override IMvxApplication CreateApp()
         {
-            Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());
-            Mvx.RegisterSingleton<ISaveAndLoad>(new AndroidSaveAndLoad());
+            Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());            
 
             return new Core.App();
         }

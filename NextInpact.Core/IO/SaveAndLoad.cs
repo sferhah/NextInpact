@@ -1,30 +1,41 @@
-﻿using MvvmCross.Platform;
-using System;
+﻿using PCLStorage;
 using System.Threading.Tasks;
-
 
 namespace NextInpact.Core.IO
 {
     public class SaveAndLoad
     {
-        public static async Task SaveAsync(ImageFolder folder, string filename, byte[] data)
+        public static async Task SaveAsync(ImageFolder sub_folder, string filename, byte[] data)
         {
-            await Task.Run(() => Save(folder.ToString(), filename, data));
+            IFolder rootFolder = FileSystem.Current.LocalStorage;
+            IFolder folder = await rootFolder.CreateFolderAsync(sub_folder.ToString(), CreationCollisionOption.OpenIfExists);
+            IFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
+
+            using (System.IO.Stream stream = await file.OpenAsync(FileAccess.ReadAndWrite))
+            {
+                stream.Write(data, 0, data.Length);
+            }
         }
 
-        public static void Save(String folder, string filename, byte[] data)
+        public static async Task<byte[]> LoadAsync(ImageFolder sub_folder, string filename)
         {
-            Mvx.Resolve<ISaveAndLoad>().Save(folder, filename, data);            
-        }
+            IFolder rootFolder = FileSystem.Current.LocalStorage;
+            IFolder folder = await rootFolder.CreateFolderAsync(sub_folder.ToString(), CreationCollisionOption.OpenIfExists);
+            
+            if ((await folder.CheckExistsAsync(filename)) != ExistenceCheckResult.FileExists)
+            {
+                return null;
+            }
 
-        public static async Task<byte[]> LoadAsync(ImageFolder folder, string filename)
-        {
-            return await Task.Run(() => Load(folder.ToString(), filename));
-        }
+            IFile file = await folder.GetFileAsync(filename);
 
-        public static byte[] Load(String folder, string filename)
-        {
-            return Mvx.Resolve<ISaveAndLoad>().Load(folder, filename);            
+            using (System.IO.Stream stream = await file.OpenAsync(FileAccess.ReadAndWrite))
+            {
+                long length = stream.Length;
+                byte[] streamBuffer = new byte[length];
+                stream.Read(streamBuffer, 0, (int)length);
+                return streamBuffer;
+            }
         }
     }
 
