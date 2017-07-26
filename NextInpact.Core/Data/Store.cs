@@ -82,10 +82,7 @@ namespace NextInpact.Core.Data
 
         public static async Task SaveComments(IEnumerable<Comment> items)
         {
-            foreach (Comment comment in items)
-            {
-                await ThreadSafeSqlite.Instance.InsertOrReplaceAsync(comment);
-            }
+            await ThreadSafeSqlite.Instance.InsertOrReplaceAllAsync(items);
         }
 
     }

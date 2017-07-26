@@ -107,6 +107,19 @@ namespace NextInpact.Core.Data
             }
         }
 
+        public async Task InsertOrReplaceAllAsync<T>(IEnumerable<T> item) where T : new()
+        {
+            await Task.Run(() => InsertOrReplaceAll(item));
+        }
+
+        private void InsertOrReplaceAll<T>(IEnumerable<T> value) where T : new()
+        {
+            lock (locker)
+            {
+                database.InsertOrReplaceAll(value, typeof(T));
+            }
+        }
+
     }
 
 }
