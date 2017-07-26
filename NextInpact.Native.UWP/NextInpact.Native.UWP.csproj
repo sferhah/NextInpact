@@ -108,7 +108,6 @@
     <Compile Include="Views\ArticlesPage.xaml.cs">
       <DependentUpon>ArticlesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PlatformSpecific\ConnectionProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
   </ItemGroup>

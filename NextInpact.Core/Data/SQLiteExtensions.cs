@@ -10,23 +10,6 @@ namespace NextInpact.Core.Data
 {
     public static class SQLiteExtensions
     {
-
-        public static int InsertOrReplace(this SQLiteConnection connection, object obj)
-        {
-            if (obj == null)
-            {
-                return 0;
-            }
-            return connection.Insert(obj, "OR REPLACE", obj.GetType());
-        }
-
-
-        public static int InsertOrReplace(this SQLiteConnection connection, object obj, Type objType)
-        {
-            return connection.Insert(obj, "OR REPLACE", objType);
-        }
-
-
         public static int InsertOrReplaceAll(this SQLiteConnection connection, IEnumerable objects, Type objType)
         {
             var c = 0;

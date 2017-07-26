@@ -1,4 +1,5 @@
 ﻿using MvvmCross.Platform;
+using PCLStorage;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -29,16 +30,11 @@ namespace NextInpact.Core.Data
 
         protected SQLiteConnection database;
 
-        private ThreadSafeSqlite()
-        {
-            var sqliteFilename = String.Format("{0}.db3", "NextInpact");
-            String connectionString = Mvx.Resolve<IStringConnectionProvider>().GetConnectionString(sqliteFilename);
-            this.database = new SQLiteConnection(connectionString);
-        }
-
-
         public void Init(Type first, params Type[] types)
         {
+            string path = PortablePath.Combine(FileSystem.Current.LocalStorage.Path, String.Format("{0}.db3", "NextInpact"));
+            this.database =  new SQLiteConnection(path);            
+
             foreach (var t in types.Concat(new[] { first }))
             {
                 database.CreateTable(t);

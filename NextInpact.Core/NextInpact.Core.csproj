@@ -37,7 +37,6 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Constantes.cs" />
-    <Compile Include="Data\IStringConnectionProvider.cs" />
     <Compile Include="Data\SQLiteExtensions.cs" />
     <Compile Include="Data\Store.cs" />
     <Compile Include="Data\ThreadSafeSqlite.cs" />

@@ -4,17 +4,11 @@ using MvvmCross.Platform.Platform;
 using MvvmCross.Uwp.Views;
 using MvvmCross.Platform;
 using MvvmCross.Core.Views;
-using System.Collections.Generic;
-using NextInpact.Forms.Views;
-using NextInpact.Core.ViewModels;
 using Windows.UI.Xaml.Controls;
 using MvvmCross.Forms.Uwp;
 using Windows.ApplicationModel.Activation;
 using MvvmCross.Platform.Converters;
 using NextInpact.Forms.Converters;
-using NextInpact.Core.Data;
-using NextInpact.Forms.UWP.PlatformSpecific;
-using NextInpact.Core.IO;
 
 namespace NextInpact.Forms.UWP
 {
@@ -24,8 +18,6 @@ namespace NextInpact.Forms.UWP
 
         protected override IMvxApplication CreateApp()
         {
-            Mvx.RegisterSingleton<IStringConnectionProvider>(new ConnectionProvider());            
-
             return new Core.App();
         }
 

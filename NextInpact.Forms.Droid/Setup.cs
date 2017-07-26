@@ -11,7 +11,6 @@ using System.Linq;
 using NextInpact.Forms.Converters;
 using NextInpact.Core.Data;
 using NextInpact.Core.IO;
-using NextInpact.Forms.Droid.PlatformSpecific;
 using MvvmCross.Forms.Droid.Presenters;
 using MvvmCross.Droid.Views;
 
@@ -23,8 +22,6 @@ namespace NextInpact.Forms.Droid
 
         protected override IMvxApplication CreateApp()
         {
-            Mvx.RegisterSingleton<IStringConnectionProvider>(new AndroidConnectionProvider());            
-
             return new Core.App();
         }
 

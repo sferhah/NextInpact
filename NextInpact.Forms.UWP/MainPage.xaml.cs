@@ -1,11 +1,7 @@
 ﻿using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.Views;
-using MvvmCross.Forms.Uwp;
 using MvvmCross.Forms.Uwp.Presenters;
 using MvvmCross.Platform;
-using NextInpact.Core.Data;
-using NextInpact.Core.IO;
-using NextInpact.Forms.UWP.PlatformSpecific;
 
 namespace NextInpact.Forms.UWP
 {

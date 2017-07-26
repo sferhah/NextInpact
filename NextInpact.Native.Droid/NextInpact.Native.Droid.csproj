@@ -184,7 +184,6 @@
   <ItemGroup>
     <Compile Include="Activities\SplashScreen.cs" />
     <Compile Include="CustomViews\CustomWebView.cs" />
-    <Compile Include="PlatformSpecific\AndroidConnectionProvider.cs" />
     <Compile Include="Activities\CommentsActivity.cs" />
     <Compile Include="Activities\ArticleActivity.cs" />
     <Compile Include="Converters\DoubleToPercentageValueConverter.cs" />
