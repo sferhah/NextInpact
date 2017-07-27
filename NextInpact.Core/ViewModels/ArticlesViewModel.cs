@@ -104,16 +104,21 @@ namespace NextInpact.Core.ViewModels
 
         public async Task InitFromHttp()
         {
-            var items = await NextInpactClient.GetArticlesAsync(page: 1);
-            items = items.OrderByDescending(x => x.PublicationTimeStamp).ToList();
+            var new_items = await NextInpactClient.GetArticlesAsync(page: 1);
+            new_items = new_items.OrderByDescending(x => x.PublicationTimeStamp).ToList();
+
+            //Combine
+            var delta = new_items.Where(x => !Items.Any(y => x.Id == y.Id));
+            List<Article> items  = Items.Concat(delta).OrderByDescending(x => x.PublicationTimeStamp).ToList();            
 
             AssignDay(items);
 
             Items.Clear();
             Items.ReplaceRange(items);
+            
 
             // Sets miniatures from cache if availaible
-            await Store.SetMiniaturesFromCache(items);
+            await Store.SetMiniaturesFromCache(items.Where(x => x.ImageSourceIsDefault));
             // Sets miniature from net for articles without miniature
             await NextInpactClient.DownloadMiniaturesAsync(items.Where(x => x.ImageSourceIsDefault));
 
@@ -146,7 +151,12 @@ namespace NextInpact.Core.ViewModels
                     currentDay = article.PublicationDate;
                     article.ShowDateSection = true;
                 }
+                else
+                {
+                    article.ShowDateSection = false;
+                }
             }
         }
+      
     }
 }
