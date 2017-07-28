@@ -9,7 +9,15 @@ namespace NextInpact.Core.Parsing
     {
         public static String GetAbsUrl(this IAttr attr, string origin)
         {
-            return new Uri(new Uri(origin), attr.Value).ToString();
+            try
+            {
+                return new Uri(new Uri(origin), attr.Value).ToString();
+            }
+            catch
+            {
+                return attr.Value;
+            }
+            
         }
 
         public static void TagName(this IElement el, string value)
