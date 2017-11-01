@@ -31,18 +31,9 @@ namespace NextInpact.Core.Parsing
                 var url = unArticle.QuerySelectorAll("h1 > a[href]").First();
                 var sousTitre = unArticle.QuerySelectorAll("span[class=soustitre]").First();
                 String monSousTitre = sousTitre.TextContent.Substring(2);
-                var commentaires = unArticle.QuerySelectorAll("span[class=nbcomment]").First();
-                int nbCommentaires = 0;
+                var commentaires = unArticle.QuerySelectorAll("span[class=nb_comments]").FirstOrDefault();
 
-                if (!int.TryParse(commentaires.TextContent, out nbCommentaires))
-                {
-                    String valeur = commentaires.TextContent;
-                    int positionOperateur = valeur.IndexOf("+");
-                    String membreGauche = valeur.JavaSubString(0, positionOperateur).Trim();
-                    String membreDroit = valeur.Substring(positionOperateur + 1).Trim();
-                    nbCommentaires = int.Parse(membreGauche) + int.Parse(membreDroit);
-                }
-
+                int.TryParse(commentaires?.TextContent, out int nbCommentaires);
 
                 var monArticleItem = new Article
                 {
@@ -71,9 +62,7 @@ namespace NextInpact.Core.Parsing
         public static String ParseArticleContent(String unContenu, String urlPage)
         {
             var pageNXI = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
-            var lArticle = pageNXI.QuerySelectorAll("article");
-            var articleID = pageNXI.QuerySelectorAll("div[class=actu_content][data-id]").First();
-            int unID = int.Parse(articleID.Attributes["data-id"].Value);
+            var lArticle = pageNXI.QuerySelectorAll("article");            
 
             pageNXI.QuerySelectorAll("article > section").FirstOrDefault()?.Remove();
             pageNXI.QuerySelectorAll("article > div[class=thumb-cat-container]").FirstOrDefault()?.Remove();
