@@ -24,7 +24,7 @@ namespace NextInpact.Forms.UWP
         //MVVMCross all versions : Manually map ViewModels to Views if they are not in the same project otherwise MVVMCross won't do it
         protected override void InitializeViewLookup()
         {
-         //   Mvx.Resolve<IMvxViewsContainer>().AddAll(Forms.App.Mapping);
+            Mvx.Resolve<IMvxViewsContainer>().AddAll(Forms.App.Mapping);
         }
 
         protected override void InitializeLastChance()
