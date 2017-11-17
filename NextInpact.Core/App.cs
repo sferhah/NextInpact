@@ -3,11 +3,6 @@ using MvvmCross.Platform.IoC;
 using NextInpact.Core.Data;
 using NextInpact.Core.Models;
 using NextInpact.Core.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NextInpact.Core
 {
@@ -21,8 +16,7 @@ namespace NextInpact.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-
-            RegisterAppStart<ArticlesViewModel>();            
+            RegisterNavigationServiceAppStart<ArticlesViewModel>();            
         }
     }
 }
