@@ -12,7 +12,7 @@ namespace NextInpact.Core.Networking
     {
         public static async Task<List<Article>> GetArticlesAsync(int page)
         {
-            var urlPage = Constantes.NEXT_INPACT_URL_NUM_PAGE + page;
+            var urlPage = Constants.NEXT_INPACT_URL_NUM_PAGE + page;
 
             String html = await Downloader.GetAsync(urlPage);
 
@@ -85,13 +85,13 @@ namespace NextInpact.Core.Networking
         {
             int maPage = 1;
 
-            String contructedUrl = Constantes.NEXT_INPACT_URL_COMMENTAIRES
+            String contructedUrl = Constants.NEXT_INPACT_URL_COMMENTAIRES
                 + "?"
-                + Constantes.NEXT_INPACT_URL_COMMENTAIRES_PARAM_ARTICLE_ID
+                + Constants.NEXT_INPACT_URL_COMMENTAIRES_PARAM_ARTICLE_ID
                 + "="
                 + articleId
                 + "&"
-                + Constantes.NEXT_INPACT_URL_COMMENTAIRES_PARAM_NUM_PAGE
+                + Constants.NEXT_INPACT_URL_COMMENTAIRES_PARAM_NUM_PAGE
                 + "="
                 + maPage;
 

@@ -23,7 +23,7 @@ namespace NextInpact.Core
             {
                 if (LastRefreshDate>0)
                 {
-                    return lastRefreshDateText + new DateTime(LastRefreshDate).ToString(Constantes.FORMAT_DATE_DERNIER_REFRESH);
+                    return lastRefreshDateText + new DateTime(LastRefreshDate).ToString(Constants.FORMAT_DATE_DERNIER_REFRESH);
                 }
 
                 return lastRefreshDateText + "Jamais synchronisé";

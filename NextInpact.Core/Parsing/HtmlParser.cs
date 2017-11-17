@@ -35,7 +35,7 @@ namespace NextInpact.Core.Parsing
                 var monArticleItem = new Article
                 {
                     Id = int.Parse(articleElement.Attributes["data-acturowid"].Value),
-                    PublicationTimeStamp = ConvertToTimeStamp(date, Constantes.FORMAT_DATE_ARTICLE),
+                    PublicationTimeStamp = ConvertToTimeStamp(date, Constants.FORMAT_DATE_ARTICLE),
                     UrlIllustration = image,
                     Url = urlElement.Attributes["href"].GetAbsUrl(urlPage),
                     Title = urlElement.TextContent,
@@ -217,7 +217,7 @@ namespace NextInpact.Core.Parsing
         {
             List<Comment> comments = new List<Comment>();
 
-            int pageNumber = int.Parse(urlPage.Substring(urlPage.IndexOf("&") + Constantes.NEXT_INPACT_URL_COMMENTAIRES_PARAM_NUM_PAGE.Length + 2));
+            int pageNumber = int.Parse(urlPage.Substring(urlPage.IndexOf("&") + Constants.NEXT_INPACT_URL_COMMENTAIRES_PARAM_NUM_PAGE.Length + 2));
 
             var htmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(html);
 
@@ -240,7 +240,7 @@ namespace NextInpact.Core.Parsing
                 linkElement.Attributes["href"].Value = linkElement.Attributes["href"].GetAbsUrl(urlPage);
             }
 
-            int previousIdComm = (pageNumber - 1) * Constantes.NB_COMMENTAIRES_PAR_PAGE;
+            int previousIdComm = (pageNumber - 1) * Constants.NB_COMMENTAIRES_PAR_PAGE;
             int previousUuidComm = 0;
 
             foreach (IElement commentElement in commentElements)
@@ -260,7 +260,7 @@ namespace NextInpact.Core.Parsing
                 if (dateElement.Any())
                 {
                     String laDate = dateElement.First().TextContent;
-                    timeStampPublication = ConvertToTimeStamp(laDate, Constantes.FORMAT_DATE_COMMENTAIRE);
+                    timeStampPublication = ConvertToTimeStamp(laDate, Constants.FORMAT_DATE_COMMENTAIRE);
                 }
 
                 var idElement = commentElement.QuerySelectorAll("span[class=actu_comm_num]");

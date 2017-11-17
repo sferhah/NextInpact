@@ -34,7 +34,7 @@ namespace NextInpact.Core.Models
         {
             get
             {
-                return this.Author + " " + new DateTime(this.TimeStampPublication).ToString(Constantes.FORMAT_AFFICHAGE_COMMENTAIRE_DATE_HEURE);
+                return this.Author + " " + new DateTime(this.TimeStampPublication).ToString(Constants.FORMAT_AFFICHAGE_COMMENTAIRE_DATE_HEURE);
             }
         }
 
