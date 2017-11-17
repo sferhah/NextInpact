@@ -1,4 +1,5 @@
 ﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform.Logging;
 using MvvmCross.Uwp.Platform;
 using Windows.UI.Xaml.Controls;
 
@@ -12,5 +13,8 @@ namespace NextInpact.Native.UWP
         {
             return new Core.App();
         }
+
+        protected override MvxLogProviderType GetDefaultLogProviderType()
+         => MvxLogProviderType.None;
     }
 }
