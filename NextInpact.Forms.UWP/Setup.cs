@@ -12,7 +12,9 @@ using NextInpact.Forms.Converters;
 using MvvmCross.Platform.Logging;
 using MvvmCross.Forms.Platform;
 using MvvmCross.Forms.Uwp.Presenters;
-
+using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NextInpact.Forms.UWP
 {
@@ -29,11 +31,10 @@ namespace NextInpact.Forms.UWP
         {
             return new Core.App();
         }
-
-        //MVVMCross all versions : Manually map ViewModels to Views if they are not in the same project otherwise MVVMCross won't do it
-        protected override void InitializeViewLookup()
+    
+        protected override IEnumerable<Assembly> GetViewAssemblies()
         {
-            Mvx.Resolve<IMvxViewsContainer>().AddAll(Forms.App.Mapping);
+            return base.GetViewAssemblies().Union(new[] { typeof(Forms.App).GetTypeInfo().Assembly });
         }
 
         protected override IMvxWindowsViewPresenter CreateViewPresenter(IMvxWindowsFrame rootFrame)
@@ -50,10 +51,9 @@ namespace NextInpact.Forms.UWP
 
         protected override void InitializeLastChance()
         {
-
             base.InitializeLastChance();
             var registry = Mvx.Resolve<IMvxValueConverterRegistry>();
-            registry.AddOrOverwrite("ByteArrayToImage", new ByteArrayToImageValueConverter());         
+            registry.AddOrOverwrite("ByteArrayToImage", new ByteArrayToImageValueConverter());
         }
 
         protected override MvxLogProviderType GetDefaultLogProviderType()
