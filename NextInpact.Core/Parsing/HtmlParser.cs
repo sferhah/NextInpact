@@ -32,7 +32,7 @@ namespace NextInpact.Core.Parsing
 
                 int.TryParse(commentsCountElement?.TextContent, out int commentsCount);
 
-                var monArticleItem = new Article
+                articles.Add(new Article
                 {
                     Id = int.Parse(articleElement.Attributes["data-acturowid"].Value),
                     PublicationTimeStamp = ConvertToTimeStamp(date, Constants.FORMAT_DATE_ARTICLE),
@@ -42,9 +42,7 @@ namespace NextInpact.Core.Parsing
                     SubTitle = subTitle,
                     TotalCommentsCount = commentsCount,
                     HasSubscription = articleElement.QuerySelectorAll("img[alt=badge_abonne]").Count() > 0,
-                };
-
-                articles.Add(monArticleItem);
+                });
             }
 
             return articles;

@@ -16,9 +16,7 @@ namespace NextInpact.Core.Networking
 
             String html = await Downloader.GetAsync(urlPage);
 
-            List<Article> items = await HtmlParser.ParseArticleListAsync(html, urlPage);
-
-            return items;
+            return await HtmlParser.ParseArticleListAsync(html, urlPage);
         }
 
         public static async Task DownloadMiniaturesAsync(IEnumerable<Article> items)
