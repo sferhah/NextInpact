@@ -1,4 +1,4 @@
-﻿using MvvmCross.Forms.Core;
+﻿using MvvmCross.Forms.Views;
 using NextInpact.Core.ViewModels;
 using Xamarin.Forms;
 

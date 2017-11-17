@@ -9,14 +9,21 @@ using System.Collections.Generic;
 
 namespace NextInpact.Core.ViewModels
 {
-    public class CommentsViewModel : NextInpactBaseViewModel
+    public class CommentsViewModel : NextInpactBaseViewModel<int>
     {
         public ObservableRangeCollection<Comment> Items { get; set; }
         public MvxCommand LoadItemsCommand { get; set; }
 
         private List<Comment> comments;
 
-        public async void Init(int itemId)
+        int itemId;
+
+        public override void Prepare(int parameter)
+        {
+            this.itemId = parameter;
+        }
+
+        public override async Task Initialize()
         {
             this.comments = await Store.GetArticleComments(itemId);
             IsBusy = false;
@@ -60,5 +67,6 @@ namespace NextInpact.Core.ViewModels
                 IsBusy = false;
             }
         }
+      
     }
 }

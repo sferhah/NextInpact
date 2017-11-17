@@ -1,6 +1,4 @@
-﻿using MvvmCross.Platform;
-using PCLStorage;
-using SQLite;
+﻿using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +30,7 @@ namespace NextInpact.Core.Data
 
         public void Init(Type first, params Type[] types)
         {
-            string path = PortablePath.Combine(FileSystem.Current.LocalStorage.Path, String.Format("{0}.db3", "NextInpact"));
+            string path = Plugin.NetStandardStorage.CrossStorage.FileSystem.LocalStorage.FullPath + @"\"+  String.Format("{0}.db3", "NextInpact");
             this.database =  new SQLiteConnection(path);            
 
             foreach (var t in types.Concat(new[] { first }))

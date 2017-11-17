@@ -11,12 +11,13 @@ using System.Linq;
 using NextInpact.Forms.Converters;
 using NextInpact.Core.Data;
 using NextInpact.Core.IO;
-using MvvmCross.Forms.Droid.Presenters;
 using MvvmCross.Droid.Views;
+using MvvmCross.Forms.Droid.Views;
+using MvvmCross.Forms.Droid.Platform;
 
 namespace NextInpact.Forms.Droid
 {
-    public class Setup : MvxFormsAndroidSetup
+    public class Setup : MvxFormsAndroidSetup 
     {
         public Setup(Context applicationContext) : base(applicationContext) {}
 
@@ -26,16 +27,22 @@ namespace NextInpact.Forms.Droid
         }
 
         //MVVMCross 5.1 Forms.Android : Manually create a presenter otherwise MVVMCross won't do it
-        protected override IMvxAndroidViewPresenter CreateViewPresenter()
+        //protected override IMvxAndroidViewPresenter CreateViewPresenter()
+        //{
+
+        //    var presenter = new MvxFormsAndroidViewPresenter(new List<Assembly> {Assembly.GetExecutingAssembly() })
+        //    {
+        //        FormsApplication = new App()
+        //    };
+
+        //    Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
+
+        //    return presenter;
+        //}
+
+        protected override IEnumerable<Assembly> GetViewAssemblies()
         {
-            var presenter = new MvxFormsDroidPagePresenter()
-            {
-                FormsApplication = new App()
-            };
-
-            Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
-
-            return presenter;
+            return base.GetViewAssemblies().Union(new[] { typeof(App).GetTypeInfo().Assembly });
         }
 
         //MVVMCross all versions : Manually map ViewModels to Views if they are not in the same project otherwise MVVMCross won't do it

@@ -2,7 +2,7 @@
 using NextInpact.Core.Models;
 using NextInpact.Core.ViewModels;
 using Xamarin.Forms;
-using MvvmCross.Forms.Core;
+using MvvmCross.Forms.Views;
 
 namespace NextInpact.Forms.Views
 {

@@ -2,7 +2,7 @@
 <core:MvxFormsApplication xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls ="clr-namespace:NextInpact.Forms;assembly=NextInpact.Forms"
-             xmlns:core="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms.Core"
+             xmlns:core="clr-namespace:MvvmCross.Forms.Platform;assembly=MvvmCross.Forms.Platform"
              x:Class="NextInpact.Forms.App"
              xmlns:nconverters="clr-namespace:NextInpact.Forms.Converters;assembly=NextInpact.Forms">
   <Application.Resources>

@@ -13,7 +13,7 @@ namespace NextInpact.Forms.Converters
         {
             if (value == null)
             {   
-                return ImageSource.FromResource("NextInpact.Resources.default_miniature.png");
+                return ImageSource.FromFile("default_miniature.png");
             }
             
             return ImageSource.FromStream(() => new MemoryStream(value));

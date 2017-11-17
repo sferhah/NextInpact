@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextInpact.Core", "NextInpact.Core\NextInpact.Core.csproj", "{67F9D3A8-F71E-4428-913F-C37AE82CDB24}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextInpact.Forms", "NextInpact.Forms\NextInpact.Forms.csproj", "{5137EE36-F5AB-4B9C-AFA5-2AC161C9F667}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Forms.UWP", "NextInpact.Forms.UWP\NextInpact.Forms.UWP.csproj", "{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Forms.iOS", "NextInpact.Forms.iOS\NextInpact.Forms.iOS.csproj", "{07048848-A37D-4B87-BA32-945B44AA6B3E}"
 EndProject
@@ -19,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Native.Droid", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Forms.Droid", "NextInpact.Forms.Droid\NextInpact.Forms.Droid.csproj", "{57EAEDC4-032F-4B4B-ABB8-D3AFF5475459}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Forms.UWP2", "NextInpact.Forms.UWP2\NextInpact.Forms.UWP2.csproj", "{BA1F7E3A-32C6-42DF-895A-A5F80280F440}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Forms.UWP", "NextInpact.Forms.UWP\NextInpact.Forms.UWP.csproj", "{BA1F7E3A-32C6-42DF-895A-A5F80280F440}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,32 +83,6 @@ Global
 		{5137EE36-F5AB-4B9C-AFA5-2AC161C9F667}.Release|x64.Build.0 = Release|Any CPU
 		{5137EE36-F5AB-4B9C-AFA5-2AC161C9F667}.Release|x86.ActiveCfg = Release|Any CPU
 		{5137EE36-F5AB-4B9C-AFA5-2AC161C9F667}.Release|x86.Build.0 = Release|Any CPU
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|Any CPU.Build.0 = Debug|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|Any CPU.Deploy.0 = Debug|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|ARM.ActiveCfg = Debug|ARM
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|ARM.Build.0 = Debug|ARM
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|ARM.Deploy.0 = Debug|ARM
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|iPhone.ActiveCfg = Debug|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|x64.ActiveCfg = Debug|x64
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|x64.Build.0 = Debug|x64
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|x64.Deploy.0 = Debug|x64
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|x86.ActiveCfg = Debug|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|x86.Build.0 = Debug|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Debug|x86.Deploy.0 = Debug|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|Any CPU.ActiveCfg = Release|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|ARM.ActiveCfg = Release|ARM
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|ARM.Build.0 = Release|ARM
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|ARM.Deploy.0 = Release|ARM
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|iPhone.ActiveCfg = Release|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|iPhoneSimulator.ActiveCfg = Release|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|x64.ActiveCfg = Release|x64
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|x64.Build.0 = Release|x64
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|x64.Deploy.0 = Release|x64
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|x86.ActiveCfg = Release|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|x86.Build.0 = Release|x86
-		{3A1D136E-5CB3-453F-9AF1-0B0EFCFDDF6A}.Release|x86.Deploy.0 = Release|x86
 		{07048848-A37D-4B87-BA32-945B44AA6B3E}.Debug|Any CPU.ActiveCfg = Debug|iPhone
 		{07048848-A37D-4B87-BA32-945B44AA6B3E}.Debug|ARM.ActiveCfg = Debug|iPhone
 		{07048848-A37D-4B87-BA32-945B44AA6B3E}.Debug|iPhone.ActiveCfg = Debug|iPhone
