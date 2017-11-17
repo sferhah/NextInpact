@@ -1,6 +1,5 @@
 ﻿using Plugin.NetStandardStorage.Abstractions.Interfaces;
 using Plugin.NetStandardStorage.Abstractions.Types;
-using Plugin.NetStandardStorage.Implementations;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -36,25 +35,13 @@ namespace NextInpact.Core.IO
         {
             IFolder rootFolder = Plugin.NetStandardStorage.CrossStorage.FileSystem.LocalStorage;
             IFolder folder = rootFolder.CreateFolder(sub_folder.ToString(), CreationCollisionOption.OpenIfExists);
-            
-            //if (!folder.CheckFileExists(filename))
-            //{
-            //    return null;
-            //}
 
-            IFile file = null;
-
-            try
-            {
-                file = folder.GetFile(filename);
-            }
-            catch
+            if (!folder.CheckFileExists(folder.FullPath + "/" + filename))
             {
                 return null;
-            }
+            }   
 
-
-            //IFile file = folder.GetFile(filename);
+            IFile file = folder.GetFile(filename);
 
             using (Stream stream = file.Open(FileAccess.ReadWrite))
             {

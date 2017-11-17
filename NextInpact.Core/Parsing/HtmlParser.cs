@@ -10,12 +10,12 @@ namespace NextInpact.Core.Parsing
 {
     public class HtmlParser
     {
-        public static async Task<List<Article>> ParseArticleListAsync(string s, String urlPage)
+        public static async Task<List<Article>> ParseArticleListAsync(string s, string urlPage)
         {
             return await Task.Run(() => ParseArticleList(s, urlPage));
         }
 
-        public static List<Article> ParseArticleList(String unContenu, String urlPage)
+        public static List<Article> ParseArticleList(string unContenu, string urlPage)
         {
             List<Article> mesArticlesItem = new List<Article>();
 
@@ -54,12 +54,12 @@ namespace NextInpact.Core.Parsing
         }
 
 
-        public static async Task<String> ParseArticleContentAsync(string s, String urlPage)
+        public static async Task<string> ParseArticleContentAsync(string s, string urlPage)
         {
             return await Task.Run(() => ParseArticleContent(s, urlPage));
         }
 
-        public static String ParseArticleContent(String unContenu, String urlPage)
+        public static string ParseArticleContent(string unContenu, string urlPage)
         {
             var pageNXI = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
             var lArticle = pageNXI.QuerySelectorAll("article");            
@@ -204,12 +204,12 @@ namespace NextInpact.Core.Parsing
 
         }
 
-        public static async Task<int> GetNbCommentairesAsync(string s, String urlPage)
+        public static async Task<int> GetNbCommentairesAsync(string s, string urlPage)
         {
             return await Task.Run(() => GetNbCommentaires(s, urlPage));
         }
 
-        public static int GetNbCommentaires(String unContenu, String urlPage)
+        public static int GetNbCommentaires(string unContenu, string urlPage)
         {
             var pageNXI = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
             var elementNbComms = pageNXI.QuerySelectorAll("span[class=actu_separator_comms]").First();
@@ -221,12 +221,12 @@ namespace NextInpact.Core.Parsing
             return nbComms;
         }
 
-        public static async Task<List<Comment>> ParseCommentsAsync(string s, String urlPage)
+        public static async Task<List<Comment>> ParseCommentsAsync(string s, string urlPage)
         {
             return await Task.Run(() => ParseComments(s, urlPage));
         }
 
-        public static List<Comment> ParseComments(String unContenu, String urlPage)
+        public static List<Comment> ParseComments(string unContenu, string urlPage)
         {
             List<Comment> mesCommentairesItem = new List<Comment>();
 
@@ -334,7 +334,7 @@ namespace NextInpact.Core.Parsing
             return mesCommentairesItem;
         }
 
-        public static long ConvertToTimeStamp(String uneDate, String unFormatDate)
+        public static long ConvertToTimeStamp(string uneDate, string unFormatDate)
         {
             long laDateTS = 0;
 
