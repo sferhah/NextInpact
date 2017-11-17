@@ -15,42 +15,39 @@ namespace NextInpact.Core.Parsing
             return await Task.Run(() => ParseArticleList(s, urlPage));
         }
 
-        public static List<Article> ParseArticleList(string unContenu, string urlPage)
+        public static List<Article> ParseArticleList(string html, string urlPage)
         {
-            List<Article> mesArticlesItem = new List<Article>();
+            List<Article> articles = new List<Article>();
 
             //Won't find some encodings : just press F5 several times...
-            var pageNXI = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
+            var htmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(html);
 
-            var lesArticles = pageNXI.QuerySelectorAll("article[data-acturowid][data-datepubli]");
-
-            foreach (var unArticle in lesArticles)
+            foreach (var articleElement in htmlDocument.QuerySelectorAll("article[data-acturowid][data-datepubli]"))
             {
-                String laDate = unArticle.Attributes["data-datepubli"].Value;
-                var image = unArticle.QuerySelectorAll("img[class=ded-image]").First();
-                var url = unArticle.QuerySelectorAll("h1 > a[href]").First();
-                var sousTitre = unArticle.QuerySelectorAll("span[class=soustitre]").First();
-                String monSousTitre = sousTitre.TextContent.Substring(2);
-                var commentaires = unArticle.QuerySelectorAll("span[class=nb_comments]").FirstOrDefault();
+                String date = articleElement.Attributes["data-datepubli"].Value;
+                var image = articleElement.QuerySelectorAll("img[class=ded-image]").First().Attributes["data-frz-src"].GetAbsUrl(urlPage);
+                var urlElement = articleElement.QuerySelectorAll("h1 > a[href]").First();
+                var subTitle = articleElement.QuerySelectorAll("span[class=soustitre]").First().TextContent.Substring(2);
+                var commentsCountElement = articleElement.QuerySelectorAll("span[class=nb_comments]").FirstOrDefault();
 
-                int.TryParse(commentaires?.TextContent, out int nbCommentaires);
+                int.TryParse(commentsCountElement?.TextContent, out int commentsCount);
 
                 var monArticleItem = new Article
                 {
-                    Id = int.Parse(unArticle.Attributes["data-acturowid"].Value),
-                    PublicationTimeStamp = ConvertToTimeStamp(laDate, Constantes.FORMAT_DATE_ARTICLE),
-                    UrlIllustration = image.Attributes["data-frz-src"].GetAbsUrl(urlPage),
-                    Url = url.Attributes["href"].GetAbsUrl(urlPage),
-                    Title = url.TextContent,
-                    SubTitle = monSousTitre,
-                    TotalCommentsCount = nbCommentaires,
-                    HasSubscription = unArticle.QuerySelectorAll("img[alt=badge_abonne]").Count() > 0,
+                    Id = int.Parse(articleElement.Attributes["data-acturowid"].Value),
+                    PublicationTimeStamp = ConvertToTimeStamp(date, Constantes.FORMAT_DATE_ARTICLE),
+                    UrlIllustration = image,
+                    Url = urlElement.Attributes["href"].GetAbsUrl(urlPage),
+                    Title = urlElement.TextContent,
+                    SubTitle = subTitle,
+                    TotalCommentsCount = commentsCount,
+                    HasSubscription = articleElement.QuerySelectorAll("img[alt=badge_abonne]").Count() > 0,
                 };
 
-                mesArticlesItem.Add(monArticleItem);
+                articles.Add(monArticleItem);
             }
 
-            return mesArticlesItem;
+            return articles;
         }
 
 
@@ -59,35 +56,27 @@ namespace NextInpact.Core.Parsing
             return await Task.Run(() => ParseArticleContent(s, urlPage));
         }
 
-        public static string ParseArticleContent(string unContenu, string urlPage)
+        public static string ParseArticleContent(string html, string urlPage)
         {
-            var pageNXI = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
-            var lArticle = pageNXI.QuerySelectorAll("article");            
+            var htmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(html);
+            var articleElement = htmlDocument.QuerySelectorAll("article");            
 
-            pageNXI.QuerySelectorAll("article > section").FirstOrDefault()?.Remove();
-            pageNXI.QuerySelectorAll("article > div[class=thumb-cat-container]").FirstOrDefault()?.Remove();
-            pageNXI.QuerySelectorAll("div[class=read-time]").FirstOrDefault()?.Remove();
-            pageNXI.QuerySelectorAll("div[class=infos-article] > div > img").FirstOrDefault()?.Remove();
+            htmlDocument.QuerySelectorAll("article > section").FirstOrDefault()?.Remove();
+            htmlDocument.QuerySelectorAll("article > div[class=thumb-cat-container]").FirstOrDefault()?.Remove();
+            htmlDocument.QuerySelectorAll("div[class=read-time]").FirstOrDefault()?.Remove();
+            htmlDocument.QuerySelectorAll("div[class=infos-article] > div > img").FirstOrDefault()?.Remove();
 
-            var lesImagesLiens = lArticle.QuerySelectorAll("a[href] > img");
-
-            HashSet<IElement> baliseA = new HashSet<IElement>();
-
-            foreach (IElement uneImage in lesImagesLiens)
+            foreach (IElement element in articleElement.QuerySelectorAll("a[href] > img").Select(x=> (IElement)x.Parent))
             {
-                baliseA.Add((IElement)uneImage.Parent);
-            }
-
-            foreach (IElement uneBalise in baliseA)
-            {
-                foreach (IElement unEnfant in uneBalise.Children)
+                foreach (IElement childElement in element.Children)
                 {
-                    uneBalise.After(unEnfant);
+                    element.After(childElement);
                 }
-                uneBalise.Remove();
+
+                element.Remove();
             }
 
-            var lesIframes = lArticle.QuerySelectorAll("iframe");
+            var lesIframes = articleElement.QuerySelectorAll("iframe");
 
             String[] schemes = { "https://", "http://", "//" };
 
@@ -184,40 +173,38 @@ namespace NextInpact.Core.Parsing
 
             //}            
 
-            var lesLiens = lArticle.QuerySelectorAll("a[href]");
+            var linkElements = articleElement.QuerySelectorAll("a[href]");
 
 
-            foreach (IElement unLien in lesLiens)
+            foreach (IElement linkElement in linkElements)
             {
-                unLien.Attributes["href"].Value = unLien.Attributes["href"].GetAbsUrl(urlPage);
+                linkElement.Attributes["href"].Value = linkElement.Attributes["href"].GetAbsUrl(urlPage);
             }
 
-            var lesImages = lArticle.QuerySelectorAll("img[src]");
+            var imageElements = articleElement.QuerySelectorAll("img[src]");
 
-            foreach (IElement uneImage in lesImages)
+            foreach (IElement imageElement in imageElements)
             {
-                uneImage.Attributes["src"].Value = uneImage.Attributes["src"].GetAbsUrl(urlPage);
+                imageElement.Attributes["src"].Value = imageElement.Attributes["src"].GetAbsUrl(urlPage);
             }
 
-            return pageNXI.QuerySelector("article").OuterHtml;
+            return htmlDocument.QuerySelector("article").OuterHtml;
 
 
         }
 
-        public static async Task<int> GetNbCommentairesAsync(string s, string urlPage)
+        public static async Task<int> GetCommentsCountAsync(string s, string urlPage)
         {
-            return await Task.Run(() => GetNbCommentaires(s, urlPage));
+            return await Task.Run(() => GetCommentsCount(s, urlPage));
         }
 
-        public static int GetNbCommentaires(string unContenu, string urlPage)
+        public static int GetCommentsCount(string unContenu, string urlPage)
         {
-            var pageNXI = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
-            var elementNbComms = pageNXI.QuerySelectorAll("span[class=actu_separator_comms]").First();
-            String stringNbComms = elementNbComms.TextContent;
-            int positionEspace = stringNbComms.IndexOf(" ");
-            String valeur = stringNbComms.JavaSubString(0, positionEspace).Trim();
-            int nbComms;
-            int.TryParse(valeur, out nbComms);
+            var htmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
+            var stringNbComms = htmlDocument.QuerySelectorAll("span[class=actu_separator_comms]").First().TextContent;
+            int spacePosition = stringNbComms.IndexOf(" ");
+            String value = stringNbComms.JavaSubString(0, spacePosition).Trim();
+            int.TryParse(value, out int nbComms);
             return nbComms;
         }
 
@@ -226,128 +213,118 @@ namespace NextInpact.Core.Parsing
             return await Task.Run(() => ParseComments(s, urlPage));
         }
 
-        public static List<Comment> ParseComments(string unContenu, string urlPage)
+        public static List<Comment> ParseComments(string html, string urlPage)
         {
-            List<Comment> mesCommentairesItem = new List<Comment>();
+            List<Comment> comments = new List<Comment>();
 
-            int numeroPage = int.Parse(
-                    urlPage.Substring(urlPage.IndexOf("&") + Constantes.NEXT_INPACT_URL_COMMENTAIRES_PARAM_NUM_PAGE.Length + 2));
+            int pageNumber = int.Parse(urlPage.Substring(urlPage.IndexOf("&") + Constantes.NEXT_INPACT_URL_COMMENTAIRES_PARAM_NUM_PAGE.Length + 2));
 
-            var pageNXI = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
+            var htmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(html);
 
-            var refArticle = pageNXI.QuerySelectorAll("aside[data-relnews]").First();
-            int idArticle = int.Parse(refArticle.Attributes["data-relnews"].Value);
-            var lesCommentaires = pageNXI.QuerySelectorAll("div[class~=actu_comm ],div[class~=actu_comm_author]");
-            var lesLiensInternes = lesCommentaires.QuerySelectorAll("a[class=link_reply_to], div[class=quote_bloc]>div[class=qname]>a");
+            var articleRef = htmlDocument.QuerySelectorAll("aside[data-relnews]").First();
+            int articleId = int.Parse(articleRef.Attributes["data-relnews"].Value);
+            var commentElements = htmlDocument.QuerySelectorAll("div[class~=actu_comm ],div[class~=actu_comm_author]");
+            var internalLinks = commentElements.QuerySelectorAll("a[class=link_reply_to], div[class=quote_bloc]>div[class=qname]>a");
 
 
-            lesLiensInternes.ForEach(x => x.TagName("div"));
+            internalLinks.ForEach(x => x.TagName("div"));
 
-            var lesCitations = lesCommentaires.QuerySelectorAll("div[class=link_reply_to], div[class=quote_bloc]");
+            var quotes = commentElements.QuerySelectorAll("div[class=link_reply_to], div[class=quote_bloc]");
 
-            lesCitations.ForEach(x => x.TagName("blockquote"));
+            quotes.ForEach(x => x.TagName("blockquote"));
 
-            var lesLiens = lesCommentaires.QuerySelectorAll("a[href]");
+            var linkElements = commentElements.QuerySelectorAll("a[href]");
 
-            foreach (IElement unLien in lesLiens)
+            foreach (IElement linkElement in linkElements)
             {
-                unLien.Attributes["href"].Value = unLien.Attributes["href"].GetAbsUrl(urlPage);
+                linkElement.Attributes["href"].Value = linkElement.Attributes["href"].GetAbsUrl(urlPage);
             }
 
-            int idCommPrecedent = (numeroPage - 1) * Constantes.NB_COMMENTAIRES_PAR_PAGE;
-            int uuidCommPrecedent = 0;
+            int previousIdComm = (pageNumber - 1) * Constantes.NB_COMMENTAIRES_PAR_PAGE;
+            int previousUuidComm = 0;
 
-            foreach (IElement unCommentaire in lesCommentaires)
+            foreach (IElement commentElement in commentElements)
             {
-                int monUUID;
-
-                if (!int.TryParse(unCommentaire.Attributes["data-content-id"]?.Value, out monUUID))
+                if (!int.TryParse(commentElement.Attributes["data-content-id"]?.Value, out int monUUID))
                 {
-                    monUUID = uuidCommPrecedent + 1;
+                    monUUID = previousUuidComm + 1;
                 }
 
-                uuidCommPrecedent = monUUID;
+                previousUuidComm = monUUID;
 
-                var monAuteur = unCommentaire.QuerySelectorAll("span[class=author_name]");
-                var maDate = unCommentaire.QuerySelectorAll("span[class=date_comm]");
+                var authorElement = commentElement.QuerySelectorAll("span[class=author_name]");
+                var dateElement = commentElement.QuerySelectorAll("span[class=date_comm]");
 
                 long timeStampPublication = 0;
 
-                if (maDate.Any())
+                if (dateElement.Any())
                 {
-                    String laDate = maDate.First().TextContent;
+                    String laDate = dateElement.First().TextContent;
                     timeStampPublication = ConvertToTimeStamp(laDate, Constantes.FORMAT_DATE_COMMENTAIRE);
                 }
 
-                var monID = unCommentaire.QuerySelectorAll("span[class=actu_comm_num]");
+                var idElement = commentElement.QuerySelectorAll("span[class=actu_comm_num]");
                 int id = 0;
 
-                if (monID.Any())
+                if (idElement.Any())
                 {
-                    String lID = monID.First().TextContent.Substring(1);
+                    String lID = idElement.First().TextContent.Substring(1);
                     id = int.Parse(lID);
-                    idCommPrecedent = int.Parse(lID);
+                    previousIdComm = int.Parse(lID);
                 }
                 else
                 {
-                    id = idCommPrecedent + 1;
-                    idCommPrecedent++;
+                    id = previousIdComm + 1;
+                    previousIdComm++;
                 }
 
 
-                var monContenu = unCommentaire.QuerySelectorAll("div[class=actu_comm_content]");
-                String commentaire = null;
+                var contentElement = commentElement.QuerySelectorAll("div[class=actu_comm_content]");
+                String contentString = null;
 
-                if (monContenu.Any())
+                if (contentElement.Any())
                 {
-                    commentaire = monContenu.First().OuterHtml;
+                    contentString = contentElement.First().OuterHtml;
                 }
                 else
                 {
-                    monContenu = unCommentaire.QuerySelectorAll("div[class~=actu_comm_author]");
+                    contentElement = commentElement.QuerySelectorAll("div[class~=actu_comm_author]");
 
-                    if (monContenu.Any())
+                    if (contentElement.Any())
                     {
-                        commentaire = monContenu.First().OuterHtml;
+                        contentString = contentElement.First().OuterHtml;
                     }
                     else
                     {
-                        commentaire = "--- Erreur ---";
+                        contentString = "--- Erreur ---";
                     }
                 }
 
-
-                Comment monCommentaireItem = new Comment
+                comments.Add(new Comment
                 {
                     Id = id,
-                    ArticleId = idArticle,
+                    ArticleId = articleId,
                     Uuid = monUUID,
-                    Author = monAuteur.Any() ? monAuteur.First().TextContent : "-",
+                    Author = authorElement.Any() ? authorElement.First().TextContent : "-",
                     TimeStampPublication = timeStampPublication,
-                    Content = commentaire,
-                };
-
-
-                mesCommentairesItem.Add(monCommentaireItem);
+                    Content = contentString,
+                });
             }
 
-            return mesCommentairesItem;
+            return comments;
         }
 
-        public static long ConvertToTimeStamp(string uneDate, string unFormatDate)
+        public static long ConvertToTimeStamp(string stringValue, string format)
         {
-            long laDateTS = 0;
-
             try
             {
-                laDateTS = DateTime.ParseExact(uneDate.Trim().Replace("  ", " "), unFormatDate, CultureInfo.InvariantCulture).Ticks;
+                return  DateTime.ParseExact(stringValue.Trim().Replace("  ", " "), format, CultureInfo.InvariantCulture).Ticks;
             }
             catch
             {
-                // Pokémon
+                return 0;
             }
-
-            return laDateTS;
+         
         }
     }
 

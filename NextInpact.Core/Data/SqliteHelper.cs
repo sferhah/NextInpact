@@ -7,18 +7,17 @@ using System.Threading.Tasks;
 
 namespace NextInpact.Core.Data
 {
-    public class ThreadSafeSqlite
+    public class SqliteHelper
     {
+        static SqliteHelper _instance;
 
-        static ThreadSafeSqlite _instance;
-
-        public static ThreadSafeSqlite Instance
+        public static SqliteHelper Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ThreadSafeSqlite();
+                    _instance = new SqliteHelper();
                 }
                 return _instance;
             }

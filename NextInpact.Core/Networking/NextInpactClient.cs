@@ -74,7 +74,7 @@ namespace NextInpact.Core.Networking
 
             var comments = await HtmlParser.ParseCommentsAsync(html, urlPage);
 
-            article.TotalCommentsCount = await HtmlParser.GetNbCommentairesAsync(html, urlPage);
+            article.TotalCommentsCount = await HtmlParser.GetCommentsCountAsync(html, urlPage);
 
             article.HasComments = true;
 
