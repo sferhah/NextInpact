@@ -69,7 +69,7 @@ namespace NextInpact.Native.UWP
                     var setup = new Setup(rootFrame);
                     setup.Initialize();
 
-                    // Sets first page and navigate to it.
+                    // Sets first page and navigates to it.
                     Mvx.Resolve<IMvxAppStart>().Start();
                     // rootFrame.Navigate(typeof(ArticlesPage), e.Arguments);
                 }
