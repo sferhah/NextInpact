@@ -9,22 +9,28 @@ using System.Linq;
 using NextInpact.Core.Networking;
 using MvvmCross.Core.ViewModels;
 using System.Windows.Input;
+using MvvmCross.Core.Navigation;
 
 namespace NextInpact.Core.ViewModels
 {
-    public class ArticlesViewModel : NextInpactBaseViewModel
+    public class ArticlesViewModel : NextInpactBaseViewModel<int>
     {
-        public ObservableRangeCollection<Article> Items { get; set; } 
-        public MvxCommand LoadItemsCommand { get; set; }
 
-        
+
+        public ObservableRangeCollection<Article> Items { get; set; } 
+        public MvxCommand LoadItemsCommand { get; set; }      
+
         public string LastRefreshDate
         {
             get => Preferences.LastRefreshDateText;            
         }
 
-        public ArticlesViewModel()
+        private readonly IMvxNavigationService _navigationService;
+
+
+        public ArticlesViewModel(IMvxNavigationService navigationService)
         {
+            _navigationService = navigationService;
             Title = "NextINpact (Unofficial)";
             Items = new ObservableRangeCollection<Article>();
             LoadItemsCommand = new MvxCommand(async () => await ExecuteLoadItemsCommand());
@@ -43,8 +49,8 @@ namespace NextInpact.Core.ViewModels
         }
 
         private void DoSelectItem(Article item)
-        {   
-            ShowViewModel<ArticleDetailViewModel>(new { itemId = item.Id } );
+        {
+            _navigationService.Navigate<ArticleDetailViewModel, int>(item.Id);
         }
 
         bool firstAppear = true;
@@ -157,6 +163,10 @@ namespace NextInpact.Core.ViewModels
                 }
             }
         }
-      
+
+        public override void Prepare(int parameter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

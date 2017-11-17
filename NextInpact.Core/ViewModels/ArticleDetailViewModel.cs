@@ -4,23 +4,38 @@ using System.Windows.Input;
 using System;
 using System.Threading.Tasks;
 using NextInpact.Core.Data;
+using MvvmCross.Core.Navigation;
 
 namespace NextInpact.Core.ViewModels
 {
-    public class ArticleDetailViewModel : NextInpactBaseViewModel
+    public class ArticleDetailViewModel : NextInpactBaseViewModel<int>
     {   
         public Article Item { get; set; }
-
         
         public String ArticleContent
         {
             get => Item?.Content ?? "<html>loading...</html>";
+        }  
+
+        int itemId;
+
+        public override void Prepare(int parameter)
+        {
+            this.itemId = parameter;
         }
 
-        public async void Init(int itemId)
-        {   
+        public override async Task Initialize()
+        {
             this.Item = await Store.GetArticle(itemId);
             RaisePropertyChanged(() => ArticleContent);
+        }
+
+        private readonly IMvxNavigationService _navigationService;
+
+
+        public ArticleDetailViewModel(IMvxNavigationService navigationService) : this()
+        {
+            _navigationService = navigationService;
         }
 
         public ArticleDetailViewModel()
@@ -41,9 +56,8 @@ namespace NextInpact.Core.ViewModels
         }
 
         private void ShowComments()
-        {   
-            ShowViewModel<CommentsViewModel>(new { itemId = this.Item.Id });
+        {           
+            _navigationService.Navigate<CommentsViewModel, int>(this.Item.Id);
         }
-
     }
 }

@@ -11,7 +11,7 @@ namespace NextInpact.Forms
     {
         public HtmlLabel()
         {
-         
+
         }
     }
 

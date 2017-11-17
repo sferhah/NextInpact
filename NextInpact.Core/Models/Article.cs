@@ -77,12 +77,12 @@ namespace NextInpact.Core.Models
 
         public String PublicationTime
         {
-            get => new DateTime(PublicationTimeStamp).ToString(Constantes.FORMAT_AFFICHAGE_ARTICLE_HEURE);         
+            get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_AFFICHAGE_ARTICLE_HEURE);         
         }
 
         public String PublicationDate
         {
-            get => new DateTime(PublicationTimeStamp).ToString(Constantes.FORMAT_AFFICHAGE_SECTION_DATE);            
+            get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_AFFICHAGE_SECTION_DATE);            
         }
 
 

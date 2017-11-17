@@ -13,8 +13,7 @@ namespace NextInpact.Forms.UWP
 
             //need to force this call otherwise FormsApplication.MainPage is null            
             Mvx.Resolve<IMvxAppStart>().Start();
-
-            var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsUwpPagePresenter;
+            var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsUwpViewPresenter;
             LoadApplication(presenter.FormsApplication);
         }
     }

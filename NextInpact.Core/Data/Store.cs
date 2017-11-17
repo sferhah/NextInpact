@@ -14,7 +14,7 @@ namespace NextInpact.Core.Data
     {
         public static async Task<List<Article>> GetAll()
         {
-            var items_in_db = (await ThreadSafeSqlite.Instance.GetAllAsync<Article>()).OrderByDescending(x => x.PublicationTimeStamp).ToList();
+            var items_in_db = (await SqliteHelper.Instance.GetAllAsync<Article>()).OrderByDescending(x => x.PublicationTimeStamp).ToList();
 
             await Store.SetMiniaturesFromCache(items_in_db);
 
@@ -29,14 +29,14 @@ namespace NextInpact.Core.Data
 
         public static async Task<Article> GetArticle(int id)
         {
-            var item = await ThreadSafeSqlite.Instance.GetAsync<Article>(id);
+            var item = await SqliteHelper.Instance.GetAsync<Article>(id);
 
             return item;
         }
 
         public static async Task<List<Comment>> GetArticleComments(int articleId)
         {
-            var comments = (await ThreadSafeSqlite.Instance.GetAllAsync<Comment>()).Where(x => x.ArticleId == articleId).OrderBy(x => x.TimeStampPublication).ToList();
+            var comments = (await SqliteHelper.Instance.GetAllAsync<Comment>()).Where(x => x.ArticleId == articleId).OrderBy(x => x.TimeStampPublication).ToList();
 
             return comments;
         }
@@ -60,7 +60,7 @@ namespace NextInpact.Core.Data
         {
             foreach (var item in items)
             {
-                await ThreadSafeSqlite.Instance.InsertOrReplaceAsync(item);
+                await SqliteHelper.Instance.InsertOrReplaceAsync(item);
             }
         }
 
@@ -68,7 +68,7 @@ namespace NextInpact.Core.Data
         {
             foreach (var item in items)
             {
-                Article db_item = await ThreadSafeSqlite.Instance.GetAsync<Article>(item.Id); ;
+                Article db_item = await SqliteHelper.Instance.GetAsync<Article>(item.Id); ;
 
                 if (db_item != null)
                 {
@@ -76,13 +76,13 @@ namespace NextInpact.Core.Data
                 }
 
                 //Update info : CommsCount, DatePublication.
-                await ThreadSafeSqlite.Instance.InsertOrReplaceAsync(item);
+                await SqliteHelper.Instance.InsertOrReplaceAsync(item);
             }
         }
 
         public static async Task SaveComments(IEnumerable<Comment> items)
         {
-            await ThreadSafeSqlite.Instance.InsertOrReplaceAllAsync(items);
+            await SqliteHelper.Instance.InsertOrReplaceAllAsync(items);
         }
 
     }

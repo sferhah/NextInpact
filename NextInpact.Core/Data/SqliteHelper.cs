@@ -1,6 +1,4 @@
-﻿using MvvmCross.Platform;
-using PCLStorage;
-using SQLite;
+﻿using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +7,17 @@ using System.Threading.Tasks;
 
 namespace NextInpact.Core.Data
 {
-    public class ThreadSafeSqlite
+    public class SqliteHelper
     {
+        static SqliteHelper _instance;
 
-        static ThreadSafeSqlite _instance;
-
-        public static ThreadSafeSqlite Instance
+        public static SqliteHelper Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ThreadSafeSqlite();
+                    _instance = new SqliteHelper();
                 }
                 return _instance;
             }
@@ -32,7 +29,7 @@ namespace NextInpact.Core.Data
 
         public void Init(Type first, params Type[] types)
         {
-            string path = PortablePath.Combine(FileSystem.Current.LocalStorage.Path, String.Format("{0}.db3", "NextInpact"));
+            string path = Plugin.NetStandardStorage.CrossStorage.FileSystem.LocalStorage.FullPath + @"\"+  String.Format("{0}.db3", "NextInpact");
             this.database =  new SQLiteConnection(path);            
 
             foreach (var t in types.Concat(new[] { first }))

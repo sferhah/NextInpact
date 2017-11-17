@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModernHttpClient;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,16 +8,16 @@ namespace NextInpact.Core.Networking
 {
     public class Downloader
     {
+        static HttpClient httpClient = new HttpClient(new NativeMessageHandler());
+       
         public static async Task<String> GetAsync(String uneURL)
-        {
-            var httpClient = new HttpClient();
+        { 
             HttpResponseMessage response = await httpClient.GetAsync(ConvertToUri(uneURL));
             return await response.Content.ReadAsStringAsync();
         }
 
         public static async Task<byte[]> GetAsBytesAsync(String uneURL)
         {
-            var httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync(ConvertToUri(uneURL));
             return await response.Content.ReadAsByteArrayAsync();
         }

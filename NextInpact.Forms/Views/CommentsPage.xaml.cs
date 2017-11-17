@@ -1,4 +1,4 @@
-﻿using MvvmCross.Forms.Core;
+﻿using MvvmCross.Forms.Views;
 using NextInpact.Core.ViewModels;
 using System;
 using System.Collections.Generic;

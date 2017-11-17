@@ -2,7 +2,7 @@
 
 namespace NextInpact.Core.ViewModels
 {
-    public class NextInpactBaseViewModel : MvxViewModel
+    public abstract class NextInpactBaseViewModel<T> : MvxViewModel<T>
     {   
         private bool _IsBusy;
         public bool IsBusy

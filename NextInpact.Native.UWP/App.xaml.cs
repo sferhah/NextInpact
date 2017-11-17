@@ -71,7 +71,7 @@ namespace NextInpact.Native.UWP
 
                     // Sets first page and navigate to it.
                     Mvx.Resolve<IMvxAppStart>().Start();
-                   // rootFrame.Navigate(typeof(ArticlesPage), e.Arguments);
+                    // rootFrame.Navigate(typeof(ArticlesPage), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
