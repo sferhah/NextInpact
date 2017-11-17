@@ -33,13 +33,10 @@ namespace NextInpact.Core.ViewModels
         private readonly IMvxNavigationService _navigationService;
 
 
-        public ArticleDetailViewModel(IMvxNavigationService navigationService)
+        public ArticleDetailViewModel(IMvxNavigationService navigationService) : this()
         {
             _navigationService = navigationService;
-
         }
-
-
 
         public ArticleDetailViewModel()
         {
