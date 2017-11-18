@@ -1,7 +1,6 @@
 ﻿using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.IoC;
 using NextInpact.Core.Data;
-using NextInpact.Core.Models;
 using NextInpact.Core.ViewModels;
 
 namespace NextInpact.Core
@@ -16,6 +15,7 @@ namespace NextInpact.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
+
             RegisterNavigationServiceAppStart<ArticlesViewModel>();            
         }
     }

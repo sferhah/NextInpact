@@ -53,11 +53,11 @@ namespace NextInpact.Core.Data
             {
                 using (AppDbContext database = new AppDbContext())
                 {
-                    var itemInDatabse = database.Articles.Where(x=>x.Id == item.Id).FirstOrDefault();
-                    if (itemInDatabse != null)
+                    var itemInDatabase = database.Articles.Where(x=>x.Id == item.Id).FirstOrDefault();
+                    if (itemInDatabase != null)
                     {
                         //database.Articles.Update(item);
-                        database.Entry(itemInDatabse).CurrentValues.SetValues(item);
+                        database.Entry(itemInDatabase).CurrentValues.SetValues(item);
                     }
                     else
                     {
@@ -82,11 +82,11 @@ namespace NextInpact.Core.Data
                 {
                     foreach(var item in items)
                     {
-                        var itemInDatabse = database.Comments.Where(x => x.Id == item.Id).FirstOrDefault();
-                        if (itemInDatabse != null)
+                        var itemInDatabase = database.Comments.Where(x => x.Id == item.Id).FirstOrDefault();
+                        if (itemInDatabase != null)
                         {
                             //database.Comments.Update(item);
-                            database.Entry(itemInDatabse).CurrentValues.SetValues(item);
+                            database.Entry(itemInDatabase).CurrentValues.SetValues(item);
 
                         }
                         else
