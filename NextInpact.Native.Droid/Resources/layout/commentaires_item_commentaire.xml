@@ -53,7 +53,7 @@
             android:paddingRight="?android:attr/scrollbarSize"
             android:textAppearance="@style/textAppearanceMicro"
             android:textStyle="italic"
-            local:MvxBind="Text Id"/>
+            local:MvxBind="Text Position"/>
 
         <TextView
             android:id="@+id/uuidCommentaire"

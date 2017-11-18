@@ -10,22 +10,8 @@ namespace NextInpact.Core.Models
     public class Comment : ObservableObject
     {
         [Key]
-        public string PrimaryKey
-        {
-            get
-            {
-                return this.ArticleId + "-" + this.Uuid;
-            }
-            set
-            {
-                var array = value.Split("-");
-                this.ArticleId = int.Parse(array[0]);
-                this.Uuid = int.Parse(array[1]);
-            }
-        }
-
-        public int Id { get; set; }
-        public int Uuid { get; set; }
+        public string PrimaryKey { get; set; }   
+        public int Position { get; set; }
         public int ArticleId { get; set; }
         public string Author { get; set; } = "";
         public string Content { get; set; } = "";

@@ -46,7 +46,7 @@
                                        FontSize="10"                                     
                                        Foreground="#8A979D" />
                             <TextBlock Grid.Column="1" 
-                                       Text="{Binding Id}"
+                                       Text="{Binding Position}"
                                        HorizontalAlignment="Right"                               
                                        FontSize="10"                                     
                                        Foreground="#8A979D"

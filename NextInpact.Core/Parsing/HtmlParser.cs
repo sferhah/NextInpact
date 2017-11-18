@@ -201,7 +201,7 @@ namespace NextInpact.Core.Parsing
             var htmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
             var stringNbComms = htmlDocument.QuerySelectorAll("span[class=actu_separator_comms]").First().TextContent;
             int spacePosition = stringNbComms.IndexOf(" ");
-            String value = stringNbComms.JavaSubString(0, spacePosition).Trim();
+            string value = stringNbComms.JavaSubString(0, spacePosition).Trim();
             int.TryParse(value, out int nbComms);
             return nbComms;
         }
@@ -300,9 +300,9 @@ namespace NextInpact.Core.Parsing
 
                 comments.Add(new Comment
                 {
-                    Id = id,
-                    ArticleId = articleId,
-                    Uuid = uuid,
+                    PrimaryKey = articleId + "-" + uuid,
+                    Position = id,
+                    ArticleId = articleId,                    
                     Author = authorElement.Any() ? authorElement.First().TextContent : "-",
                     TimeStampPublication = timeStampPublication,
                     Content = contentString,

@@ -82,7 +82,7 @@ namespace NextInpact.Core.Data
                 {
                     foreach(var item in items)
                     {
-                        var itemInDatabase = database.Comments.Where(x => x.Id == item.Id).FirstOrDefault();
+                        var itemInDatabase = database.Comments.Where(x => x.PrimaryKey == item.PrimaryKey).FirstOrDefault();
                         if (itemInDatabase != null)
                         {
                             //database.Comments.Update(item);
