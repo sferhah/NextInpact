@@ -10,14 +10,14 @@ namespace NextInpact.Core.Models
     {
         [Key]
         public int Id { get; set; }
-        public String Title { get; set; }
-        public String SubTitle { get; set; } = "";
+        public string Title { get; set; }
+        public string SubTitle { get; set; } = "";
 
-        public String Url { get; set; }
-        public String UrlIllustration { get; set; } = "";
+        public string Url { get; set; }
+        public string UrlIllustration { get; set; } = "";
 
-        private String _Content;
-        public String Content
+        private string _Content;
+        public string Content
         {
             get => _Content; 
             set
@@ -74,12 +74,12 @@ namespace NextInpact.Core.Models
         public bool ShowDateSection { get; set; }
 
 
-        public String PublicationTime
+        public string PublicationTime
         {
             get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_AFFICHAGE_ARTICLE_HEURE);         
         }
 
-        public String PublicationDate
+        public string PublicationDate
         {
             get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_AFFICHAGE_SECTION_DATE);            
         }

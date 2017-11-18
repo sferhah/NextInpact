@@ -10,7 +10,7 @@ namespace NextInpact.Core.Models
     public class Comment : ObservableObject
     {
         [Key]
-        public String PrimaryKey
+        public string PrimaryKey
         {
             get
             {
@@ -27,11 +27,11 @@ namespace NextInpact.Core.Models
         public int Id { get; set; }
         public int Uuid { get; set; }
         public int ArticleId { get; set; }
-        public String Author { get; set; } = "";
-        public String Content { get; set; } = "";
+        public string Author { get; set; } = "";
+        public string Content { get; set; } = "";
         public long TimeStampPublication { get; set; }
 
-        public String AuthorWithPostDate
+        public string AuthorWithPostDate
         {
             get
             {

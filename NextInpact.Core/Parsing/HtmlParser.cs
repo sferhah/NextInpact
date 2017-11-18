@@ -243,12 +243,12 @@ namespace NextInpact.Core.Parsing
 
             foreach (IElement commentElement in commentElements)
             {
-                if (!int.TryParse(commentElement.Attributes["data-content-id"]?.Value, out int monUUID))
+                if (!int.TryParse(commentElement.Attributes["data-content-id"]?.Value, out int uuid))
                 {
-                    monUUID = previousUuidComm + 1;
+                    uuid = previousUuidComm + 1;
                 }
 
-                previousUuidComm = monUUID;
+                previousUuidComm = uuid;
 
                 var authorElement = commentElement.QuerySelectorAll("span[class=author_name]");
                 var dateElement = commentElement.QuerySelectorAll("span[class=date_comm]");
@@ -302,7 +302,7 @@ namespace NextInpact.Core.Parsing
                 {
                     Id = id,
                     ArticleId = articleId,
-                    Uuid = monUUID,
+                    Uuid = uuid,
                     Author = authorElement.Any() ? authorElement.First().TextContent : "-",
                     TimeStampPublication = timeStampPublication,
                     Content = contentString,
