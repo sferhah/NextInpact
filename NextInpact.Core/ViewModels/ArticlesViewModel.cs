@@ -137,8 +137,8 @@ namespace NextInpact.Core.ViewModels
             await Store.SaveArticlesContent(articles_witout_content);
 
 
-            var comments = await NextInpactClient.DownloadArticlesComs(items);
-            await Store.SaveComments(comments);
+            //var comments = await NextInpactClient.DownloadArticlesComs(items);
+            //await Store.SaveComments(comments);
 
             Preferences.LastRefreshDate = DateTime.Now.Ticks;
 

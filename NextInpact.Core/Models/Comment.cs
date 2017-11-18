@@ -1,6 +1,7 @@
-﻿using SQLite;
-using System;
+﻿using System;
 using NextInpact.Core.Helpers;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace NextInpact.Core.Models
 {
@@ -8,7 +9,7 @@ namespace NextInpact.Core.Models
     [Table("Comment")]
     public class Comment : ObservableObject
     {
-        [PrimaryKey]
+        [Key]
         public String PrimaryKey
         {
             get

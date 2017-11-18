@@ -1,15 +1,14 @@
 ﻿using NextInpact.Core.Helpers;
-using SQLite;
 using System;
-using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NextInpact.Core.Models
 {
     [Table("Article")]
     public class Article : ObservableObject
     {
-        [PrimaryKey]
+        [Key]
         public int Id { get; set; }
         public String Title { get; set; }
         public String SubTitle { get; set; } = "";
@@ -48,7 +47,7 @@ namespace NextInpact.Core.Models
         private byte[] _ImageData = null;
 
 
-        [Ignore]
+        [NotMapped]
         public byte[] ImageData
         {
             get => _ImageData; 
@@ -63,7 +62,7 @@ namespace NextInpact.Core.Models
 
         
         private double _SyncPercentage;
-        [Ignore]
+        [NotMapped]
         public double SyncPercentage
         {
             get { return _SyncPercentage; }
@@ -71,7 +70,7 @@ namespace NextInpact.Core.Models
         }
 
 
-        [Ignore]
+        [NotMapped]
         public bool ShowDateSection { get; set; }
 
 
@@ -87,7 +86,7 @@ namespace NextInpact.Core.Models
 
 
         private bool _HasComments;
-        [Ignore]
+        [NotMapped]
         public bool HasComments
         {
             get => _HasComments; 

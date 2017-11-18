@@ -10,7 +10,7 @@ namespace NextInpact.Core
     {
         public override void Initialize()
         {
-            SqliteHelper.Instance.Init(typeof(Article), typeof(Comment));
+            AppDbContext.Init();
 
             CreatableTypes()
                 .EndingWith("Service")
