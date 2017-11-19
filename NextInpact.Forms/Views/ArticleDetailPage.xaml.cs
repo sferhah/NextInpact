@@ -1,12 +1,10 @@
 ﻿using MvvmCross.Forms.Views;
 using NextInpact.Core.ViewModels;
-using Xamarin.Forms;
 
 namespace NextInpact.Forms.Views
 {
     public partial class ArticleDetailPage : MvxContentPage<ArticleDetailViewModel>
     {
-
         public ArticleDetailPage()
         {
             InitializeComponent();
@@ -16,6 +14,5 @@ namespace NextInpact.Forms.Views
         {
             base.ViewModel.ShowCommentsCommand.Execute(null);
         }
-
     }
 }

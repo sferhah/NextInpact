@@ -76,7 +76,7 @@ namespace NextInpact.Core.Parsing
 
             var lesIframes = articleElement.QuerySelectorAll("iframe");
 
-            String[] schemes = { "https://", "http://", "//" };
+            string[] schemes = { "https://", "http://", "//" };
 
             //foreach (IElement uneIframe in lesIframes)
             //{
@@ -91,7 +91,7 @@ namespace NextInpact.Core.Parsing
             //        }
             //    }
 
-            //    String idVideo = urlLecteur
+            //    string idVideo = urlLecteur
             //        .Substring(urlLecteur.LastIndexOf("/") + 1)
             //        .Split("\\?")[0]
             //        .Split('#')[0];
@@ -316,7 +316,7 @@ namespace NextInpact.Core.Parsing
         {
             try
             {
-                return  DateTime.ParseExact(stringValue.Trim().Replace("  ", " "), format, CultureInfo.InvariantCulture).Ticks;
+                return DateTime.ParseExact(stringValue.Trim().Replace("  ", " "), format, CultureInfo.InvariantCulture).Ticks;
             }
             catch
             {
