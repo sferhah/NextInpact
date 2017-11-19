@@ -61,7 +61,21 @@ namespace NextInpact.Core.Data
         {
             foreach (var item in items)
             {
-                await AppDbContext.InsertOrReplaceAsync(item);
+                using (AppDbContext database = new AppDbContext())
+                {
+                    Article db_item = await database.FindAsync<Article>(item.Id);
+
+                    if (db_item != null)
+                    {
+                        db_item.Content = item.Content;
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Article does not exist in db");
+                    }
+
+                    await database.SaveChangesAsync();
+                }
             }
         }
 
@@ -69,20 +83,23 @@ namespace NextInpact.Core.Data
         {
             foreach (var item in items)
             {
-                Article db_item;
-
                 using (AppDbContext database = new AppDbContext())
                 {
-                    db_item = await database.FindAsync<Article>(item.Id);
-                }
+                    Article db_item = await database.FindAsync<Article>(item.Id);
 
-                if (db_item != null)
-                {
-                    item.Content = db_item.Content;                    
-                }
+                    if (db_item != null)
+                    {
+                        db_item.TotalCommentsCount = item.TotalCommentsCount;
+                        db_item.PublicationTimeStamp = item.PublicationTimeStamp;
+                    }
+                    else
+                    {
+                        await database.AddAsync(item);
+                    }
 
-                //Update info : CommsCount, DatePublication.
-                await AppDbContext.InsertOrReplaceAsync(item);
+                    await database.SaveChangesAsync();
+                }
+      
             }
         }
 
