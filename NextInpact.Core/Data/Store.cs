@@ -69,7 +69,12 @@ namespace NextInpact.Core.Data
         {
             foreach (var item in items)
             {
-                Article db_item = await AppDbContext.GetAsync<Article>(item.Id); ;
+                Article db_item;
+
+                using (AppDbContext database = new AppDbContext())
+                {
+                    db_item = await database.FindAsync<Article>(item.Id);
+                }
 
                 if (db_item != null)
                 {
@@ -83,7 +88,24 @@ namespace NextInpact.Core.Data
 
         public static async Task SaveComments(IEnumerable<Comment> items)
         {
-            await AppDbContext.InsertOrReplaceAllAsync(items);
+            using (AppDbContext database = new AppDbContext())
+            {
+                foreach (var item in items)
+                {
+                    var itemInDatabase = await database.Comments.Where(x => x.PrimaryKey == item.PrimaryKey).FirstOrDefaultAsync();
+
+                    if (itemInDatabase != null)
+                    {
+                        database.Entry(itemInDatabase).CurrentValues.SetValues(item);
+                    }
+                    else
+                    {
+                        await database.AddAsync(item);
+                    }
+                }
+
+                await database.SaveChangesAsync();
+            }
         }
 
     }

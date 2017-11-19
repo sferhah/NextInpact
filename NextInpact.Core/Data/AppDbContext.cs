@@ -28,77 +28,26 @@ namespace NextInpact.Core.Data
             string path = Plugin.NetStandardStorage.CrossStorage.FileSystem.LocalStorage.FullPath + @"\" + String.Format("{0}.db3", "NextInpact");
 
             optionsBuilder.UseSqlite($"Filename={path}");
-        }
-    
-      
-        public static Object locker = new Object();
-       
-
-        public static async Task<T> GetAsync<T>(Object value) where T : class
-        {
-            using (AppDbContext database = new AppDbContext())
-            {
-                return await database.FindAsync<T>(value);
-            }
-        }
+        }  
 
         public static async Task InsertOrReplaceAsync(Article item)
         {
-            await Task.Run(() => InsertOrReplace(item));
-        }
-
-        private static void InsertOrReplace(Article item) 
-        {
-            lock (locker)
+            using (AppDbContext database = new AppDbContext())
             {
-                using (AppDbContext database = new AppDbContext())
+                var itemInDatabase = await database.Articles.Where(x => x.Id == item.Id).FirstOrDefaultAsync();
+
+                if (itemInDatabase != null)
                 {
-                    var itemInDatabase = database.Articles.Where(x=>x.Id == item.Id).FirstOrDefault();
-                    if (itemInDatabase != null)
-                    {
-                        //database.Articles.Update(item);
-                        database.Entry(itemInDatabase).CurrentValues.SetValues(item);
-                    }
-                    else
-                    {
-                        database.Add(item);
-                    }
-                    
-                    database.SaveChanges();
+                    database.Entry(itemInDatabase).CurrentValues.SetValues(item);
                 }
-            }
-        }
-
-        public static async Task InsertOrReplaceAllAsync(IEnumerable<Comment> item) 
-        {
-            await Task.Run(() => InsertOrReplaceAll(item));
-        }
-
-        private static void InsertOrReplaceAll(IEnumerable<Comment> items)
-        {
-            lock (locker)
-            {
-                using (AppDbContext database = new AppDbContext())
+                else
                 {
-                    foreach(var item in items)
-                    {
-                        var itemInDatabase = database.Comments.Where(x => x.PrimaryKey == item.PrimaryKey).FirstOrDefault();
-                        if (itemInDatabase != null)
-                        {
-                            //database.Comments.Update(item);
-                            database.Entry(itemInDatabase).CurrentValues.SetValues(item);
-
-                        }
-                        else
-                        {
-                            database.Add(item);
-                        }                       
-                    }
-
-                    database.SaveChanges();
+                    await database.AddAsync(item);
                 }
-              
+
+                await database.SaveChangesAsync();
             }
+
         }
 
     }
