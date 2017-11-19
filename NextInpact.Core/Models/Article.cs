@@ -16,28 +16,32 @@ namespace NextInpact.Core.Models
         public string Url { get; set; }
         public string UrlIllustration { get; set; } = "";
 
-        private string _Content;
+        private string _ContentBackingField;
         public string Content
         {
-            get => _Content; 
+            get => _ContentBackingField; 
             set
             {  
-                _Content = value;
+                _ContentBackingField = value;
                 SyncPercentage += 0.33;
             }
         }
 
-        public bool HasSubscription { get; set; }
+        public bool HasSubscription
+        {
+            get;
+            set;
+        }
 
         public long PublicationTimeStamp { get; set; }
 
-        private int _TotalCommentsCount;
+        private int _TotalCommentsCountBackingField;
         public int TotalCommentsCount
         {
-            get => _TotalCommentsCount; 
+            get => _TotalCommentsCountBackingField; 
             set
             {
-                SetProperty(ref _TotalCommentsCount, value);
+                SetProperty(ref _TotalCommentsCountBackingField, value);
             }
         }
 
