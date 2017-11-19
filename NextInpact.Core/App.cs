@@ -1,7 +1,6 @@
 ﻿using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.IoC;
 using NextInpact.Core.Data;
-using NextInpact.Core.Models;
 using NextInpact.Core.ViewModels;
 
 namespace NextInpact.Core
@@ -10,12 +9,13 @@ namespace NextInpact.Core
     {
         public override void Initialize()
         {
-            SqliteHelper.Instance.Init(typeof(Article), typeof(Comment));
+            AppDbContext.Init();
 
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
+
             RegisterNavigationServiceAppStart<ArticlesViewModel>();            
         }
     }

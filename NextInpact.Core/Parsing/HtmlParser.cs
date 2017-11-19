@@ -76,7 +76,7 @@ namespace NextInpact.Core.Parsing
 
             var lesIframes = articleElement.QuerySelectorAll("iframe");
 
-            String[] schemes = { "https://", "http://", "//" };
+            string[] schemes = { "https://", "http://", "//" };
 
             //foreach (IElement uneIframe in lesIframes)
             //{
@@ -91,7 +91,7 @@ namespace NextInpact.Core.Parsing
             //        }
             //    }
 
-            //    String idVideo = urlLecteur
+            //    string idVideo = urlLecteur
             //        .Substring(urlLecteur.LastIndexOf("/") + 1)
             //        .Split("\\?")[0]
             //        .Split('#')[0];
@@ -201,7 +201,7 @@ namespace NextInpact.Core.Parsing
             var htmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(unContenu);
             var stringNbComms = htmlDocument.QuerySelectorAll("span[class=actu_separator_comms]").First().TextContent;
             int spacePosition = stringNbComms.IndexOf(" ");
-            String value = stringNbComms.JavaSubString(0, spacePosition).Trim();
+            string value = stringNbComms.JavaSubString(0, spacePosition).Trim();
             int.TryParse(value, out int nbComms);
             return nbComms;
         }
@@ -243,12 +243,12 @@ namespace NextInpact.Core.Parsing
 
             foreach (IElement commentElement in commentElements)
             {
-                if (!int.TryParse(commentElement.Attributes["data-content-id"]?.Value, out int monUUID))
+                if (!int.TryParse(commentElement.Attributes["data-content-id"]?.Value, out int uuid))
                 {
-                    monUUID = previousUuidComm + 1;
+                    uuid = previousUuidComm + 1;
                 }
 
-                previousUuidComm = monUUID;
+                previousUuidComm = uuid;
 
                 var authorElement = commentElement.QuerySelectorAll("span[class=author_name]");
                 var dateElement = commentElement.QuerySelectorAll("span[class=date_comm]");
@@ -300,9 +300,9 @@ namespace NextInpact.Core.Parsing
 
                 comments.Add(new Comment
                 {
-                    Id = id,
-                    ArticleId = articleId,
-                    Uuid = monUUID,
+                    PrimaryKey = articleId + "-" + uuid,
+                    Position = id,
+                    ArticleId = articleId,                    
                     Author = authorElement.Any() ? authorElement.First().TextContent : "-",
                     TimeStampPublication = timeStampPublication,
                     Content = contentString,
@@ -316,7 +316,7 @@ namespace NextInpact.Core.Parsing
         {
             try
             {
-                return  DateTime.ParseExact(stringValue.Trim().Replace("  ", " "), format, CultureInfo.InvariantCulture).Ticks;
+                return DateTime.ParseExact(stringValue.Trim().Replace("  ", " "), format, CultureInfo.InvariantCulture).Ticks;
             }
             catch
             {

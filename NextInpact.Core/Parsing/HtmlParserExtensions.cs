@@ -33,7 +33,7 @@ namespace NextInpact.Core.Parsing
             }
         }
 
-        public static IEnumerable<IElement> QuerySelectorAll(this IHtmlCollection<IElement> source, String selector)
+        public static IEnumerable<IElement> QuerySelectorAll(this IHtmlCollection<IElement> source, string selector)
         {
             return source.SelectMany(x => x.QuerySelectorAll(selector));
         }

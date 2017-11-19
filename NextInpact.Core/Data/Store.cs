@@ -1,11 +1,8 @@
-﻿using NextInpact.Core.IO;
+﻿using Microsoft.EntityFrameworkCore;
+using NextInpact.Core.IO;
 using NextInpact.Core.Models;
-using NextInpact.Core.Parsing;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NextInpact.Core.Data
@@ -14,31 +11,35 @@ namespace NextInpact.Core.Data
     {
         public static async Task<List<Article>> GetAll()
         {
-            var items_in_db = (await SqliteHelper.Instance.GetAllAsync<Article>()).OrderByDescending(x => x.PublicationTimeStamp).ToList();
-
-            await Store.SetMiniaturesFromCache(items_in_db);
-
-            foreach (var item in items_in_db)
+            using (AppDbContext database = new AppDbContext())
             {
-                item.HasComments = true;
+                var items_in_db = await database.Articles.OrderByDescending(x => x.PublicationTimeStamp).ToListAsync();
+
+                await SetMiniaturesFromCache(items_in_db);
+
+                foreach (var item in items_in_db)
+                {
+                    item.HasComments = true;
+                }
+
+                return items_in_db;
             }
-
-            return items_in_db;
-
         }
 
         public static async Task<Article> GetArticle(int id)
         {
-            var item = await SqliteHelper.Instance.GetAsync<Article>(id);
-
-            return item;
+            using (AppDbContext database = new AppDbContext())
+            {
+                return await database.Articles.FindAsync(id);
+            }
         }
 
         public static async Task<List<Comment>> GetArticleComments(int articleId)
         {
-            var comments = (await SqliteHelper.Instance.GetAllAsync<Comment>()).Where(x => x.ArticleId == articleId).OrderBy(x => x.TimeStampPublication).ToList();
-
-            return comments;
+            using (AppDbContext database = new AppDbContext())
+            {
+                return await database.Comments.Where(x => x.ArticleId == articleId).OrderBy(x => x.TimeStampPublication).ToListAsync();
+            }
         }
 
         public static async Task SetMiniaturesFromCache(IEnumerable<Article> items)
@@ -60,7 +61,21 @@ namespace NextInpact.Core.Data
         {
             foreach (var item in items)
             {
-                await SqliteHelper.Instance.InsertOrReplaceAsync(item);
+                using (AppDbContext database = new AppDbContext())
+                {
+                    Article db_item = await database.FindAsync<Article>(item.Id);
+
+                    if (db_item != null)
+                    {
+                        db_item.Content = item.Content;
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Article does not exist in db");
+                    }
+
+                    await database.SaveChangesAsync();
+                }
             }
         }
 
@@ -68,21 +83,46 @@ namespace NextInpact.Core.Data
         {
             foreach (var item in items)
             {
-                Article db_item = await SqliteHelper.Instance.GetAsync<Article>(item.Id); ;
-
-                if (db_item != null)
+                using (AppDbContext database = new AppDbContext())
                 {
-                    item.Content = db_item.Content;                    
-                }
+                    Article db_item = await database.FindAsync<Article>(item.Id);
 
-                //Update info : CommsCount, DatePublication.
-                await SqliteHelper.Instance.InsertOrReplaceAsync(item);
+                    if (db_item != null)
+                    {
+                        db_item.TotalCommentsCount = item.TotalCommentsCount;
+                        db_item.PublicationTimeStamp = item.PublicationTimeStamp;
+                    }
+                    else
+                    {
+                        await database.AddAsync(item);
+                    }
+
+                    await database.SaveChangesAsync();
+                }
+      
             }
         }
 
         public static async Task SaveComments(IEnumerable<Comment> items)
         {
-            await SqliteHelper.Instance.InsertOrReplaceAllAsync(items);
+            using (AppDbContext database = new AppDbContext())
+            {
+                foreach (var item in items)
+                {
+                    var itemInDatabase = await database.Comments.Where(x => x.PrimaryKey == item.PrimaryKey).FirstOrDefaultAsync();
+
+                    if (itemInDatabase != null)
+                    {
+                        database.Entry(itemInDatabase).CurrentValues.SetValues(item);
+                    }
+                    else
+                    {
+                        await database.AddAsync(item);
+                    }
+                }
+
+                await database.SaveChangesAsync();
+            }
         }
 
     }

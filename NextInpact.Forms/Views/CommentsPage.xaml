@@ -28,7 +28,7 @@
                                        Style="{DynamicResource ListItemTextStyle}"
                                        TextColor="#8A979D"
                                        FontSize="10"/>
-                                <Label Text="{Binding Id}"                                    
+                                    <Label Text="{Binding Position}"                                    
                                        LineBreakMode="CharacterWrap"
                                        HorizontalOptions="EndAndExpand"
                                        Style="{DynamicResource ListItemTextStyle}"                                       

@@ -1,44 +1,47 @@
 ﻿using NextInpact.Core.Helpers;
-using SQLite;
 using System;
-using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NextInpact.Core.Models
 {
     [Table("Article")]
     public class Article : ObservableObject
     {
-        [PrimaryKey]
+        [Key]
         public int Id { get; set; }
-        public String Title { get; set; }
-        public String SubTitle { get; set; } = "";
+        public string Title { get; set; }
+        public string SubTitle { get; set; } = "";
 
-        public String Url { get; set; }
-        public String UrlIllustration { get; set; } = "";
+        public string Url { get; set; }
+        public string UrlIllustration { get; set; } = "";
 
-        private String _Content;
-        public String Content
+        private string _ContentBackingField;
+        public string Content
         {
-            get => _Content; 
+            get => _ContentBackingField; 
             set
             {  
-                _Content = value;
+                _ContentBackingField = value;
                 SyncPercentage += 0.33;
             }
         }
 
-        public bool HasSubscription { get; set; }
+        public bool HasSubscription
+        {
+            get;
+            set;
+        }
 
         public long PublicationTimeStamp { get; set; }
 
-        private int _TotalCommentsCount;
+        private int _TotalCommentsCountBackingField;
         public int TotalCommentsCount
         {
-            get => _TotalCommentsCount; 
+            get => _TotalCommentsCountBackingField; 
             set
             {
-                SetProperty(ref _TotalCommentsCount, value);
+                SetProperty(ref _TotalCommentsCountBackingField, value);
             }
         }
 
@@ -48,7 +51,7 @@ namespace NextInpact.Core.Models
         private byte[] _ImageData = null;
 
 
-        [Ignore]
+        [NotMapped]
         public byte[] ImageData
         {
             get => _ImageData; 
@@ -63,7 +66,7 @@ namespace NextInpact.Core.Models
 
         
         private double _SyncPercentage;
-        [Ignore]
+        [NotMapped]
         public double SyncPercentage
         {
             get { return _SyncPercentage; }
@@ -71,23 +74,23 @@ namespace NextInpact.Core.Models
         }
 
 
-        [Ignore]
+        [NotMapped]
         public bool ShowDateSection { get; set; }
 
 
-        public String PublicationTime
+        public string PublicationTime
         {
             get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_AFFICHAGE_ARTICLE_HEURE);         
         }
 
-        public String PublicationDate
+        public string PublicationDate
         {
             get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_AFFICHAGE_SECTION_DATE);            
         }
 
 
         private bool _HasComments;
-        [Ignore]
+        [NotMapped]
         public bool HasComments
         {
             get => _HasComments; 

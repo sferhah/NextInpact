@@ -16,11 +16,7 @@ namespace NextInpact.Core.ViewModels
         }
 
         string title = string.Empty;
-        public string Title
-        {
-            get;
-            set;
-        }
+        public string Title { get; set; }
     }
 }
 
