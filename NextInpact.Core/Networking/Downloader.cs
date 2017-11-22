@@ -40,9 +40,7 @@ namespace NextInpact.Core.Networking
                 page = uneURL.Substring(positionSlash + 1);
             }
 
-            Uri monURL = new Uri(debutURL + WebUtility.UrlEncode(page) + param);
-            return monURL;
-
+            return new Uri(debutURL + WebUtility.UrlEncode(page) + param);
         }
     }
 
