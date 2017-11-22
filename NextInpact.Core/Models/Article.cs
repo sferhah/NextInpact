@@ -80,12 +80,12 @@ namespace NextInpact.Core.Models
 
         public string PublicationTime
         {
-            get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_AFFICHAGE_ARTICLE_HEURE);         
+            get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_DISPLAY_ARTICLE_HEURE);         
         }
 
         public string PublicationDate
         {
-            get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_AFFICHAGE_SECTION_DATE);            
+            get => new DateTime(PublicationTimeStamp).ToString(Constants.FORMAT_DISPLAY_SECTION_DATE);            
         }
 
 

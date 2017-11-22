@@ -215,7 +215,7 @@ namespace NextInpact.Core.Parsing
         {
             List<Comment> comments = new List<Comment>();
 
-            int pageNumber = int.Parse(urlPage.Substring(urlPage.IndexOf("&") + Constants.NEXT_INPACT_URL_COMMENTAIRES_PARAM_NUM_PAGE.Length + 2));
+            int pageNumber = int.Parse(urlPage.Substring(urlPage.IndexOf("&") + Constants.NEXT_INPACT_URL_COMMENTS_PARAM_PAGE_NUM.Length + 2));
 
             var htmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(html);
 
@@ -238,7 +238,7 @@ namespace NextInpact.Core.Parsing
                 linkElement.Attributes["href"].Value = linkElement.Attributes["href"].GetAbsUrl(urlPage);
             }
 
-            int previousIdComm = (pageNumber - 1) * Constants.NB_COMMENTAIRES_PAR_PAGE;
+            int previousIdComm = (pageNumber - 1) * Constants.COMMENTS_COUNT_PER_PAGE;
             int previousUuidComm = 0;
 
             foreach (IElement commentElement in commentElements)
@@ -258,7 +258,7 @@ namespace NextInpact.Core.Parsing
                 if (dateElement.Any())
                 {
                     String laDate = dateElement.First().TextContent;
-                    timeStampPublication = ConvertToTimeStamp(laDate, Constants.FORMAT_DATE_COMMENTAIRE);
+                    timeStampPublication = ConvertToTimeStamp(laDate, Constants.FORMAT_DATE_COMMENT);
                 }
 
                 var idElement = commentElement.QuerySelectorAll("span[class=actu_comm_num]");

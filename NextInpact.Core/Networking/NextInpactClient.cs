@@ -83,13 +83,13 @@ namespace NextInpact.Core.Networking
         {
             int maPage = 1;
 
-            String contructedUrl = Constants.NEXT_INPACT_URL_COMMENTAIRES
+            String contructedUrl = Constants.NEXT_INPACT_URL_COMMENTS
                 + "?"
-                + Constants.NEXT_INPACT_URL_COMMENTAIRES_PARAM_ARTICLE_ID
+                + Constants.NEXT_INPACT_URL_COMMENTS_PARAM_ARTICLE_ID
                 + "="
                 + articleId
                 + "&"
-                + Constants.NEXT_INPACT_URL_COMMENTAIRES_PARAM_NUM_PAGE
+                + Constants.NEXT_INPACT_URL_COMMENTS_PARAM_PAGE_NUM
                 + "="
                 + maPage;
 

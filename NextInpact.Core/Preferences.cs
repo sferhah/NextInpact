@@ -17,13 +17,13 @@ namespace NextInpact.Core
 
         private const string lastRefreshDateText = "Dernière synchronisation : ";
 
-        public static String LastRefreshDateText
+        public static string LastRefreshDateText
         {
             get
             {
                 if (LastRefreshDate>0)
                 {
-                    return lastRefreshDateText + new DateTime(LastRefreshDate).ToString(Constants.FORMAT_DATE_DERNIER_REFRESH);
+                    return lastRefreshDateText + new DateTime(LastRefreshDate).ToString(Constants.FORMAT_DATE_LAST_REFRESH);
                 }
 
                 return lastRefreshDateText + "Jamais synchronisé";
