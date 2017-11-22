@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextInpact.Forms", "NextInp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Forms.iOS", "NextInpact.Forms.iOS\NextInpact.Forms.iOS.csproj", "{07048848-A37D-4B87-BA32-945B44AA6B3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Tests", "NextInpact.Tests\NextInpact.Tests.csproj", "{025ABD48-D47D-49DE-936E-FB13EB52D22F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextInpact.Tests", "NextInpact.Tests\NextInpact.Tests.csproj", "{025ABD48-D47D-49DE-936E-FB13EB52D22F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextInpact.Native.Droid", "NextInpact.Native.Droid\NextInpact.Native.Droid.csproj", "{D34EE8C5-90EE-47A0-95F1-02D96FFBDA08}"
 EndProject
