@@ -22,25 +22,25 @@ namespace NextInpact.Core.Networking
             return await response.Content.ReadAsByteArrayAsync();
         }
 
-        public static Uri ConvertToUri(String uneURL)
+        public static Uri ConvertToUri(String url)
         {
-            int positionSlash = uneURL.LastIndexOf('/');
-            int positionParam = uneURL.IndexOf('?');
-            String debutURL = uneURL.JavaSubString(0, positionSlash + 1);
+            int positionSlash = url.LastIndexOf('/');
+            int positionParam = url.IndexOf('?');
+            String beginningOfUrl = url.JavaSubString(0, positionSlash + 1);
             String page;
             String param = "";
 
             if (positionParam != -1)
             {
-                page = uneURL.JavaSubString(positionSlash + 1, positionParam);
-                param = uneURL.Substring(positionParam);
+                page = url.JavaSubString(positionSlash + 1, positionParam);
+                param = url.Substring(positionParam);
             }
             else
             {
-                page = uneURL.Substring(positionSlash + 1);
+                page = url.Substring(positionSlash + 1);
             }
 
-            return new Uri(debutURL + WebUtility.UrlEncode(page) + param);
+            return new Uri(beginningOfUrl + WebUtility.UrlEncode(page) + param);
         }
     }
 
