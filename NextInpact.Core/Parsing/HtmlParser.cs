@@ -34,7 +34,7 @@ namespace NextInpact.Core.Parsing
 
                 articles.Add(new Article
                 {
-                    Id = int.Parse(articleElement.Attributes["data-acturowid"].Value),
+                    Id = articleElement.Attributes["data-acturowid"].Value,
                     PublicationTimeStamp = ConvertToTimeStamp(date, Constants.FORMAT_DATE_ARTICLE),
                     UrlIllustration = image,
                     Url = urlElement.Attributes["href"].GetAbsUrl(urlPage),
@@ -220,7 +220,7 @@ namespace NextInpact.Core.Parsing
             var htmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(html);
 
             var articleRef = htmlDocument.QuerySelectorAll("aside[data-relnews]").First();
-            int articleId = int.Parse(articleRef.Attributes["data-relnews"].Value);
+            var articleId = articleRef.Attributes["data-relnews"].Value;
             var commentElements = htmlDocument.QuerySelectorAll("div[class~=actu_comm ],div[class~=actu_comm_author]");
             var internalLinks = commentElements.QuerySelectorAll("a[class=link_reply_to], div[class=quote_bloc]>div[class=qname]>a");
 

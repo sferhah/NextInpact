@@ -50,7 +50,7 @@ namespace NextInpact.Core.Networking
         public static async Task DownloadArticleContent(Article article)
         {
             String html = await Downloader.GetAsync(article.Url);
-            article.Content = await HtmlParser.ParseArticleContentAsync(html, article.Url);                        
+            article.Content = await HtmlParser.ParseArticleContentAsync(html, article.Url);
         }
 
         public static async Task<List<Comment>> DownloadArticlesComs(IEnumerable<Article> items)
@@ -79,7 +79,7 @@ namespace NextInpact.Core.Networking
             return comments;
         }
 
-        public static String GetUrlComs(int articleId)
+        public static String GetUrlComs(string articleId)
         {
             int maPage = 1;
 

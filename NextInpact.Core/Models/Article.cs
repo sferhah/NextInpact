@@ -9,7 +9,7 @@ namespace NextInpact.Core.Models
     public class Article : ObservableObject
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Title { get; set; }
         public string SubTitle { get; set; } = "";
 

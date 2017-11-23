@@ -9,16 +9,16 @@ using System.Collections.Generic;
 
 namespace NextInpact.Core.ViewModels
 {
-    public class CommentsViewModel : NextInpactBaseViewModel<int>
+    public class CommentsViewModel : NextInpactBaseViewModel<string>
     {
         public ObservableRangeCollection<Comment> Items { get; set; }
         public MvxCommand LoadItemsCommand { get; set; }
 
         private List<Comment> comments;
 
-        int itemId;
+        string itemId;
 
-        public override void Prepare(int parameter)
+        public override void Prepare(string parameter)
         {
             this.itemId = parameter;
         }

@@ -26,7 +26,7 @@ namespace NextInpact.Core.Data
             }
         }
 
-        public static async Task<Article> GetArticle(int id)
+        public static async Task<Article> GetArticle(string id)
         {
             using (AppDbContext database = new AppDbContext())
             {
@@ -34,7 +34,7 @@ namespace NextInpact.Core.Data
             }
         }
 
-        public static async Task<List<Comment>> GetArticleComments(int articleId)
+        public static async Task<List<Comment>> GetArticleComments(string articleId)
         {
             using (AppDbContext database = new AppDbContext())
             {

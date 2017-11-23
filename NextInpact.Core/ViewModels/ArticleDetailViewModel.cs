@@ -8,18 +8,18 @@ using MvvmCross.Core.Navigation;
 
 namespace NextInpact.Core.ViewModels
 {
-    public class ArticleDetailViewModel : NextInpactBaseViewModel<int>
+    public class ArticleDetailViewModel : NextInpactBaseViewModel<string>
     {   
         public Article Item { get; set; }
         
         public String ArticleContent
         {
             get => Item?.Content ?? "<html>loading...</html>";
-        }  
+        }
 
-        int itemId;
+        string itemId;
 
-        public override void Prepare(int parameter)
+        public override void Prepare(string parameter)
         {
             this.itemId = parameter;
         }
@@ -57,7 +57,7 @@ namespace NextInpact.Core.ViewModels
 
         private void ShowComments()
         {           
-            _navigationService.Navigate<CommentsViewModel, int>(this.Item.Id);
+            _navigationService.Navigate<CommentsViewModel, string>(this.Item.Id);
         }
     }
 }

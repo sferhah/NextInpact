@@ -50,7 +50,7 @@ namespace NextInpact.Core.ViewModels
 
         private void DoSelectItem(Article item)
         {
-            _navigationService.Navigate<ArticleDetailViewModel, int>(item.Id);
+            _navigationService.Navigate<ArticleDetailViewModel, string>(item.Id);
         }
 
         bool firstAppear = true;

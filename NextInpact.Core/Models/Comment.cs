@@ -12,7 +12,7 @@ namespace NextInpact.Core.Models
         [Key]
         public string PrimaryKey { get; set; }   
         public int Position { get; set; }
-        public int ArticleId { get; set; }
+        public string ArticleId { get; set; }
         public string Author { get; set; } = "";
         public string Content { get; set; } = "";
         public long TimeStampPublication { get; set; }
